@@ -1,1 +1,0 @@
-# instantsearch-itemsjs-adapter
