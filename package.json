@@ -28,6 +28,7 @@
   "scripts": {
     "test": "jest",
     "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --check \"**/*.ts\" \"**/*.js\"",
     "build": "npx tsc"
   },
   "keywords": [],
