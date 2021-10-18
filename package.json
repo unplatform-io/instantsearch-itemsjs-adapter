@@ -10,18 +10,24 @@
     "itemsjs": "^2.1.10"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.0",
     "prettier": "2.4.1",
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": " npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "npx tsc"
   },
   "keywords": [],
