@@ -6,7 +6,7 @@ This repository contains an adapter to link [Itemsjs](https://www.npmjs.com/pack
 To see an implentation of this adater go to [unplatform-io/clientside-instantsearch-demo](https://github.com/unplatform-io/clientside-instantsearch-demo).
 
 ## [Jest](https://jestjs.io/)
-to run Jest tests
+To run Jest tests
 ```bash
 npm run test
 ```
