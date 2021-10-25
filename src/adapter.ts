@@ -3,17 +3,7 @@ import itemsjs from "itemsjs";
 import { adaptResponse } from "./adaptResponse";
 import { adaptRequest } from "./adaptRequest";
 
-var index;
-
-export function getSearchClient(productsState: object) {
-  return {
-    // search: (queries) => (result),
-    search: (requests: any) => search(requests),
-    searchForFacetValues: () => {
-      throw new Error("Not implemented");
-    },
-  };
-}
+let index;
 
 export function createIndex(productsState: object) {
   index = itemsjs(productsState, {
@@ -49,16 +39,15 @@ export function createIndex(productsState: object) {
 }
 
 export function search(request) {
+  const InstantSearchRequset = {
+    query: request[0].params.query,
+  };
+
   if (index) {
-    //request omzetten (adaptsRequest.ts)
-    const itemsjsRequest = adaptRequest(request);
-
-    //zoeken in index (index.search(req))
+    const itemsjsRequest = adaptRequest(InstantSearchRequset);
     const itemsjsResponse = index.search(itemsjsRequest);
-
-    //omgezet resultaat teruggeven
     console.log("response", adaptResponse(itemsjsResponse));
-    return adaptResponse(itemsjsResponse);
+    return JSON.stringify(adaptResponse(itemsjsResponse));
   }
   return null;
 }

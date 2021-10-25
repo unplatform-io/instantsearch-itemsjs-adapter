@@ -5,10 +5,7 @@ export function adaptRequest(request) {
     query: request.query,
     per_page: request.hitsPerPage,
     page: adaptPage(request.page),
-    // indexName, // Not needed by itemsjs, but handy for adaptations
   };
-
-  console.log("instantsearch", request);
 
   return itemsjsReq;
 }

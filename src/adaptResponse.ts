@@ -10,6 +10,7 @@ export function adaptResponse(response) {
     page: response.pagination.page - 1,
     nbPages: totalNumberOfPages,
     hitsPerPage: response.pagination.per_page,
+    index: "products",
   };
 }
 
