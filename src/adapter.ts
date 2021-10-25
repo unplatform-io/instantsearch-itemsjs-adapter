@@ -50,5 +50,6 @@ export function search(
 
     return InstantSearchResponse;
   }
+
   return null;
 }
