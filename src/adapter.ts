@@ -25,8 +25,8 @@ export function createIndex(productsState: object) {
       },
     },
     options: {
-      page: 2,
-      per_page: 4,
+      page: 1,
+      per_page: 20,
     },
     sort: "price_desc",
   });
@@ -41,13 +41,19 @@ export function createIndex(productsState: object) {
 export function search(request) {
   const InstantSearchRequset = {
     query: request[0].params.query,
+    hitsPerPage: 3,
+    page: 1,
   };
 
   if (index) {
     const itemsjsRequest = adaptRequest(InstantSearchRequset);
     const itemsjsResponse = index.search(itemsjsRequest);
-    console.log("response", adaptResponse(itemsjsResponse));
-    return JSON.stringify(adaptResponse(itemsjsResponse));
+
+    const test = { results: [adaptResponse(itemsjsResponse)] };
+    console.log("response", test);
+
+    return test;
   }
+
   return null;
 }
