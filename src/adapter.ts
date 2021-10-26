@@ -38,22 +38,38 @@ export function createIndex(productsState) {
   );
 }
 
-export function search(request) {
-  const InstantSearchRequset = {
+interface Request {
+  params: {
+    query: string;
+    hitsPerPage: number;
+    page: number;
+  }
+}
+
+interface InstantSearchRequest {
+  query: string;
+  hitsPerPage: number;
+  page: number;
+}
+
+// Readonly<Promise<MultipleQueriesResponse<TObject>>>;
+
+export function search(request:Request): object {
+  console.log('Instantsearch incoming request', request)
+
+  const instantSearchRequest: InstantSearchRequest = {
     query: request[0].params.query,
-    hitsPerPage: 3,
-    page: 1,
+    hitsPerPage: 10,
+    page: request[0].params.page,
   };
 
   if (index) {
-    const itemsjsRequest = adaptRequest(InstantSearchRequset);
+    const itemsjsRequest: object = adaptRequest(instantSearchRequest);
     const itemsjsResponse: object = index.search(itemsjsRequest);
 
-    const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
-
-    console.log("response", InstantSearchResponse);
-
-    return InstantSearchResponse;
+    const InstantSearchResponse: object = { results: [adaptResponse(itemsjsResponse)] };
+    console.log(InstantSearchResponse)
+    return Promise.resolve(InstantSearchResponse);
   }
 
   return null;

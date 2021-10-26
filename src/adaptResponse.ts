@@ -1,6 +1,6 @@
 //Itemsjs response to Instantsearch response
 
-export function adaptResponse(response) {
+export function adaptResponse(response)  {
   console.log(response);
 
   const totalNumberOfPages = Math.ceil(
@@ -12,7 +12,7 @@ export function adaptResponse(response) {
     page: response.pagination.page - 1,
     nbPages: totalNumberOfPages,
     hitsPerPage: response.pagination.per_page,
-    index: "products",
+    // index: "products",
     nbHits: response.pagination.total,
     processingTimeMS: response.timings.total,
     exhaustiveNbHits: true,
@@ -21,7 +21,7 @@ export function adaptResponse(response) {
   };
 }
 
-function adaptHit(item): object {
+function adaptHit(item) {
   return {
     objectID: item.id,
     ...item,
