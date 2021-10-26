@@ -5,7 +5,7 @@ import { adaptRequest } from "./adaptRequest";
 
 let index;
 
-export function createIndex(productsState: object) {
+export function createIndex(productsState) {
   index = itemsjs(productsState, {
     searchableFields: ["title"],
     sortings: {
@@ -37,11 +37,6 @@ export function createIndex(productsState: object) {
     })
   );
 }
-
-// interface Request {
-//   params: any;
-//   query: string;
-// }
 
 export function search(request) {
   const InstantSearchRequset = {

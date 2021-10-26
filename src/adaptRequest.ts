@@ -1,12 +1,6 @@
 //Instantsearch request to itemsjs request
 
-interface Request {
-  query: string;
-  hitsPerPage: number;
-  page: number;
-}
-
-export function adaptRequest(request: Request) {
+export function adaptRequest(request) {
   const itemsjsReq = {
     query: request.query,
     per_page: request.hitsPerPage,
@@ -16,7 +10,7 @@ export function adaptRequest(request: Request) {
   return itemsjsReq;
 }
 
-function adaptPage(page: number) {
+function adaptPage(page) {
   // ItemsJS pages start at 1 iso 0
   return Number(page || 0) + 1;
 }
