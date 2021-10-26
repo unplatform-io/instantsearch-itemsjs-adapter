@@ -8,6 +8,26 @@ import { SearchResponse } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
 import { ItemsJsOptions } from "./itemsjsInterface";
 
+interface Hit {
+  readonly objectID: string;
+}
+
+interface SearchResponse {
+  hits: Array<Hit>;
+  page: number;
+  nbHits: number;
+  nbPages: number;
+  hitsPerPage: number;
+  processingTimeMS: number;
+  exhaustiveNbHits: boolean;
+  query: string;
+  params: string;
+}
+
+interface MultipleQueriesResponse {
+  results: Array<SearchResponse>;
+}
+
 let index;
 
 export default function getSearchClient(
@@ -50,6 +70,5 @@ export function search(
 
     return InstantSearchResponse;
   }
-
   return null;
 }
