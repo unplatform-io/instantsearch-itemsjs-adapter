@@ -3,9 +3,29 @@ import itemsjs from "itemsjs";
 import { adaptResponse } from "./adaptResponse";
 import { adaptRequest } from "./adaptRequest";
 
+interface Hit {
+  readonly objectID: string;
+}
+
+interface SearchResponse {
+  hits: Array<Hit>;
+  page: number;
+  nbHits: number;
+  nbPages: number;
+  hitsPerPage: number;
+  processingTimeMS: number;
+  exhaustiveNbHits: boolean;
+  query: string;
+  params: string;
+}
+
+interface MultipleQueriesResponse {
+  results: Array<SearchResponse>;
+}
+
 let index;
 
-export function createIndex(productsState) {
+export function createIndex(productsState): any {
   index = itemsjs(productsState, {
     searchableFields: ["title"],
     sortings: {
@@ -38,26 +58,8 @@ export function createIndex(productsState) {
   );
 }
 
-interface Request {
-  params: {
-    query: string;
-    hitsPerPage: number;
-    page: number;
-  }
-}
-
-interface InstantSearchRequest {
-  query: string;
-  hitsPerPage: number;
-  page: number;
-}
-
-// Readonly<Promise<MultipleQueriesResponse<TObject>>>;
-
-export function search(request:Request): object {
-  console.log('Instantsearch incoming request', request)
-
-  const instantSearchRequest: InstantSearchRequest = {
+export function search(request): Promise<MultipleQueriesResponse> {
+  const instantSearchRequest ={
     query: request[0].params.query,
     hitsPerPage: 10,
     page: request[0].params.page,
@@ -67,10 +69,10 @@ export function search(request:Request): object {
     const itemsjsRequest: object = adaptRequest(instantSearchRequest);
     const itemsjsResponse: object = index.search(itemsjsRequest);
 
-    const InstantSearchResponse: object = { results: [adaptResponse(itemsjsResponse)] };
-    console.log(InstantSearchResponse)
+    const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
+    console.log('Search Response', InstantSearchResponse);
+
     return Promise.resolve(InstantSearchResponse);
   }
-
   return null;
 }
