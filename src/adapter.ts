@@ -38,6 +38,11 @@ export function createIndex(productsState: object) {
   );
 }
 
+// interface Request {
+//   params: any;
+//   query: string;
+// }
+
 export function search(request) {
   const InstantSearchRequset = {
     query: request[0].params.query,
@@ -47,12 +52,13 @@ export function search(request) {
 
   if (index) {
     const itemsjsRequest = adaptRequest(InstantSearchRequset);
-    const itemsjsResponse = index.search(itemsjsRequest);
+    const itemsjsResponse: object = index.search(itemsjsRequest);
 
-    const test = { results: [adaptResponse(itemsjsResponse)] };
-    console.log("response", test);
+    const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
 
-    return test;
+    console.log("response", InstantSearchResponse);
+
+    return InstantSearchResponse;
   }
 
   return null;

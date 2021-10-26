@@ -61,7 +61,15 @@
 
 // Readonly<Promise<MultipleQueriesResponse<TObject>>>
 
-export function adaptResponse(response) {
+interface Response {
+  data: any;
+  pagination: object;
+  total: number;
+}
+
+export function adaptResponse(response: Response): object {
+  console.log(response);
+
   const totalNumberOfPages = Math.ceil(
     response.pagination.total / response.pagination.per_page
   );
@@ -80,7 +88,7 @@ export function adaptResponse(response) {
   };
 }
 
-function adaptHit(item) {
+function adaptHit(item): object {
   return {
     objectID: item.id,
     ...item,
