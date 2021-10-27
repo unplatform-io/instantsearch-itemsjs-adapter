@@ -7,6 +7,7 @@
     "lib": "lib"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.11.0",
     "itemsjs": "^2.1.10"
   },
   "devDependencies": {

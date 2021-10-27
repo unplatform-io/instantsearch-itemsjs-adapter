@@ -2,30 +2,13 @@ import itemsjs from "itemsjs";
 
 import { adaptResponse } from "./adaptResponse";
 import { adaptRequest } from "./adaptRequest";
-
-interface Hit {
-  readonly objectID: string;
-}
-
-interface SearchResponse {
-  hits: Array<Hit>;
-  page: number;
-  nbHits: number;
-  nbPages: number;
-  hitsPerPage: number;
-  processingTimeMS: number;
-  exhaustiveNbHits: boolean;
-  query: string;
-  params: string;
-}
-
-interface MultipleQueriesResponse {
-  results: Array<SearchResponse>;
-}
+import { MultipleQueriesResponse } from "@algolia/client-search";
+import { MultipleQueriesQuery } from "@algolia/client-search";
+import { SearchResponse } from "@algolia/client-search";
+import { itemsjsReq } from "./itemsjsInterface";
 
 let index;
-
-export function createIndex(productsState): SearchResponse {
+export function createIndex(productsState: object): SearchResponse {
   index = itemsjs(productsState, {
     searchableFields: ["title"],
     sortings: {
@@ -51,28 +34,25 @@ export function createIndex(productsState): SearchResponse {
     sort: "price_desc",
   });
 
+  console.log("index", index);
   return adaptResponse(
     index.search({
-      query: "Gold",
+      query: "",
     })
   );
 }
 
-export function search(request): Promise<MultipleQueriesResponse> {
-  const instantSearchRequest = {
-    query: request[0].params.query,
-    hitsPerPage: 10,
-    page: request[0].params.page,
-  };
-
+export function search(
+  request: MultipleQueriesQuery[]
+): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest: object = adaptRequest(instantSearchRequest);
-    const itemsjsResponse: object = index.search(itemsjsRequest);
+    const itemsjsRequest: itemsjsReq = adaptRequest(request);
+    const itemsjsResponse = index.search(itemsjsRequest);
+    const InstantSearchResponse = Promise.resolve({
+      results: [adaptResponse(itemsjsResponse)],
+    });
 
-    const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
-    console.log("Search Response", InstantSearchResponse);
-
-    return Promise.resolve(InstantSearchResponse);
+    return InstantSearchResponse;
   }
   return null;
 }
