@@ -25,7 +25,7 @@ interface MultipleQueriesResponse {
 
 let index;
 
-export function createIndex(productsState): any {
+export function createIndex(productsState): SearchResponse {
   index = itemsjs(productsState, {
     searchableFields: ["title"],
     sortings: {
@@ -59,7 +59,7 @@ export function createIndex(productsState): any {
 }
 
 export function search(request): Promise<MultipleQueriesResponse> {
-  const instantSearchRequest ={
+  const instantSearchRequest = {
     query: request[0].params.query,
     hitsPerPage: 10,
     page: request[0].params.page,
@@ -70,7 +70,7 @@ export function search(request): Promise<MultipleQueriesResponse> {
     const itemsjsResponse: object = index.search(itemsjsRequest);
 
     const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
-    console.log('Search Response', InstantSearchResponse);
+    console.log("Search Response", InstantSearchResponse);
 
     return Promise.resolve(InstantSearchResponse);
   }

@@ -32,7 +32,7 @@ export function adaptResponse(response): SearchResponse {
     processingTimeMS: response.timings.total,
     exhaustiveNbHits: true,
     query: "gold",
-    params: '',
+    params: "",
   };
 }
 
