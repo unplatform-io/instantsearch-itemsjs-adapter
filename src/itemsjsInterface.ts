@@ -1,11 +1,13 @@
-export interface itemsjsReq {
+import { Hit } from "@algolia/client-search";
+
+export interface ItemsJsRequest {
   query: string;
   per_page: number;
   page: number;
   indexName: string;
-}
+} 
 
-export interface itemsjsRes {
+export interface ItemsJsResponse {
   pagination: {
     per_page: number;
     total: number;
@@ -18,7 +20,18 @@ export interface itemsjsRes {
     sorting: number;
   };
   data: {
-    items: any; //Array<Hit<object>>;
-    aggregations: object;
+    items: Array<Hit<object>>;
+    aggregations: {
+      category: {
+        bucket: {
+          key: string;
+          doc_count: number;
+          selected: boolean;
+        }
+        name: string;
+        posistion: number;
+        title: string;
+      }
+    }
   };
 }

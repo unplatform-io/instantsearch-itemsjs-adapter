@@ -1,8 +1,8 @@
 //Instantsearch request to itemsjs request
 import { MultipleQueriesQuery } from "@algolia/client-search";
-import { itemsjsReq } from "./itemsjsInterface";
+import { ItemsJsRequest } from "./itemsjsInterface";
 
-export function adaptRequest(request: MultipleQueriesQuery[]): itemsjsReq {
+export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   return {
     query: request[0].params.query,
     per_page: 10,

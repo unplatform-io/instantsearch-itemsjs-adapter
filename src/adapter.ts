@@ -5,7 +5,7 @@ import { adaptRequest } from "./adaptRequest";
 import { MultipleQueriesResponse } from "@algolia/client-search";
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { SearchResponse } from "@algolia/client-search";
-import { itemsjsReq } from "./itemsjsInterface";
+import { ItemsJsRequest } from "./itemsjsInterface";
 
 let index;
 export function createIndex(productsState: object): SearchResponse {
@@ -46,7 +46,7 @@ export function search(
   request: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest: itemsjsReq = adaptRequest(request);
+    const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
     const itemsjsResponse = index.search(itemsjsRequest);
     const InstantSearchResponse = Promise.resolve({
       results: [adaptResponse(itemsjsResponse)],

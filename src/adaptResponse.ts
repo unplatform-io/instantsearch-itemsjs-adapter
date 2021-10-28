@@ -1,9 +1,9 @@
 //Itemsjs response to Instantsearch response
 import { SearchResponse } from "@algolia/client-search";
 import { Hit } from "@algolia/client-search";
-import { itemsjsRes } from "./itemsjsInterface";
+import { ItemsJsResponse } from "./itemsjsInterface";
 
-export function adaptResponse(response: itemsjsRes): SearchResponse {
+export function adaptResponse(response: ItemsJsResponse): SearchResponse {
   console.log("itemsjs response", response);
 
   const totalNumberOfPages = Math.ceil(
@@ -23,7 +23,7 @@ export function adaptResponse(response: itemsjsRes): SearchResponse {
   };
 }
 
-function adaptHit(item): Array<Hit<object>> {
+function adaptHit(item): Hit<object> {
   return {
     objectID: item.id,
     ...item,
