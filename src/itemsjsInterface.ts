@@ -5,7 +5,7 @@ export interface ItemsJsRequest {
   per_page: number;
   page: number;
   indexName: string;
-} 
+}
 
 export interface ItemsJsResponse {
   pagination: {
@@ -27,11 +27,11 @@ export interface ItemsJsResponse {
           key: string;
           doc_count: number;
           selected: boolean;
-        }
+        };
         name: string;
         posistion: number;
         title: string;
-      }
-    }
+      };
+    };
   };
 }
