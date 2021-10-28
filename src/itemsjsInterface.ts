@@ -1,5 +1,12 @@
 import { Hit } from "@algolia/client-search";
 
+export interface ItemsJsOptions {
+  aggregations?: object;
+  sortings?: object;
+  searchableFields: string[];
+  native_search_enabled?: boolean;
+}
+
 export interface ItemsJsRequest {
   query: string;
   per_page: number;
