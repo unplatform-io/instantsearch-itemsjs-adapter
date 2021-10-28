@@ -2,10 +2,13 @@ import itemsjs from "itemsjs";
 
 import { adaptResponse } from "./adaptResponse";
 import { adaptRequest } from "./adaptRequest";
+import { MultipleQueriesResponse } from "@algolia/client-search";
+import { MultipleQueriesQuery } from "@algolia/client-search";
+import { SearchResponse } from "@algolia/client-search";
+import { ItemsJsRequest } from "./itemsjsInterface";
 
 let index;
-
-export function createIndex(productsState) {
+export function createIndex(productsState: object): SearchResponse {
   index = itemsjs(productsState, {
     searchableFields: ["title"],
     sortings: {
@@ -31,30 +34,25 @@ export function createIndex(productsState) {
     sort: "price_desc",
   });
 
+  console.log("index", index);
   return adaptResponse(
     index.search({
-      query: "Gold",
+      query: "",
     })
   );
 }
 
-export function search(request) {
-  const InstantSearchRequset = {
-    query: request[0].params.query,
-    hitsPerPage: 3,
-    page: 1,
-  };
-
+export function search(
+  request: MultipleQueriesQuery[]
+): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest = adaptRequest(InstantSearchRequset);
-    const itemsjsResponse: object = index.search(itemsjsRequest);
-
-    const InstantSearchResponse = { results: [adaptResponse(itemsjsResponse)] };
-
-    console.log("response", InstantSearchResponse);
+    const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
+    const itemsjsResponse = index.search(itemsjsRequest);
+    const InstantSearchResponse = Promise.resolve({
+      results: [adaptResponse(itemsjsResponse)],
+    });
 
     return InstantSearchResponse;
   }
-
   return null;
 }
