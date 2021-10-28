@@ -6,33 +6,29 @@ import { MultipleQueriesResponse } from "@algolia/client-search";
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { SearchResponse } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
+import { ItemsJsOptions } from "./itemsjsInterface";
 
 let index;
-export function createIndex(productsState: object): SearchResponse {
-  index = itemsjs(productsState, {
-    searchableFields: ["title"],
-    sortings: {
-      price_asc: {
-        field: "price",
-        order: "asc",
-      },
-      price_desc: {
-        field: "price",
-        order: "desc",
-      },
+
+export default function getSearchClient(
+  productsState: object,
+  options: ItemsJsOptions
+) {
+  createIndex(productsState, options);
+
+  return {
+    search: (queries: MultipleQueriesQuery[]) => search(queries),
+    searchForFacetValues: () => {
+      throw new Error("Not implemented");
     },
-    aggregations: {
-      category: {
-        title: "category",
-        size: 10,
-      },
-    },
-    options: {
-      page: 1,
-      per_page: 20,
-    },
-    sort: "price_desc",
-  });
+  };
+}
+
+export function createIndex(
+  productsState: object,
+  options: ItemsJsOptions
+): SearchResponse {
+  index = itemsjs(productsState, options);
 
   console.log("index", index);
   return adaptResponse(

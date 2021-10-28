@@ -1,5 +1,4 @@
 //Itemsjs response to Instantsearch response
-
 import { SearchResponse } from "@algolia/client-search";
 import { Hit } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
