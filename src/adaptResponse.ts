@@ -1,4 +1,5 @@
 //Itemsjs response to Instantsearch response
+
 import { SearchResponse } from "@algolia/client-search";
 import { Hit } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
@@ -23,7 +24,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
   };
 }
 
-function adaptHit(item): Hit<object> {
+export function adaptHit(item): Hit<object> {
   return {
     objectID: item.id,
     ...item,
