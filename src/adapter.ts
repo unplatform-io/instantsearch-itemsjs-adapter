@@ -30,6 +30,7 @@ export function createIndex(
 ): SearchResponse {
   index = itemsjs(productsState, options);
 
+  console.log("index", index);
   return adaptResponse(
     index.search({
       query: "",
