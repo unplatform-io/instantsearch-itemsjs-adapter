@@ -11,7 +11,7 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   };
 }
 
-function adaptPage(page: number): number {
+export function adaptPage(page: number): number {
   // ItemsJS pages start at 1 iso 0
   return Number(page || 0) + 1;
 }
