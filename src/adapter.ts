@@ -6,13 +6,13 @@ import { MultipleQueriesResponse } from "@algolia/client-search";
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { SearchResponse } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
-import { ItemsjsOptions } from "./itemsjsInterface";
+import { ItemsJsOptions } from "./itemsjsInterface";
 
 let index;
 
 export default function getSearchClient(
   productsState: object,
-  options: ItemsjsOptions
+  options: ItemsJsOptions
 ) {
   createIndex(productsState, options);
 
@@ -26,7 +26,7 @@ export default function getSearchClient(
 
 export function createIndex(
   productsState: object,
-  options: ItemsjsOptions
+  options: ItemsJsOptions
 ): SearchResponse {
   index = itemsjs(productsState, options);
 

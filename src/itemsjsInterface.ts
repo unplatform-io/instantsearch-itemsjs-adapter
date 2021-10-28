@@ -1,6 +1,6 @@
 import { Hit } from "@algolia/client-search";
 
-export interface ItemsjsOptions {
+export interface ItemsJsOptions {
   aggregations?: object;
   sortings?: object;
   searchableFields: string[];
