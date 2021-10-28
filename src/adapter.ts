@@ -6,6 +6,7 @@ import { MultipleQueriesResponse } from "@algolia/client-search";
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { SearchResponse } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
+<<<<<<< HEAD
 import { ItemsJsOptions } from "./itemsjsInterface";
 
 interface Hit {
@@ -27,6 +28,8 @@ interface SearchResponse {
 interface MultipleQueriesResponse {
   results: Array<SearchResponse>;
 }
+=======
+>>>>>>> Fixed PR requested changes
 
 let index;
 
