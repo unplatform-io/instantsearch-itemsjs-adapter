@@ -17,7 +17,7 @@ export default function getSearchClient(
   createIndex(productsState, options);
 
   return {
-    search: (queries: MultipleQueriesQuery[]) => search(queries),
+    search: (queries: MultipleQueriesQuery[]) => performSearch(queries),
     searchForFacetValues: () => {
       throw new Error("Not implemented");
     },
@@ -29,16 +29,16 @@ export function createIndex(
   options: ItemsJsOptions
 ): SearchResponse {
   index = itemsjs(productsState, options);
-
-  console.log("index", index);
   return adaptResponse(
     index.search({
-      query: "",
+      query: options.query,
+      per_page: options.per_page,
+      page: options.page,
     })
   );
 }
 
-export function search(
+export function performSearch(
   request: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {

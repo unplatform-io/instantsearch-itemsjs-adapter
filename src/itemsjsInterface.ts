@@ -5,6 +5,9 @@ export interface ItemsJsOptions {
   sortings?: object;
   searchableFields: string[];
   native_search_enabled?: boolean;
+  query: string;
+  per_page?: number;
+  page?: number;
 }
 
 export interface ItemsJsRequest {

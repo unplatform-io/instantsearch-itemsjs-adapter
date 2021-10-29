@@ -4,8 +4,6 @@ import { Hit } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
 
 export function adaptResponse(response: ItemsJsResponse): SearchResponse {
-  console.log("itemsjs response", response);
-
   const totalNumberOfPages = Math.ceil(
     response.pagination.total / response.pagination.per_page
   );
