@@ -27,6 +27,7 @@ const request: MultipleQueriesQuery[] = [
       query: "",
       maxValuesPerFacet: 10,
       page: 0,
+      hitsPerPage: per_page,
       facets: ["category"],
       tagFilters: "",
     },

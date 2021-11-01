@@ -5,7 +5,7 @@ import { ItemsJsRequest } from "./itemsjsInterface";
 export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   return {
     query: request[0].params.query,
-    per_page: 10,
+    per_page: request[0].params.hitsPerPage,
     page: adaptPage(request[0].params.page),
     indexName: "products",
   };
