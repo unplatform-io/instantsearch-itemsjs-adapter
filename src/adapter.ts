@@ -8,8 +8,6 @@ import { SearchResponse } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
 import { ItemsJsOptions } from "./itemsjsInterface";
 
-  hits: Array<Hit>;
-  page: number;
 let index;
 
 export default function getSearchClient(
