@@ -1,4 +1,6 @@
+import { MultipleQueriesQuery } from "@algolia/client-search";
 import { adaptPage, adaptRequest } from "../src/adaptRequest";
+import { ItemsJsRequest } from "../src/itemsjsInterface";
 
 describe("adaptRequest tests", () => {
   it("adaptpage(0) should return 1", () => {
@@ -9,8 +11,9 @@ describe("adaptRequest tests", () => {
     const query = "a";
     const page = 2;
 
-    const request = [
+    const instantsearchRequest: MultipleQueriesQuery[] = [
       {
+        indexName: "products",
         params: {
           query: query,
           page: page,
@@ -18,7 +21,7 @@ describe("adaptRequest tests", () => {
       },
     ];
 
-    const itemsjsRequst = adaptRequest(request);
+    const itemsjsRequst: ItemsJsRequest = adaptRequest(instantsearchRequest);
 
     expect(itemsjsRequst.query).toBe(query);
     expect(itemsjsRequst.page).toBe(page + 1);
