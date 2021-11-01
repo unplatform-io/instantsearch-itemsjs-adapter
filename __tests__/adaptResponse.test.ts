@@ -25,7 +25,7 @@ describe("adaptResponse tests", () => {
     const sorting = 10;
     const timingTotal = facets + search + sorting;
 
-    const response: ItemsJsResponse = {
+    const itemsjsResponse: ItemsJsResponse = {
       pagination: {
         per_page: itemsPerPage,
         total: total,
@@ -54,12 +54,13 @@ describe("adaptResponse tests", () => {
       },
     };
 
-    const newResponse: SearchResponse = adaptResponse(response);
+    const instantsearchResponse: SearchResponse =
+      adaptResponse(itemsjsResponse);
 
-    expect(newResponse.page).toBe(page - 1);
-    expect(newResponse.nbPages).toBe(totalPages);
-    expect(newResponse.hitsPerPage).toBe(itemsPerPage);
-    expect(newResponse.processingTimeMS).toBe(timingTotal);
-    expect(newResponse.nbHits).toBe(total);
+    expect(instantsearchResponse.page).toBe(page - 1);
+    expect(instantsearchResponse.nbPages).toBe(totalPages);
+    expect(instantsearchResponse.hitsPerPage).toBe(itemsPerPage);
+    expect(instantsearchResponse.processingTimeMS).toBe(timingTotal);
+    expect(instantsearchResponse.nbHits).toBe(total);
   });
 });
