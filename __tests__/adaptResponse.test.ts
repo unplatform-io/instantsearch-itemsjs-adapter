@@ -1,4 +1,6 @@
+import { SearchResponse } from "@algolia/client-search";
 import { adaptHit, adaptResponse } from "../src/adaptResponse";
+import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
   it("adaptHit should convert item to hit", () => {
@@ -18,23 +20,41 @@ describe("adaptResponse tests", () => {
     const total = 5;
     const page = 2;
     const totalPages = Math.ceil(total / itemsPerPage);
-    const timingTotal = 10;
+    const facets = 10;
+    const search = 10;
+    const sorting = 10;
+    const timingTotal = facets + search + sorting;
 
-    const response = {
+    const response: ItemsJsResponse = {
       pagination: {
         per_page: itemsPerPage,
         total: total,
         page: page,
       },
       timings: {
+        facets: facets,
+        search: search,
+        sorting: sorting,
         total: timingTotal,
       },
       data: {
-        items: [{ id: 1 }, { id: 2 }],
+        items: [{ objectID: "" }, { objectID: "" }],
+        aggregations: {
+          category: {
+            bucket: {
+              key: null,
+              doc_count: null,
+              selected: false,
+            },
+            name: null,
+            posistion: null,
+            title: null,
+          },
+        },
       },
     };
 
-    const newResponse = adaptResponse(response);
+    const newResponse: SearchResponse = adaptResponse(response);
 
     expect(newResponse.page).toBe(page - 1);
     expect(newResponse.nbPages).toBe(totalPages);
