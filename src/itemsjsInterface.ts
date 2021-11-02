@@ -1,10 +1,24 @@
-import { Hit } from "@algolia/client-search";
+import {
+  Hit,
+  MultipleQueriesQuery,
+  MultipleQueriesResponse,
+} from "@algolia/client-search";
+
+export interface SearchClient {
+  search: (
+    queries: MultipleQueriesQuery[]
+  ) => Readonly<Promise<MultipleQueriesResponse<object>>>;
+  searchForFacetValues: () => void;
+}
 
 export interface ItemsJsOptions {
   aggregations?: object;
   sortings?: object;
   searchableFields: string[];
   native_search_enabled?: boolean;
+  query: string;
+  per_page?: number;
+  page?: number;
 }
 
 export interface ItemsJsRequest {

@@ -8,6 +8,7 @@
     "esModuleInterop": true,        /* Enables intero between CommonJS and ES */
     "skipLibCheck": true,           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently */
+    "resolveJsonModule": true, /* Allow to import .json extensions*/
   },
   "include": [
     "src"
