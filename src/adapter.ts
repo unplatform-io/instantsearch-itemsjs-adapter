@@ -4,7 +4,6 @@ import { adaptRequest } from "./adaptRequest";
 import {
   MultipleQueriesResponse,
   MultipleQueriesQuery,
-  SearchResponse,
 } from "@algolia/client-search";
 import {
   ItemsJsRequest,
@@ -14,12 +13,7 @@ import {
 
 let index;
 
-export default function getSearchClient(
-  productsState: object,
-  options: ItemsJsOptions
-): SearchClient {
-  createIndex(productsState, options);
-
+export function getSearchClient(): SearchClient {
   return {
     search: (queries: MultipleQueriesQuery[]) => performSearch(queries),
     searchForFacetValues: () => {
@@ -28,18 +22,8 @@ export default function getSearchClient(
   };
 }
 
-export function createIndex(
-  productsState: object,
-  options: ItemsJsOptions
-): SearchResponse {
-  index = itemsjs(productsState, options);
-  return adaptResponse(
-    index.search({
-      query: options.query,
-      per_page: options.per_page,
-      page: options.page,
-    })
-  );
+export function createIndex(data: object, options: ItemsJsOptions): void {
+  index = itemsjs(data, options);
 }
 
 export function performSearch(

@@ -1,7 +1,6 @@
 import products from "./products.json";
-import { createIndex, performSearch } from "../src/adapter";
+import { performSearch, createIndex } from "../src/adapter";
 import {
-  SearchResponse,
   MultipleQueriesQuery,
   MultipleQueriesResponse,
 } from "@algolia/client-search";
@@ -35,27 +34,10 @@ const request: MultipleQueriesQuery[] = [
   },
 ];
 
-describe("createIndex", () => {
-  it("Creates an Itemsjs index", () => {
-    const response: SearchResponse = createIndex(products, options);
-
-    const totalNumberOfPages: number = Math.ceil(products.length / per_page);
-
-    expect(response.hits[0].objectID).toBe(1);
-    expect(response.hits.length).toBe(per_page);
-    expect(response.page).toBe(page - 1);
-    expect(response.nbPages).toBe(totalNumberOfPages);
-    expect(response.hitsPerPage).toBe(per_page);
-    expect(response.nbHits).toBe(products.length);
-    expect(response.processingTimeMS).toBeGreaterThanOrEqual(0);
-    expect(response.exhaustiveNbHits).toBe(true);
-    expect(response.query).toBe("");
-    expect(response.params).toBe("");
-  });
-});
-
 describe("performSearch", () => {
   it("Performs a search", async () => {
+    createIndex(products, options);
+
     const response: Readonly<MultipleQueriesResponse<object>> =
       await performSearch(request);
 
