@@ -1,19 +1,23 @@
 import itemsjs from "itemsjs";
-
 import { adaptResponse } from "./adaptResponse";
 import { adaptRequest } from "./adaptRequest";
-import { MultipleQueriesResponse } from "@algolia/client-search";
-import { MultipleQueriesQuery } from "@algolia/client-search";
-import { SearchResponse } from "@algolia/client-search";
-import { ItemsJsRequest } from "./itemsjsInterface";
-import { ItemsJsOptions } from "./itemsjsInterface";
+import {
+  MultipleQueriesResponse,
+  MultipleQueriesQuery,
+  SearchResponse,
+} from "@algolia/client-search";
+import {
+  ItemsJsRequest,
+  ItemsJsOptions,
+  SearchClient,
+} from "./itemsjsInterface";
 
 let index;
 
 export default function getSearchClient(
   productsState: object,
   options: ItemsJsOptions
-) {
+): SearchClient {
   createIndex(productsState, options);
 
   return {

@@ -1,4 +1,5 @@
 //Instantsearch request to itemsjs request
+
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
 
@@ -13,5 +14,5 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
 
 export function adaptPage(page: number): number {
   // ItemsJS pages start at 1 iso 0
-  return Number(page || 0) + 1;
+  return page + 1;
 }

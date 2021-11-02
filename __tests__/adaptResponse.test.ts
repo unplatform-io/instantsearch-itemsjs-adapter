@@ -3,18 +3,6 @@ import { adaptHit, adaptResponse } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
-  it("adaptHit should convert item to hit", () => {
-    const id = 3;
-
-    const item = {
-      id: id,
-    };
-
-    const adaptedItem = adaptHit(item);
-
-    expect(adaptedItem.objectID).toBe(id);
-  });
-
   it("adaptResponse should convert response to Instantsearch response", () => {
     const itemsPerPage = 3;
     const total = 5;
@@ -62,5 +50,18 @@ describe("adaptResponse tests", () => {
     expect(instantsearchResponse.hitsPerPage).toBe(itemsPerPage);
     expect(instantsearchResponse.processingTimeMS).toBe(timingTotal);
     expect(instantsearchResponse.nbHits).toBe(total);
+  });
+});
+
+describe("adaptHit tests", () => {
+  it("adaptHit should convert item to hit", () => {
+    const id = 3;
+    const item = {
+      id: id,
+    };
+
+    const adaptedItem = adaptHit(item);
+    expect(adaptedItem.objectID).toBe(id);
+    expect(adaptedItem._highlightResult).toMatchObject({});
   });
 });

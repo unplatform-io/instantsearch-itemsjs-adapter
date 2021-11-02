@@ -1,9 +1,10 @@
 import products from "./products.json";
 import { createIndex, performSearch } from "../src/adapter";
-import getSearchClient from "../src/adapter";
-import { SearchResponse } from "@algolia/client-search";
-import { MultipleQueriesResponse } from "@algolia/client-search";
-import { MultipleQueriesQuery } from "@algolia/client-search";
+import {
+  SearchResponse,
+  MultipleQueriesQuery,
+  MultipleQueriesResponse,
+} from "@algolia/client-search";
 import { ItemsJsOptions } from "../src/itemsjsInterface";
 
 const per_page = 4;
@@ -55,31 +56,17 @@ describe("createIndex", () => {
 
 describe("performSearch", () => {
   it("Performs a search", async () => {
-    const performsearch: Readonly<Promise<MultipleQueriesResponse<object>>> =
-      performSearch(request);
+    const response: Readonly<MultipleQueriesResponse<object>> =
+      await performSearch(request);
 
-    expect((await performsearch).results[0].hits.length).toBe(
-      per_page || products.length
-    );
-    expect((await performsearch).results[0].page).toBe(page - 1);
-    expect((await performsearch).results[0].nbPages).toBe(totalNumberOfPages);
-    expect((await performsearch).results[0].hitsPerPage).toBe(per_page);
-    expect((await performsearch).results[0].nbHits).toBe(products.length);
-    expect(
-      (await performsearch).results[0].processingTimeMS
-    ).toBeGreaterThanOrEqual(0);
-    expect((await performsearch).results[0].exhaustiveNbHits).toBe(true);
-    expect((await performsearch).results[0].query).toBe(query);
-    expect((await performsearch).results[0].params).toBe("");
-  });
-});
-
-describe("getSearchClient", () => {
-  it("Creates an Instantsearch searchclient", () => {
-    const getsearchclient = getSearchClient(products, options);
-
-    // (queries: MultipleQueriesQuery[]) => performSearch(queries)
-    // expect(getsearchclient.search).toEqual(..) // TODO
-    expect(getsearchclient.searchForFacetValues).toThrow("Not implemented");
+    expect(response.results[0].hits.length).toBe(per_page || products.length);
+    expect(response.results[0].page).toBe(page - 1);
+    expect(response.results[0].nbPages).toBe(totalNumberOfPages);
+    expect(response.results[0].hitsPerPage).toBe(per_page);
+    expect(response.results[0].nbHits).toBe(products.length);
+    expect(response.results[0].processingTimeMS).toBeGreaterThanOrEqual(0);
+    expect(response.results[0].exhaustiveNbHits).toBe(true);
+    expect(response.results[0].query).toBe(query);
+    expect(response.results[0].params).toBe("");
   });
 });

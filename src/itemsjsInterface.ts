@@ -1,4 +1,15 @@
-import { Hit } from "@algolia/client-search";
+import {
+  Hit,
+  MultipleQueriesQuery,
+  MultipleQueriesResponse,
+} from "@algolia/client-search";
+
+export interface SearchClient {
+  search: (
+    queries: MultipleQueriesQuery[]
+  ) => Readonly<Promise<MultipleQueriesResponse<object>>>;
+  searchForFacetValues: () => void;
+}
 
 export interface ItemsJsOptions {
   aggregations?: object;

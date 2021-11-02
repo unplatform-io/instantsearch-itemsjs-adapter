@@ -3,12 +3,10 @@ import { adaptPage, adaptRequest } from "../src/adaptRequest";
 import { ItemsJsRequest } from "../src/itemsjsInterface";
 
 describe("adaptPage tests", () => {
-  it("adaptpage(0) should return 1", () => {
+  it("adaptpage(x) should return x+1", () => {
     expect(adaptPage(0)).toBe(1);
-  });
-
-  it("adaptpage(null) should return 1", () => {
-    expect(adaptPage(null)).toBe(1);
+    expect(adaptPage(3)).toBe(4);
+    expect(adaptPage(12)).toBe(13);
   });
 });
 
