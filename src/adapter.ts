@@ -32,10 +32,11 @@ export function performSearch(
   if (index) {
     const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
     const itemsjsResponse = index.search(itemsjsRequest);
+    console.log('itemsjs', itemsjsResponse)
     const InstantSearchResponse = Promise.resolve({
       results: [adaptResponse(itemsjsResponse)],
     });
-
+    console.log('Itemsjs > Instantsearch', InstantSearchResponse)
     return InstantSearchResponse;
   }
   return null;
