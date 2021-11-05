@@ -26,10 +26,10 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     },
     facets_stats: {
       price: {
-        "min": minPrice(response.data.items),
-        "max": maxPrice(response.data.items),
-        "avg": 242.806,
-        "sum": 5.21281e+06
+        "min": 0,
+        "max": 1000,
+        "avg": null,
+        "sum": null
       }
     }
   };
