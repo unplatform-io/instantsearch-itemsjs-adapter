@@ -34,24 +34,31 @@ export function adaptFacets(
   aggregations
 ): Record<string, Record<string, number>> {
   //get facet name
-  const facetName = Object.keys(aggregations)[0];
+  const facetNames = Object.keys(aggregations);
 
   //get facet options
-  const buckets = aggregations[facetName].buckets;
+  var buckets = []
+  facetNames.forEach(name =>{
+    buckets.push(aggregations[name].buckets);
+  })
+  
 
   //create instentsearch return
-  let json = `{"${facetName}": {`;
-  let first = true;
-  buckets.forEach((item) => {
-    if (first) {
-      json = json + `"` + item.key + `": ` + item.doc_count;
-      first = false;
-    } else {
-      json = json + `, "` + item.key + `": ` + item.doc_count;
-    }
-  });
-  json = json + `}}`;
-  const instentsearchFacets = JSON.parse(json);
+  var instentsearchFacets = {}
+  for (let index = 0; index < facetNames.length; index++) {
+    let json = `{`;
+    let first = true;
+    buckets[index].forEach((item) => {
+      if (first) {
+        json = json + `"` + item.key + `": ` + item.doc_count;
+        first = false;
+      } else {
+        json = json + `, "` + item.key + `": ` + item.doc_count;
+      }
+    });
+    json = json + `}`;
+    instentsearchFacets[facetNames[index]] = JSON.parse(json);
+  }
 
   return instentsearchFacets;
 }
