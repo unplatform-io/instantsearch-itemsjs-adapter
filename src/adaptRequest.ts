@@ -10,7 +10,7 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
       per_page: request[0].params.hitsPerPage,
       page: adaptPage(request[0].params.page),
       indexName: "products",
-      filters: adaptFilters(request[0].params.facetFilters[0]),
+      filters: adaptFilters(request[0].params.facetFilters),
     };
   }
 
@@ -29,30 +29,40 @@ export function adaptPage(page: number): number {
 
 export function adaptFilters(facetFilters) {
   //get facet name
-  const regex = facetFilters[0].match(new RegExp("(.*)(?=:)"));
-  const facetName = <string>regex[0];
-
-  //get selected facets
-  const selected = [];
-  facetFilters.forEach((item) => {
-    const regex2 = item.match(new RegExp("(?<=:)(.*)"));
-    const select = <string>regex2[0];
-    selected.push(select);
+  var facetNames = []
+  facetFilters.forEach(facet => {
+    const regex = facet[0].match(new RegExp("(.*)(?=:)"));
+    facetNames.push(<string>regex[0]);
   });
+  
+  //get selected facets
+  const selectedFacets = [];
+  for (let index = 0; index < facetNames.length; index++) {
+    const selected = [];
+    facetFilters[index].forEach((item) => {
+      const regex2 = item.match(new RegExp("(?<=:)(.*)"));
+      const select = <string>regex2[0];
+      selected.push(select);
+    });
+    selectedFacets.push(selected);
+  }
 
   //create itemsjs return
-  let json = `{"${facetName}": [`;
-  let first = true;
-  selected.forEach((item) => {
-    if (first) {
-      json = json + `"` + item + `"`;
-      first = false;
-    } else {
-      json = json + `, "` + item + `"`;
-    }
-  });
-  json = json + `]}`;
-  const itemsJsFacets = JSON.parse(json);
+  var itemsJsFacets = {}
+  for (let index = 0; index < facetNames.length; index++) {
+    let json = `[`;
+    let first = true;
+    selectedFacets[index].forEach((item) => {
+      if (first) {
+        json = json + `"` + item + `"`;
+        first = false;
+      } else {
+        json = json + `, "` + item + `"`;
+      }
+    });
+    json = json + `]`;
+    itemsJsFacets[facetNames[index]] = JSON.parse(json);
+  }
 
   return itemsJsFacets;
 }
