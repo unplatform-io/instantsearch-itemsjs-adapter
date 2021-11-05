@@ -8,6 +8,8 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
+  console.log('adaptResonse', response.data)
+
   return {
     hits: response.data.items.map(adaptHit),
     page: response.pagination.page - 1,
@@ -20,18 +22,12 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     params: "",
     facets: {
       price: {
-        "33.99": 10,
-        "44.99": 100
-      }
+        "00.00": 0,
+      },
+      id: {
+          '0': 0,
+        }
     },
-    facets_stats: {
-      price: {
-        "min": 0,
-        "max": 1000,
-        "avg": null,
-        "sum": null
-      }
-    }
   };
 }
 
