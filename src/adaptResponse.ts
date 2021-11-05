@@ -37,14 +37,13 @@ export function adaptFacets(
   const facetNames = Object.keys(aggregations);
 
   //get facet options
-  var buckets = []
-  facetNames.forEach(name =>{
+  const buckets = [];
+  facetNames.forEach((name) => {
     buckets.push(aggregations[name].buckets);
-  })
-  
+  });
 
   //create instentsearch return
-  var instentsearchFacets = {}
+  const instentsearchFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
     let json = `{`;
     let first = true;

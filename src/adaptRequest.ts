@@ -29,12 +29,12 @@ export function adaptPage(page: number): number {
 
 export function adaptFilters(facetFilters) {
   //get facet name
-  var facetNames = []
-  facetFilters.forEach(facet => {
+  const facetNames = [];
+  facetFilters.forEach((facet) => {
     const regex = facet[0].match(new RegExp("(.*)(?=:)"));
     facetNames.push(<string>regex[0]);
   });
-  
+
   //get selected facets
   const selectedFacets = [];
   for (let index = 0; index < facetNames.length; index++) {
@@ -48,7 +48,7 @@ export function adaptFilters(facetFilters) {
   }
 
   //create itemsjs return
-  var itemsJsFacets = {}
+  const itemsJsFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
     let json = `[`;
     let first = true;
