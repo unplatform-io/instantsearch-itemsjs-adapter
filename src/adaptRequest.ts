@@ -28,8 +28,32 @@ export function adaptPage(page: number): number {
   return page + 1;
 }
 
-export function adaptFilters(fasetFilters){
-  //static
-  const returnfacet = {category: ['electronics']};
-  return returnfacet;
+export function adaptFilters(facetFilters){  
+  //get facet name
+    const regex = facetFilters[0].match(new RegExp('(.*)(?=:)'));
+    const facetName = <string>regex[0];
+
+  //get selected facets
+    var selected = [];  
+    facetFilters.forEach(item => {
+      const regex2 = item.match(new RegExp('(?<=:)(.*)'));
+      const select = <string>regex2[0];
+      selected.push(select);
+    });
+
+  //create itemsjs return
+    var json = `{"${facetName}": [`;
+    var first = true
+    selected.forEach(item => {
+      if(first){
+        json = json + `"` + item + `"`;
+        first = false;
+      }else{
+        json = json + `, "` + item + `"`;
+      }
+    })
+    json = json + `]}`;
+    const itemsJsFacets = JSON.parse(json);
+
+  return itemsJsFacets;
 }
