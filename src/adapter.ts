@@ -29,6 +29,7 @@ export function createIndex(data: object, options: ItemsJsOptions): void {
 export function performSearch(
   request: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
+ 
   if (index) {
     const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
     const itemsjsResponse = index.search(itemsjsRequest);
@@ -38,5 +39,6 @@ export function performSearch(
 
     return InstantSearchResponse;
   }
+  
   return null;
 }

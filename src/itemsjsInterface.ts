@@ -26,6 +26,7 @@ export interface ItemsJsRequest {
   per_page: number;
   page: number;
   indexName: string;
+  filters?: any;
 }
 
 export interface ItemsJsResponse {
