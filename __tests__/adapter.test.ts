@@ -16,6 +16,13 @@ const options: ItemsJsOptions = {
   per_page: per_page,
   query: query,
   page: page,
+  aggregations: {
+    category: {
+      title: "category",
+      size: 10,
+      conjunction: false,
+    },
+  },
 };
 
 const request: MultipleQueriesQuery[] = [

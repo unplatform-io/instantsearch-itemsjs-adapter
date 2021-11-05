@@ -18,7 +18,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     exhaustiveNbHits: true,
     query: "",
     params: "",
-    facets: adaptFacets(response.data.aggregations)
+    facets: adaptFacets(response.data.aggregations),
   };
 }
 
@@ -30,24 +30,28 @@ export function adaptHit(item): Hit<object> {
   };
 }
 
-export function adaptFacets(aggregations): Record<string, Record<string, number>>{
-  //aggregations
-    // category:
-    //  buckets: Array(4)
-    //    0: {key: 'electronics', doc_count: 3, selected: false}
-    //    1: {key: 'jewelery', doc_count: 1, selected: false}
-    //    2: {key: "women's clothing", doc_count: 1, selected: false}
-    //    3: {key: "men's clothing", doc_count: 0, selected: false}
-    //    length: 4
-    //  [[Prototype]]: Array(0)
-    //  name: "category"
-    //  position: 1
-    //  title: "category"
+export function adaptFacets(
+  aggregations
+): Record<string, Record<string, number>> {
+  //get facet name
+  const facetName = Object.keys(aggregations)[0];
 
-  //static
-  const facets = {
-    category: {electronics: 3, jewelery: 1},
-  };
-  
-  return facets;
+  //get facet options
+  const buckets = aggregations[facetName].buckets;
+
+  //create instentsearch return
+  let json = `{"${facetName}": {`;
+  let first = true;
+  buckets.forEach((item) => {
+    if (first) {
+      json = json + `"` + item.key + `": ` + item.doc_count;
+      first = false;
+    } else {
+      json = json + `, "` + item.key + `": ` + item.doc_count;
+    }
+  });
+  json = json + `}}`;
+  const instentsearchFacets = JSON.parse(json);
+
+  return instentsearchFacets;
 }

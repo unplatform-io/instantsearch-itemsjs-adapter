@@ -29,11 +29,13 @@ describe("adaptResponse tests", () => {
         items: [{ objectID: "" }, { objectID: "" }],
         aggregations: {
           category: {
-            bucket: {
-              key: null,
-              doc_count: null,
-              selected: false,
-            },
+            buckets: [
+              {
+                key: "test",
+                doc_count: 3,
+                selected: false,
+              },
+            ],
             name: null,
             posistion: null,
             title: null,
