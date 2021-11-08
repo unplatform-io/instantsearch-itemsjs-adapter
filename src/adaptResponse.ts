@@ -8,7 +8,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
-  console.log('adaptResonse', response.data)
+  console.log("adaptResonse", response.data);
 
   return {
     hits: response.data.items.map(adaptHit),
@@ -25,8 +25,8 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
         "00.00": 0,
       },
       id: {
-          '0': 0,
-        }
+        "0": 0,
+      },
     },
   };
 }
@@ -39,22 +39,22 @@ export function adaptHit(item): Hit<object> {
   };
 }
 
-export function minPrice(items): number{
-  const price = []
+export function minPrice(items): number {
+  const price = [];
 
-  items.map(item => {
-    price.push(item.price)
-  })
+  items.map((item) => {
+    price.push(item.price);
+  });
 
-  return Math.min(...price) 
+  return Math.min(...price);
 }
 
-export function maxPrice(items): number{
-  const price = []
+export function maxPrice(items): number {
+  const price = [];
 
-  items.map(item => {
-    price.push(item.price)
-  })
-  
-  return Math.max(...price)
+  items.map((item) => {
+    price.push(item.price);
+  });
+
+  return Math.max(...price);
 }
