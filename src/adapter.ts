@@ -35,7 +35,7 @@ export function performSearch(
     const InstantSearchResponse = Promise.resolve({
       results: [adaptResponse(itemsjsResponse)],
     });
-    // console.log('Itemsjs > Instantsearch', InstantSearchResponse)
+
     return InstantSearchResponse;
   }
   return null;
