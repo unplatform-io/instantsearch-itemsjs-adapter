@@ -27,22 +27,14 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
         "0": 0,
       },
       rate: {
-        1: 0,
-        2: 1,
-        3: 1,
-        4: 1,
-        5: 1,
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
       },
     },
-    // TODO: Static -> Dynamic = Necessary for RatingMenu
-    facets_stats: {
-      rate: {
-        min: 1,
-        max: 5,
-        avg: 3,
-        sum: 5,
-      },
-    },
+    // facets_stats: {}, not supported by Itemsjs
   };
 }
 
