@@ -1,5 +1,6 @@
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { adaptPage, adaptRequest } from "../src/adaptRequest";
+import { adaptFilters } from "../src/adaptRequest";
 import { ItemsJsRequest } from "../src/itemsjsInterface";
 
 describe("adaptPage tests", () => {
@@ -32,5 +33,22 @@ describe("adaptRequest tests", () => {
     expect(itemsjsRequest.query).toBe(query);
     expect(itemsjsRequest.page).toBe(page + 1);
     expect(itemsjsRequest.per_page).toBe(hitsPerPage);
+  });
+});
+
+describe("adaptFacets tests", () => {
+  it("adaptFacets should convert instantsearch facets to itemsJs aggregations", () => {
+    const instentsearchFacets = [
+      ['category:electronics', "category:men's clothing"],
+      ['color:blue'],
+    ];
+
+    const itemsJsFacets = {
+      category: ['electronics', "men's clothing"],
+      color: ['blue']
+    };
+
+    const adaptedReslult = adaptFilters(instentsearchFacets);
+    expect(adaptedReslult).toMatchObject(itemsJsFacets);
   });
 });

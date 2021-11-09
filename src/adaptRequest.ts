@@ -50,19 +50,8 @@ export function adaptFilters(facetFilters) {
   //create itemsjs return
   const itemsJsFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
-    let json = `[`;
-    let first = true;
-    selectedFacets[index].forEach((item) => {
-      if (first) {
-        json = json + `"` + item + `"`;
-        first = false;
-      } else {
-        json = json + `, "` + item + `"`;
-      }
-    });
-    json = json + `]`;
-    itemsJsFacets[facetNames[index]] = JSON.parse(json);
+    itemsJsFacets[facetNames[index]] = selectedFacets[index];    
   }
-
+  
   return itemsJsFacets;
 }
