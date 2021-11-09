@@ -37,26 +37,28 @@ export function adaptFacets(
   const facetNames = Object.keys(aggregations);
 
   //get facet options
-  const buckets = [];
+  const facetKey = [];
+  const facetDocCount = [];
   facetNames.forEach((name) => {
-    buckets.push(aggregations[name].buckets);
+    const key = [];
+    const docCount = [];
+    aggregations[name].buckets.forEach((item) => {
+      key.push(item.key)
+      docCount.push(item.doc_count)
+    });
+    facetKey.push(key);
+    facetDocCount.push(docCount);
   });
 
   //create instentsearch return
   const instentsearchFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
-    let json = `{`;
-    let first = true;
-    buckets[index].forEach((item) => {
-      if (first) {
-        json = json + `"` + item.key + `": ` + item.doc_count;
-        first = false;
-      } else {
-        json = json + `, "` + item.key + `": ` + item.doc_count;
-      }
-    });
-    json = json + `}`;
-    instentsearchFacets[facetNames[index]] = JSON.parse(json);
+    const obj = {}
+    for (let index2 = 0; index2 < facetKey[index].length; index2++) {
+      obj[facetKey[index][index2]] = facetDocCount[index][index2]
+    };
+    instentsearchFacets[facetNames[index]] = obj;
   }
+
   return instentsearchFacets;
 }
