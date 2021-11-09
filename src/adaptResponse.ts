@@ -58,6 +58,5 @@ export function adaptFacets(
     json = json + `}`;
     instentsearchFacets[facetNames[index]] = JSON.parse(json);
   }
-
   return instentsearchFacets;
 }
