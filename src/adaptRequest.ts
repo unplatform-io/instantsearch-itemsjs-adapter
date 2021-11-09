@@ -3,8 +3,8 @@ import { MultipleQueriesQuery } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
 
 export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
-  const numericFilters = <string[]> request[0].params.numericFilters;
-  const facets = <string[]> request[0].params.facets;
+  const numericFilters = <string[]>request[0].params.numericFilters;
+  const facets = <string[]>request[0].params.facets;
 
   const response: ItemsJsRequest = {
     query: request[0].params.query,
@@ -43,7 +43,7 @@ export function adaptNumericFilters(priceRanges) {
     const filter = (item) => eval(item[field] + operator + value);
 
     filters.push(filter);
-  })
+  });
 
   return filters;
 }

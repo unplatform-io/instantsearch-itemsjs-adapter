@@ -32,17 +32,17 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
         3: 1,
         4: 1,
         5: 1,
-      }
+      },
     },
-    // TODO: Static -> Dynamic = Necessary for RatingMenu 
+    // TODO: Static -> Dynamic = Necessary for RatingMenu
     facets_stats: {
       rate: {
         min: 1,
         max: 5,
         avg: 3,
         sum: 5,
-      }
-    }
+      },
+    },
   };
 }
 
