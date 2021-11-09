@@ -50,8 +50,8 @@ export function adaptFilters(facetFilters) {
   //create itemsjs return
   const itemsJsFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
-    itemsJsFacets[facetNames[index]] = selectedFacets[index];    
+    itemsJsFacets[facetNames[index]] = selectedFacets[index];
   }
-  
+
   return itemsJsFacets;
 }

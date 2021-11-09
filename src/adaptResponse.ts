@@ -43,8 +43,8 @@ export function adaptFacets(
     const key = [];
     const docCount = [];
     aggregations[name].buckets.forEach((item) => {
-      key.push(item.key)
-      docCount.push(item.doc_count)
+      key.push(item.key);
+      docCount.push(item.doc_count);
     });
     facetKey.push(key);
     facetDocCount.push(docCount);
@@ -53,10 +53,10 @@ export function adaptFacets(
   //create instentsearch return
   const instentsearchFacets = {};
   for (let index = 0; index < facetNames.length; index++) {
-    const obj = {}
+    const obj = {};
     for (let index2 = 0; index2 < facetKey[index].length; index2++) {
-      obj[facetKey[index][index2]] = facetDocCount[index][index2]
-    };
+      obj[facetKey[index][index2]] = facetDocCount[index][index2];
+    }
     instentsearchFacets[facetNames[index]] = obj;
   }
 
