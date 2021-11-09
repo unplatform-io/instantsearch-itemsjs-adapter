@@ -1,6 +1,5 @@
 import { MultipleQueriesQuery } from "@algolia/client-search";
-import { adaptPage, adaptRequest } from "../src/adaptRequest";
-import { adaptFilters } from "../src/adaptRequest";
+import { adaptFilters, adaptPage, adaptRequest } from "../src/adaptRequest";
 import { ItemsJsRequest } from "../src/itemsjsInterface";
 
 describe("adaptPage tests", () => {
