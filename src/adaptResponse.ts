@@ -34,7 +34,13 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
         "5": 1,
       },
     },
-    // facets_stats: {}, not supported by Itemsjs
+    /**
+     * Statistics for numerical facets.
+     *
+     * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
+     *
+     */
+    // facets_stats: {}
   };
 }
 

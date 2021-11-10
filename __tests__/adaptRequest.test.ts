@@ -48,35 +48,39 @@ describe("adaptRequest tests", () => {
 describe("adaptNumericFilters tests", () => {
   it("adaptNumericFilters return filter format", () => {
     const items = [
-      { id: 1, price: 10 },
-      { id: 2, price: 19 },
-      { id: 3, price: 28 },
-      { id: 4, price: 37 },
+      { price: 10, in_stock: 1 },
+      { price: 15, in_stock: 0 },
+      { price: 28, in_stock: 0 },
+      { price: 37, in_stock: 1 },
     ];
 
-    // Return all items
-    const priceRanges = adaptNumericFilters(["price<=100"]);
-    const res = items.filter((item) => priceRanges.every((p) => p(item)));
-    expect(res).toStrictEqual(items);
+    // Used the same code as in adaptRequest. Otherwise, I can't test the function because it returns an array of functions.
+    // Test the "less than" and "greater than" comparison operators.
+    const priceRanges = adaptNumericFilters(["price>15", "price<37"]);
+    const res = items.filter((item) =>
+      priceRanges.every((priceRange) => priceRange(item))
+    );
+    expect(res).toStrictEqual([{ price: 28, in_stock: 0 }]);
 
-    // Return a the filterted results
-    const priceRanges2 = adaptNumericFilters([
-      "price>=15",
-      "price<=30",
-      "id>=2",
-      "id<=2",
-    ]);
-    const res2 = items.filter((item) => priceRanges2.every((p) => p(item)));
-    expect(res2).toStrictEqual([{ id: 2, price: 19 }]);
+    // Test the "greater than or equal to" and "less than or equal to" comparison operators.
+    const priceRanges2 = adaptNumericFilters(["price>=15", "price<=20"]);
+    const res2 = items.filter((item) =>
+      priceRanges2.every((priceRange) => priceRange(item))
+    );
+    expect(res2).toStrictEqual([{ price: 15, in_stock: 0 }]);
 
-    // Return all results
-    const priceRanges3 = adaptNumericFilters([
-      "price>=30",
-      "price<=100",
-      "id>=5",
-      "id<=10",
-    ]);
-    const res3 = items.filter((item) => priceRanges3.every((p) => p(item)));
-    expect(res3).toStrictEqual([]);
+    // Test the "equal to" comparison operators with a price field.
+    const priceRanges3 = adaptNumericFilters(["price>25", "in_stock=1"]);
+    const res3 = items.filter((item) =>
+      priceRanges3.every((priceRange) => priceRange(item))
+    );
+    expect(res3).toStrictEqual([{ price: 37, in_stock: 1 }]);
+
+    // Test the  "not equal" comparison operators with a price field.
+    const priceRanges4 = adaptNumericFilters(["price<20", "in_stock!=1"]);
+    const res4 = items.filter((item) =>
+      priceRanges4.every((priceRange) => priceRange(item))
+    );
+    expect(res4).toStrictEqual([{ price: 15, in_stock: 0 }]);
   });
 });

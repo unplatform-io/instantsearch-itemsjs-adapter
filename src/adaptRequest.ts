@@ -35,14 +35,31 @@ export function adaptNumericFilters(priceRanges) {
 
   priceRanges.map((priceRange) => {
     // ['price<=10', 'price', '<=', '10']
+
     const [, field, operator, value] = priceRange.match(
-      new RegExp("(.*)(<=|>=)(.*)")
+      new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/)
     );
 
-    // (item) => eval(item['price'] + <= + 10)
-    const filter = (item) => eval(item[field] + operator + value);
-
-    filters.push(filter);
+    switch (operator) {
+      case "<":
+        filters.push((item) => item[field] < value);
+        break;
+      case "<=":
+        filters.push((item) => item[field] <= value);
+        break;
+      case "=":
+        filters.push((item) => item[field] == value); // Needs to be comparison operator "=="
+        break;
+      case "!=":
+        filters.push((item) => item[field] != value);
+        break;
+      case ">":
+        filters.push((item) => item[field] > value);
+        break;
+      case ">=":
+        filters.push((item) => item[field] >= value);
+        break;
+    }
   });
 
   return filters;
