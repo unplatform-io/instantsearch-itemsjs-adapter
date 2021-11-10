@@ -111,7 +111,7 @@ describe("adaptFacets tests", () => {
       },
     };
 
-    const instentsearchFacets = {
+    const instantsearchFacets = {
       [facet1]: {
         [facet1Options[0]]: facet1Count[0],
         [facet1Options[1]]: facet1Count[1],
@@ -125,7 +125,7 @@ describe("adaptFacets tests", () => {
       },
     };
 
-    const adaptedReslult = adaptFacets(itemsJsFacets);
-    expect(adaptedReslult).toMatchObject(instentsearchFacets);
+    const adaptedReslut = adaptFacets(itemsJsFacets);
+    expect(adaptedReslut).toMatchObject(instantsearchFacets);
   });
 });

@@ -37,7 +37,7 @@ describe("adaptRequest tests", () => {
 
 describe("adaptFacets tests", () => {
   it("adaptFacets should convert instantsearch facets to itemsJs aggregations", () => {
-    const instentsearchFacets = [
+    const instantsearchFacets = [
       ["category:electronics", "category:men's clothing"],
       ["color:blue"],
     ];
@@ -47,7 +47,7 @@ describe("adaptFacets tests", () => {
       color: ["blue"],
     };
 
-    const adaptedReslult = adaptFilters(instentsearchFacets);
-    expect(adaptedReslult).toMatchObject(itemsJsFacets);
+    const adaptedResult = adaptFilters(instantsearchFacets);
+    expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
 });

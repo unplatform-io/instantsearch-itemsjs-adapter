@@ -33,32 +33,21 @@ export function adaptHit(item): Hit<object> {
 export function adaptFacets(
   aggregations
 ): Record<string, Record<string, number>> {
-  //get facet name
   const facetNames = Object.keys(aggregations);
 
-  //get facet options
-  const facetKey = [];
-  const facetDocCount = [];
-  facetNames.forEach((name) => {
-    const key = [];
-    const docCount = [];
-    aggregations[name].buckets.forEach((item) => {
-      key.push(item.key);
-      docCount.push(item.doc_count);
+  const selectedFacets = facetNames.map((name) => {
+    return aggregations[name].buckets.map((item) => {
+      return { key: item.key, docCount: item.doc_count };
     });
-    facetKey.push(key);
-    facetDocCount.push(docCount);
   });
 
-  //create instentsearch return
-  const instentsearchFacets = {};
-  for (let index = 0; index < facetNames.length; index++) {
-    const obj = {};
-    for (let index2 = 0; index2 < facetKey[index].length; index2++) {
-      obj[facetKey[index][index2]] = facetDocCount[index][index2];
-    }
-    instentsearchFacets[facetNames[index]] = obj;
-  }
+  const instantsearchFacets = {};
+  facetNames.map(function (name, index) {
+    instantsearchFacets[name] = {};
+    selectedFacets[index].map((facet) => {
+      instantsearchFacets[name][facet.key] = facet.docCount;
+    });
+  });
 
-  return instentsearchFacets;
+  return instantsearchFacets;
 }

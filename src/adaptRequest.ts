@@ -28,30 +28,20 @@ export function adaptPage(page: number): number {
 }
 
 export function adaptFilters(facetFilters) {
-  //get facet name
-  const facetNames = [];
-  facetFilters.forEach((facet) => {
-    const regex = facet[0].match(new RegExp("(.*)(?=:)"));
-    facetNames.push(<string>regex[0]);
+  const facetNames = facetFilters.map((facet) => {
+    return <string>facet[0].match(new RegExp("(.*)(?=:)"))[0];
   });
 
-  //get selected facets
-  const selectedFacets = [];
-  for (let index = 0; index < facetNames.length; index++) {
-    const selected = [];
-    facetFilters[index].forEach((item) => {
-      const regex2 = item.match(new RegExp("(?<=:)(.*)"));
-      const select = <string>regex2[0];
-      selected.push(select);
+  const selectedFacets = facetFilters.map((facet) => {
+    return facet.map((item) => {
+      return <string>item.match(new RegExp("(?<=:)(.*)"))[0];
     });
-    selectedFacets.push(selected);
-  }
+  });
 
-  //create itemsjs return
   const itemsJsFacets = {};
-  for (let index = 0; index < facetNames.length; index++) {
-    itemsJsFacets[facetNames[index]] = selectedFacets[index];
-  }
+  facetNames.map(function (names, index) {
+    itemsJsFacets[names] = selectedFacets[index];
+  });
 
   return itemsJsFacets;
 }
