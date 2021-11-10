@@ -3,6 +3,7 @@ import {
   adaptPage,
   adaptRequest,
   adaptNumericFilters,
+  regexInput,
 } from "../src/adaptRequest";
 import { ItemsJsRequest } from "../src/itemsjsInterface";
 
@@ -55,7 +56,7 @@ describe("adaptNumericFilters tests", () => {
     ];
 
     // Used the same code as in adaptRequest. Otherwise, I can't test the function because it returns an array of functions.
-    // Test the "less than" and "greater than" comparison operators.
+    // Test the "greater than" and "less than" comparison operators.
     const priceRanges = adaptNumericFilters(["price>15", "price<37"]);
     const res = items.filter((item) =>
       priceRanges.every((priceRange) => priceRange(item))
@@ -82,5 +83,46 @@ describe("adaptNumericFilters tests", () => {
       priceRanges4.every((priceRange) => priceRange(item))
     );
     expect(res4).toStrictEqual([{ price: 15, in_stock: 0 }]);
+  });
+});
+
+describe("regexInput tests", () => {
+  it("regexInput should group the input in three groups", () => {
+    const [, field, operator, value] = regexInput("price>50");
+    const [, field2, operator2, value2] = regexInput("price>=50");
+    const [, field3, operator3, value3] = regexInput("price=50");
+    const [, field4, operator4, value4] = regexInput("price!=50");
+    const [, field5, operator5, value5] = regexInput("price<50");
+    const [, field6, operator6, value6] = regexInput("price<=50");
+
+    // greater than
+    expect(field).toStrictEqual("price");
+    expect(operator).toStrictEqual(">");
+    expect(value).toStrictEqual("50");
+
+    // greater than or equal to
+    expect(field2).toStrictEqual("price");
+    expect(operator2).toStrictEqual(">=");
+    expect(value2).toStrictEqual("50");
+
+    // equal to
+    expect(field3).toStrictEqual("price");
+    expect(operator3).toStrictEqual("=");
+    expect(value3).toStrictEqual("50");
+
+    // not equal
+    expect(field4).toStrictEqual("price");
+    expect(operator4).toStrictEqual("!=");
+    expect(value4).toStrictEqual("50");
+
+    // less than
+    expect(field5).toStrictEqual("price");
+    expect(operator5).toStrictEqual("<");
+    expect(value5).toStrictEqual("50");
+
+    // less than or equal to
+    expect(field6).toStrictEqual("price");
+    expect(operator6).toStrictEqual("<=");
+    expect(value6).toStrictEqual("50");
   });
 });

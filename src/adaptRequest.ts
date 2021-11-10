@@ -30,15 +30,21 @@ export function adaptPage(page: number): number {
   return page + 1;
 }
 
+export function regexInput(priceRange) {
+  return priceRange.match(new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/));
+}
+
 export function adaptNumericFilters(priceRanges) {
   const filters = [];
 
   priceRanges.map((priceRange) => {
     // ['price<=10', 'price', '<=', '10']
 
-    const [, field, operator, value] = priceRange.match(
-      new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/)
-    );
+    // const [, field, operator, value] = priceRange.match(
+    //   new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/)
+    // );
+
+    const [, field, operator, value] = regexInput(priceRange);
 
     switch (operator) {
       case "<":
