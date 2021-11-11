@@ -118,7 +118,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("not equal to", () => {
-    const [, field4, operator4, value4] = regexInput("price=50");
+    const [, field4, operator4, value4] = regexInput("price!=50");
 
     expect(field4).toStrictEqual("price");
     expect(operator4).toStrictEqual("!=");
@@ -126,7 +126,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("less than", () => {
-    const [, field5, operator5, value5] = regexInput("price!=50");
+    const [, field5, operator5, value5] = regexInput("price<50");
 
     expect(field5).toStrictEqual("price");
     expect(operator5).toStrictEqual("<");
