@@ -26,6 +26,8 @@ export interface ItemsJsRequest {
   per_page: number;
   page: number;
   indexName: string;
+  aggregations?: string[];
+  filter?: object;
 }
 
 export interface ItemsJsResponse {

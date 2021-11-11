@@ -18,6 +18,29 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     exhaustiveNbHits: true,
     query: "",
     params: "",
+    //TODO: Static -> Dynamic (see code feature/filters)
+    facets: {
+      price: {
+        "00.00": 0,
+      },
+      id: {
+        "0": 0,
+      },
+      rate: {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+      },
+    },
+    /**
+     * Statistics for numerical facets.
+     *
+     * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
+     *
+     */
+    // facets_stats: {}
   };
 }
 
