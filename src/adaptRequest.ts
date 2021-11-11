@@ -32,7 +32,7 @@ export function adaptPage(page: number): number {
 
 export function regexInput(priceRange) {
   /*
-   * Group 1: Find chars, one or more, expect values: "<, =, !, >".
+   * Group 1: Find chars, one or more, except values: "<, =, !, >".
    * Group 2: Find operator
    * Group 3: Find digits, one or more.
    */
