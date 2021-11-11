@@ -38,5 +38,6 @@ export function performSearch(
 
     return InstantSearchResponse;
   }
+
   return null;
 }

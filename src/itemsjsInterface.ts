@@ -26,6 +26,7 @@ export interface ItemsJsRequest {
   per_page: number;
   page: number;
   indexName: string;
+  filters?: object;
   aggregations?: string[];
   filter?: object;
 }
@@ -46,11 +47,13 @@ export interface ItemsJsResponse {
     items: Array<Hit<object>>;
     aggregations: {
       category: {
-        bucket: {
-          key: string;
-          doc_count: number;
-          selected: boolean;
-        };
+        buckets: [
+          {
+            key: string;
+            doc_count: number;
+            selected: boolean;
+          }
+        ];
         name: string;
         posistion: number;
         title: string;

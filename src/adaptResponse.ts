@@ -18,22 +18,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     exhaustiveNbHits: true,
     query: "",
     params: "",
-    //TODO: Static -> Dynamic (see code feature/filters)
-    facets: {
-      price: {
-        "00.00": 0,
-      },
-      id: {
-        "0": 0,
-      },
-      rate: {
-        "1": 0,
-        "2": 1,
-        "3": 1,
-        "4": 1,
-        "5": 1,
-      },
-    },
+    facets: adaptFacets(response.data.aggregations),
     /**
      * Statistics for numerical facets.
      *
@@ -50,4 +35,21 @@ export function adaptHit(item): Hit<object> {
     ...item,
     _highlightResult: {}, // Highlighting not supported
   };
+}
+
+export function adaptFacets(
+  itemsJsFacets
+): Record<string, Record<string, number>> {
+  const facetNames = Object.keys(itemsJsFacets);
+
+  const instantsearchFacets = {};
+  facetNames.forEach((name) => {
+    instantsearchFacets[name] = {};
+
+    itemsJsFacets[name].buckets.forEach(({ key, doc_count }) => {
+      instantsearchFacets[name][key] = doc_count;
+    });
+  });
+
+  return instantsearchFacets;
 }

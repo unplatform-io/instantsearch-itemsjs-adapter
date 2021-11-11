@@ -1,6 +1,7 @@
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import {
   adaptPage,
+  adaptFilters,
   adaptRequest,
   adaptNumericFilters,
   parseRange,
@@ -17,31 +18,25 @@ describe("adaptPage tests", () => {
 
 describe("adaptRequest tests", () => {
   it("adaptRequest should convert request to ItemsJs request", () => {
-    const query = "a";
-    const page = 2;
-    const hitsPerPage = 5;
-    const facets = ["price", "in_stock"];
-    const numericFilters = ["price>=10", "price<=100"];
-
     const instantsearchRequest: MultipleQueriesQuery[] = [
       {
         indexName: "products",
         params: {
-          query: query,
-          page: page,
-          hitsPerPage: hitsPerPage,
-          facets: facets,
-          numericFilters: numericFilters,
+          query: "a",
+          page: 2,
+          hitsPerPage: 5,
+          facets: ["price", "in_stock"],
+          numericFilters: ["price>=10", "price<=100"],
         },
       },
     ];
 
     const itemsjsRequest: ItemsJsRequest = adaptRequest(instantsearchRequest);
 
-    expect(itemsjsRequest.query).toBe(query);
-    expect(itemsjsRequest.page).toBe(page + 1);
-    expect(itemsjsRequest.per_page).toBe(hitsPerPage);
-    expect(itemsjsRequest.aggregations).toMatchObject(facets);
+    expect(itemsjsRequest.query).toBe("a");
+    expect(itemsjsRequest.page).toBe(3);
+    expect(itemsjsRequest.per_page).toBe(5);
+    expect(itemsjsRequest.aggregations).toMatchObject(["price", "in_stock"]);
     expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
   });
 });
@@ -139,5 +134,22 @@ describe("regexInput tests group in three", () => {
     expect(field6).toStrictEqual("price");
     expect(operator6).toStrictEqual("<=");
     expect(value6).toStrictEqual("50");
+  });
+});
+
+describe("adaptFacets tests", () => {
+  it("adaptFacets should convert instantsearch facets to itemsJs aggregations", () => {
+    const instantsearchFacets = [
+      ["category:electronics", "category:men's clothing"],
+      ["color:blue"],
+    ];
+
+    const itemsJsFacets = {
+      category: ["electronics", "men's clothing"],
+      color: ["blue"],
+    };
+
+    const adaptedResult = adaptFilters(instantsearchFacets);
+    expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
 });

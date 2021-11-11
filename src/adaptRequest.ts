@@ -5,6 +5,7 @@ import { ItemsJsRequest } from "./itemsjsInterface";
 export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   const numericFilters = <string[]>request[0].params.numericFilters;
   const facets = <string[]>request[0].params.facets;
+  const facetFilters = request[0].params.facetFilters;
 
   const response: ItemsJsRequest = {
     query: request[0].params.query,
@@ -22,12 +23,34 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
     response.filter = (item) => filters.every((filter) => filter(item));
   }
 
+  if (facetFilters && facetFilters.length > 0) {
+    response.filters = adaptFilters(request[0].params.facetFilters);
+  }
+
   return response;
 }
 
 export function adaptPage(page: number): number {
   // ItemsJS pages start at 1 iso 0
   return page + 1;
+}
+
+export function adaptFilters(instantsearchFacets) {
+  const itemsJsFacets = {};
+
+  instantsearchFacets.forEach((facetList) => {
+    facetList.forEach((facet) => {
+      const facetRegex = new RegExp(/(.+)(:)(.+)/);
+      const [, name, , value] = facet.match(facetRegex);
+      if (itemsJsFacets[name]) {
+        itemsJsFacets[name].push(value);
+      } else {
+        itemsJsFacets[name] = [value];
+      }
+    });
+  });
+
+  return itemsJsFacets;
 }
 
 export function parseRange(range) {
