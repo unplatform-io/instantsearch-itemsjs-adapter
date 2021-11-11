@@ -20,8 +20,8 @@ describe("adaptRequest tests", () => {
     const query = "a";
     const page = 2;
     const hitsPerPage = 5;
-    const facets = ["price", "id"];
-    const numericFilters = ["price>=10", "price<=100", "id>=1", "id<=5"];
+    const facets = ["price", "in_stock"];
+    const numericFilters = ["price>=10", "price<=100"];
 
     const instantsearchRequest: MultipleQueriesQuery[] = [
       {
@@ -42,7 +42,7 @@ describe("adaptRequest tests", () => {
     expect(itemsjsRequest.page).toBe(page + 1);
     expect(itemsjsRequest.per_page).toBe(hitsPerPage);
     expect(itemsjsRequest.aggregations).toMatchObject(facets);
-    expect(itemsjsRequest.filter).toBeDefined();
+    expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
   });
 });
 
@@ -55,7 +55,11 @@ describe("adaptNumericFilters tests", () => {
       { price: 37, in_stock: 1 },
     ];
 
-    // Used the same code as in adaptRequest. Otherwise, I can't test the function because it returns an array of functions.
+    /*
+    * adaptRequest returns an array of functions that will be used for the native javascript funtion .filter().
+    * Using the same native javascript function .filter() to loop trough the function results
+    */
+
     // Test the "greater than" and "less than" comparison operators.
     const priceRanges = adaptNumericFilters(["price>15", "price<37"]);
     const res = items.filter((item) =>
