@@ -39,7 +39,7 @@ export function adaptFilters(instantsearchFacets) {
   const itemsJsFacets = {};
 
   instantsearchFacets.forEach((facetList) => {
-    facetList.map((facet) => {
+    facetList.forEach((facet) => {
       const facetRegex = new RegExp(/(.+)(:)(.+)/);
       const [, name, , value] = facet.match(facetRegex);
       if (itemsJsFacets[name]) {

@@ -98,7 +98,7 @@ describe("adaptFacets tests", () => {
       },
     };
 
-    const adaptReslut = adaptFacets(itemsJsFacets);
-    expect(adaptReslut).toMatchObject(instantsearchFacets);
+    const adaptResult = adaptFacets(itemsJsFacets);
+    expect(adaptResult).toMatchObject(instantsearchFacets);
   });
 });
