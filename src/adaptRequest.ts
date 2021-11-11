@@ -22,7 +22,7 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
     const filters = adaptNumericFilters(numericFilters);
     response.filter = (item) => filters.every((filter) => filter(item));
   }
-  
+
   if (facetFilters && facetFilters.length > 0) {
     response.filters = adaptFilters(request[0].params.facetFilters);
   }
