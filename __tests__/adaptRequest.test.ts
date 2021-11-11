@@ -3,7 +3,7 @@ import {
   adaptPage,
   adaptRequest,
   adaptNumericFilters,
-  regexInput,
+  parseRange,
 } from "../src/adaptRequest";
 import { ItemsJsRequest } from "../src/itemsjsInterface";
 
@@ -94,7 +94,7 @@ describe("adaptNumericFilters tests", () => {
 
 describe("regexInput tests group in three", () => {
   it("greater than", () => {
-    const [, field, operator, value] = regexInput("price>50");
+    const [, field, operator, value] = parseRange("price>50");
 
     expect(field).toStrictEqual("price");
     expect(operator).toStrictEqual(">");
@@ -102,7 +102,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("greater than or equal to", () => {
-    const [, field2, operator2, value2] = regexInput("price>=50");
+    const [, field2, operator2, value2] = parseRange("price>=50");
 
     expect(field2).toStrictEqual("price");
     expect(operator2).toStrictEqual(">=");
@@ -110,7 +110,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("equal to", () => {
-    const [, field3, operator3, value3] = regexInput("price=50");
+    const [, field3, operator3, value3] = parseRange("price=50");
 
     expect(field3).toStrictEqual("price");
     expect(operator3).toStrictEqual("=");
@@ -118,7 +118,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("not equal to", () => {
-    const [, field4, operator4, value4] = regexInput("price!=50");
+    const [, field4, operator4, value4] = parseRange("price!=50");
 
     expect(field4).toStrictEqual("price");
     expect(operator4).toStrictEqual("!=");
@@ -126,7 +126,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("less than", () => {
-    const [, field5, operator5, value5] = regexInput("price<50");
+    const [, field5, operator5, value5] = parseRange("price<50");
 
     expect(field5).toStrictEqual("price");
     expect(operator5).toStrictEqual("<");
@@ -134,7 +134,7 @@ describe("regexInput tests group in three", () => {
   });
 
   it("less than or equal to", () => {
-    const [, field6, operator6, value6] = regexInput("price<=50");
+    const [, field6, operator6, value6] = parseRange("price<=50");
 
     expect(field6).toStrictEqual("price");
     expect(operator6).toStrictEqual("<=");
