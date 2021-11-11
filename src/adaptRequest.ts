@@ -27,20 +27,19 @@ export function adaptPage(page: number): number {
   return page + 1;
 }
 
-export function adaptFilters(facetFilters) {
-  const facetNames = facetFilters.map((facet) => {
-    return <string>facet[0].match(new RegExp("(.*)(?=:)"))[0];
-  });
-
-  const selectedFacets = facetFilters.map((facet) => {
-    return facet.map((item) => {
-      return <string>item.match(new RegExp("(?<=:)(.*)"))[0];
-    });
-  });
-
+export function adaptFilters(instantsearchFacets) {
   const itemsJsFacets = {};
-  facetNames.map(function (names, index) {
-    itemsJsFacets[names] = selectedFacets[index];
+
+  instantsearchFacets.forEach((facetList) => {
+    facetList.map((facet) => {
+      const facetRegex = new RegExp(/(.+)(:)(.+)/);
+      const [, name, , value] = facet.match(facetRegex);
+      if (itemsJsFacets[name]) {
+        itemsJsFacets[name].push(value);
+      } else {
+        itemsJsFacets[name] = [value];
+      }
+    });
   });
 
   return itemsJsFacets;
