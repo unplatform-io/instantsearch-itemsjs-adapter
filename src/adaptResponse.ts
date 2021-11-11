@@ -38,21 +38,16 @@ export function adaptHit(item): Hit<object> {
 }
 
 export function adaptFacets(
-  aggregations
+  itemsJsFacets
 ): Record<string, Record<string, number>> {
-  const facetNames = Object.keys(aggregations);
-
-  const selectedFacets = facetNames.map((name) => {
-    return aggregations[name].buckets.map((item) => {
-      return { key: item.key, docCount: item.doc_count };
-    });
-  });
+  const facetNames = Object.keys(itemsJsFacets);
 
   const instantsearchFacets = {};
-  facetNames.map(function (name, index) {
+  facetNames.forEach((name) => {
     instantsearchFacets[name] = {};
-    selectedFacets[index].map((facet) => {
-      instantsearchFacets[name][facet.key] = facet.docCount;
+
+    itemsJsFacets[name].buckets.forEach(({ key, doc_count }) => {
+      instantsearchFacets[name][key] = doc_count;
     });
   });
 

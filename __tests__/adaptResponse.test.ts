@@ -4,31 +4,17 @@ import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsPerPage = 3;
-    const total = 5;
-    const page = 2;
-    const totalPages = Math.ceil(total / itemsPerPage);
-
-    const facets = 10;
-    const search = 10;
-    const sorting = 10;
-    const timingTotal = facets + search + sorting;
-
-    const key = "testKey 1";
-    const docCount = 5;
-    const selected = false;
-
     const itemsjsResponse: ItemsJsResponse = {
       pagination: {
-        per_page: itemsPerPage,
-        total: total,
-        page: page,
+        per_page: 3,
+        total: 5,
+        page: 2,
       },
       timings: {
-        facets: facets,
-        search: search,
-        sorting: sorting,
-        total: timingTotal,
+        facets: 10,
+        search: 10,
+        sorting: 10,
+        total: 30,
       },
       data: {
         items: [{ objectID: "" }, { objectID: "" }],
@@ -36,9 +22,9 @@ describe("adaptResponse tests", () => {
           category: {
             buckets: [
               {
-                key: key,
-                doc_count: docCount,
-                selected: selected,
+                key: "testKey 1",
+                doc_count: 5,
+                selected: false,
               },
             ],
             name: null,
@@ -52,23 +38,22 @@ describe("adaptResponse tests", () => {
     const instantsearchResponse: SearchResponse =
       adaptResponse(itemsjsResponse);
 
-    expect(instantsearchResponse.page).toBe(page - 1);
-    expect(instantsearchResponse.nbPages).toBe(totalPages);
-    expect(instantsearchResponse.hitsPerPage).toBe(itemsPerPage);
-    expect(instantsearchResponse.processingTimeMS).toBe(timingTotal);
-    expect(instantsearchResponse.nbHits).toBe(total);
+    expect(instantsearchResponse.page).toBe(1);
+    expect(instantsearchResponse.nbPages).toBe(Math.ceil(5 / 3));
+    expect(instantsearchResponse.hitsPerPage).toBe(3);
+    expect(instantsearchResponse.processingTimeMS).toBe(30);
+    expect(instantsearchResponse.nbHits).toBe(5);
   });
 });
 
 describe("adaptHit tests", () => {
   it("adaptHit should convert item to hit", () => {
-    const id = 3;
     const item = {
-      id: id,
+      id: 3,
     };
 
     const adaptedItem = adaptHit(item);
-    expect(adaptedItem.objectID).toBe(id);
+    expect(adaptedItem.objectID).toBe(3);
     expect(adaptedItem._highlightResult).toMatchObject({});
   });
 });
