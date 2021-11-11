@@ -31,7 +31,12 @@ export function adaptPage(page: number): number {
 }
 
 export function regexInput(priceRange) {
-  return priceRange.match(new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/));
+  /*
+   * Group 1: Find chars, one or more, expect values: "<, =, !, >".
+   * Group 2: Find operator
+   * Group 3: Find digits, one or more.
+   */
+  return priceRange.match(new RegExp(/([^<=!>]+)(<|<=|=|!=|>|>=)(\d+)/));
 }
 
 export function adaptNumericFilters(priceRanges) {
@@ -39,11 +44,6 @@ export function adaptNumericFilters(priceRanges) {
 
   priceRanges.map((priceRange) => {
     // ['price<=10', 'price', '<=', '10']
-
-    // const [, field, operator, value] = priceRange.match(
-    //   new RegExp(/(.+?)(<|<=|=|!=|>|>=)(\d+)/)
-    // );
-
     const [, field, operator, value] = regexInput(priceRange);
 
     switch (operator) {
