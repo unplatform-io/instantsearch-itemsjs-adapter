@@ -27,6 +27,8 @@ export interface ItemsJsRequest {
   page: number;
   indexName: string;
   filters?: object;
+  aggregations?: string[];
+  filter?: object;
 }
 
 export interface ItemsJsResponse {

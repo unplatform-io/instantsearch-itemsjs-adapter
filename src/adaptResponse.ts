@@ -19,6 +19,13 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     query: "",
     params: "",
     facets: adaptFacets(response.data.aggregations),
+    /**
+     * Statistics for numerical facets.
+     *
+     * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
+     *
+     */
+    // facets_stats: {}
   };
 }
 
