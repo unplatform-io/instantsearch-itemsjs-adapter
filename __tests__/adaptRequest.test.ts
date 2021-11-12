@@ -38,6 +38,8 @@ describe("adaptRequest tests", () => {
     expect(itemsjsRequest.per_page).toBe(5);
     expect(itemsjsRequest.aggregations).toMatchObject(["price", "in_stock"]);
     expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
+    expect(itemsjsRequest.indexName).toBe("products");
+    expect(itemsjsRequest.sort).toBe("products");
   });
 });
 
