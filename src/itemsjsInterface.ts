@@ -29,6 +29,7 @@ export interface ItemsJsRequest {
   filters?: object;
   aggregations?: string[];
   filter?: object;
+  sort?: string;
 }
 
 export interface ItemsJsResponse {

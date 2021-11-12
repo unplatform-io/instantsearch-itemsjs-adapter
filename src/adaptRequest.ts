@@ -11,7 +11,8 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
     query: request[0].params.query,
     per_page: request[0].params.hitsPerPage,
     page: adaptPage(request[0].params.page),
-    indexName: "products",
+    indexName: request[0].indexName,
+    sort: request[0].indexName, // IndexName will be filled with e.g. price_asc | price_desc
   };
 
   if (facets) {
