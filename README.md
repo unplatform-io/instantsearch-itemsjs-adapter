@@ -22,7 +22,7 @@ npm run eslint
 | Component | Supported |
 | --- | :---: |
 | CurrentRefinements | ✔️ |
-| Hits | comming soon |
+| Hits | coming soon |
 | HitsPerPage| ✔️ |
 | Menu | ✔️ |
 | MenuSelect | ✔️ |
@@ -30,5 +30,5 @@ npm run eslint
 | RangeInput | ✔️ |
 | RefinementList | ✔️ |
 | SearchBox | ✔️ |
-| SortBy | comming soon |
+| SortBy | coming soon |
 | Stats | ✔️ |
