@@ -3,7 +3,7 @@
 This repository contains an adapter to link [Itemsjs](https://www.npmjs.com/package/itemsjs) with Instantsearch.
 
 ### Demo
-To see an implementation of this adater go to [unplatform-io/clientside-instantsearch-demo](https://github.com/unplatform-io/clientside-instantsearch-demo).
+To see an implementation of this adapter go to [unplatform-io/clientside-instantsearch-demo](https://github.com/unplatform-io/clientside-instantsearch-demo).
 
 ### [Jest](https://jestjs.io/)
 To run Jest tests
