@@ -6,13 +6,14 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   const numericFilters = <string[]>request[0].params.numericFilters;
   const facets = <string[]>request[0].params.facets;
   const facetFilters = request[0].params.facetFilters;
+  const sort = request[0].indexName // IndexName will be assiged to the selected Sortby value
 
   const response: ItemsJsRequest = {
     query: request[0].params.query,
     per_page: request[0].params.hitsPerPage,
     page: adaptPage(request[0].params.page),
     indexName: request[0].indexName,
-    sort: request[0].indexName, // IndexName will be filled with e.g. price_asc | price_desc
+    sort: sort, 
   };
 
   if (facets) {
