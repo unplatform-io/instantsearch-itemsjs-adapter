@@ -1,7 +1,7 @@
 
 # Instantsearch-itemsjs-adapter
 
-This library is a adapter that connects the search engine [Itemsjs](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
+This library is an adapter that connects the search engine [Itemsjs](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
 
 ## Table of Content
 
@@ -29,7 +29,7 @@ To be able to create a search interface, you'll need to  [install  `Instantsearc
 import { createIndex, getSearchClient } from  "...";
 
 const data = [{ "id":1,"title": "Iphone 7", "category":"Apple","price":109.95 },
-{"id":1,"title": "Samsung note 10","category":"Samsung","price":109.95 }]
+{"id":1,"title": "Samsung notce 10","category":"Samsung","price":109.95 }]
 
 const  options = {
 	searchableFields: ["title"],
@@ -68,29 +68,17 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 ### Supported Instantsearch components
 
 | Component | Supported |
-
 | --- | :---: |
-
 | CurrentRefinements | ✔️ |
-
-| Hits | comming soon |
-
+| Hits | coming soon |
 | HitsPerPage| ✔️ |
-
 | Menu | ✔️ |
-
 | MenuSelect | ✔️ |
-
 | Pagination | ✔️ |
-
 | RangeInput | ✔️ |
-
 | RefinementList | ✔️ |
-
 | SearchBox | ✔️ |
-
-| [SortBy](#sortby) | comming soon |
-
+| [SortBy](#sortby) | ✔️ |
 | Stats | ✔️ |
 
 
@@ -100,7 +88,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 The `sortBy`  allows a user to change the way hits are sorted. 
 
 The useage of the `sortBy` widget differs from the one found in Aloglia's documentation.
-Instantsearch-itemsjs-adapter does not make use of [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
+Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
 
 With Instantsearch-Itemsjs-adapter you have to define the same key to the sortyBy value, that you used for the configuration `sortings`. 
 
@@ -118,12 +106,6 @@ sortings:  {
 	]} 
 />
 ```
-
-
-
-
-
-
 
 ## Tests
 
