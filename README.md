@@ -70,27 +70,45 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | Component | Supported |
 | --- | :---: |
 | CurrentRefinements | ✔️ |
-| Hits | coming soon |
+| Hits | ✔️ |
 | HitsPerPage| ✔️ |
 | Menu | ✔️ |
 | MenuSelect | ✔️ |
 | Pagination | ✔️ |
-| RangeInput | ✔️ |
+| [RangeInput](#rangeinput) | ✔️ |
 | RefinementList | ✔️ |
 | SearchBox | ✔️ |
 | [SortBy](#sortby) | ✔️ |
 | Stats | ✔️ |
 
+### RangeInput
+[RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
+
+The `rangeInput` widget allows a user to select a numeric range using a minimum and/or maximum input.
+
+The values inside the attribute must be numbers, not strings.
+
+With Instantsearch-Itemsjs-adapter you have to define the numericFilter field in `aggregation`. Otherwise, Itemsjs doesn't return the neceassry field for Instantsearch to use, the field in `aggregation` can be left empty.
+Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
+
+```js
+aggregations: {
+    price: { }, 
+},
+
+<RangeInput attribute="price" />
+```
 
 ### SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
 The `sortBy`  allows a user to change the way hits are sorted. 
 
-The useage of the `sortBy` widget differs from the one found in Aloglia's documentation.
+The usage of the `sortBy` widget differs from the one found in Aloglia's documentation.
 Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
 
-With Instantsearch-Itemsjs-adapter you have to define the same key to the sortyBy value, that you used for the configuration `sortings`. 
+With Instantsearch-Itemsjs-adapter you have to define the same key from your configuration `sorting` for the sortBy value.
+Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
 
 ```js
 sortings:  { 
