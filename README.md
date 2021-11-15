@@ -21,14 +21,39 @@ npm run eslint
 ### Supported Instantsearch components
 | Component | Supported |
 | --- | :---: |
+| Autocomplete |  |
+| Breadcrumb |  |
+| ClearRefinements | ✔️ |
+| Configure | ❌ |
+| ConfigureRelatedItems | ❌ |
 | CurrentRefinements | ✔️ |
-| Hits | coming soon |
+| DynamicWidgets |  |
+| HierarchicalMenu | ❌ |
+| Highlight | ❌ |
+| Hits | ✔️ |
 | HitsPerPage| ✔️ |
+| Index |  |
+| InfiniteHits | ✔️ |
+| InstantSearch | ✔️ |
 | Menu | ✔️ |
 | MenuSelect | ✔️ |
+| NumericMenu |  |
 | Pagination | ✔️ |
+| Panel | ✔️ |
+| PoweredBy | ❌ |
+| QueryRuleContext |  |
+| QueryRuleCustomData |  |
 | RangeInput | ✔️ |
+| RangeSlider |  |
+| RatingMenu | ❌ |
 | RefinementList | ✔️ |
+| RelevantSort |  |
+| ScrollTo | ✔️ |
 | SearchBox | ✔️ |
-| SortBy | coming soon |
+| SearchState |  |
+| Snippet |  |
+| SortBy | ✔️ |
+| StateResults |  |
 | Stats | ✔️ |
+| ToggleRefinement | ✔️ |
+| VoiceSearch | ✔️ |
