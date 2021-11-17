@@ -138,7 +138,7 @@ describe("regexInput tests group in three", () => {
 });
 
 describe("adaptFacets tests", () => {
-  it("adaptFacets should convert instantsearch facets to itemsJs aggregations", () => {
+  it("adaptFacets should convert nested arrays to Itemsjs format", () => {
     const instantsearchFacets = [
       ["category:electronics", "category:men's clothing"],
       ["color:blue"],
@@ -152,4 +152,16 @@ describe("adaptFacets tests", () => {
     const adaptedResult = adaptFilters(instantsearchFacets);
     expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
+
+  it("adaptFacets should convert a single array to Itemsjs format", () => {
+    const instantsearchFacets = ["category:electronics", "category:men's clothing"];
+
+    const itemsJsFacets = {
+      category: ["electronics", "men's clothing"]
+    };
+
+    const adaptedResult = adaptFilters(instantsearchFacets);
+    expect(adaptedResult).toMatchObject(itemsJsFacets);
+  });
 });
+
