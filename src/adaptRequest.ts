@@ -7,7 +7,7 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   const facets = <string[]>request[0].params.facets;
   const facetFilters = request[0].params.facetFilters;
   const sort = request[0].indexName; // IndexName will be assigned the SortBy value if selected.
-
+  
   const response: ItemsJsRequest = {
     query: request[0].params.query,
     per_page: request[0].params.hitsPerPage,
@@ -21,11 +21,13 @@ export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
   }
 
   if (numericFilters && numericFilters.length > 0) {
+    console.log(numericFilters)
     const filters = adaptNumericFilters(numericFilters);
     response.filter = (item) => filters.every((filter) => filter(item));
   }
 
   if (facetFilters && facetFilters.length > 0) {
+    console.log(facetFilters)
     response.filters = adaptFilters(request[0].params.facetFilters);
   }
 

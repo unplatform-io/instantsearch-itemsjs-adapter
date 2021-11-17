@@ -8,6 +8,8 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
+  console.log('response', response.data.aggregations)
+
   return {
     hits: response.data.items.map(adaptHit),
     page: response.pagination.page - 1,
@@ -19,6 +21,14 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     query: "",
     params: "",
     facets: adaptFacets(response.data.aggregations),
+    facets_stats: {
+      rate: {
+        min: 1,
+        max: 5,
+        avg: 100,
+        sum: 200,
+      }
+    }
     /**
      * Statistics for numerical facets.
      *
