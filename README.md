@@ -25,35 +25,35 @@ npm run eslint
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
 | ClearRefinements | ✔️ |
 | Configure | ✔️ |
-| ConfigureRelatedItems | ❌ |
+| ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
-| DynamicWidgets | ❌ |
-| HierarchicalMenu | ❌ | Is not supported by itemsjs |
-| Highlight | ❌ | Is not supported by itemsjs |
+| DynamicWidgets | ❌ | Cannot be imported from react-instanstsearch-dom (version 6.12.1) |
+| HierarchicalMenu | ❌ | Is not supported by Itemsjs |
+| Highlight | ❌ | Is not supported by Itemsjs |
 | Hits | ✔️ |
 | HitsPerPage| ✔️ |
-| Index |  |
+| Index | ❌ | Is not supported by Itemsjs |
 | InfiniteHits | ✔️ |
 | InstantSearch | ✔️ |
 | Menu | ✔️ |
 | MenuSelect | ✔️ |
-| NumericMenu |  |
+| NumericMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
 | Pagination | ✔️ |
 | Panel | ✔️ |
 | PoweredBy | ✔️ |
 | QueryRuleContext |  |
 | QueryRuleCustomData |  |
 | RangeInput | ✔️ |
-| RangeSlider |  | Connector needed |
-| RatingMenu |  | after expanding adapter it probably works |
+| RangeSlider | ✔️ |  |
+| RatingMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
 | RefinementList | ✔️ |
-| RelevantSort | ❌ | No response |
+| RelevantSort | ❌ | Is not supported by Itemsjs |
 | ScrollTo | ✔️ |
 | SearchBox | ✔️ |
-| SearchState |  |
-| Snippet | ❌ | Separator doesn't work |
+| SearchState | ✔️ |
+| Snippet |✔️ |  |
 | SortBy | ✔️ |
-| StateResults |  |
+| StateResults | ✔️ |
 | Stats | ✔️ |
 | ToggleRefinement | ✔️ |
 | VoiceSearch | ✔️ |

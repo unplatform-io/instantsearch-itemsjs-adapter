@@ -154,14 +154,16 @@ describe("adaptFacets tests", () => {
   });
 
   it("adaptFacets should convert a single array to Itemsjs format", () => {
-    const instantsearchFacets = ["category:electronics", "category:men's clothing"];
+    const instantsearchFacets = [
+      "category:electronics",
+      "category:men's clothing",
+    ];
 
     const itemsJsFacets = {
-      category: ["electronics", "men's clothing"]
+      category: ["electronics", "men's clothing"],
     };
 
     const adaptedResult = adaptFilters(instantsearchFacets);
     expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
 });
-

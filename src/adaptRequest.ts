@@ -37,7 +37,7 @@ export function adaptPage(page: number): number {
 
 export function adaptFilters(instantsearchFacets) {
   const itemsJsFacets = {};
-  if(Array.isArray(instantsearchFacets[0])){
+  if (Array.isArray(instantsearchFacets[0])) {
     instantsearchFacets.forEach((facetList) => {
       facetList.forEach((facet) => {
         const facetRegex = new RegExp(/(.+)(:)(.+)/);
@@ -49,7 +49,7 @@ export function adaptFilters(instantsearchFacets) {
         }
       });
     });
-  }else if(Array.isArray(instantsearchFacets)){
+  } else if (Array.isArray(instantsearchFacets)) {
     instantsearchFacets.forEach((facet) => {
       const facetRegex = new RegExp(/(.+)(:)(.+)/);
       const [, name, , value] = facet.match(facetRegex);
@@ -59,12 +59,9 @@ export function adaptFilters(instantsearchFacets) {
         itemsJsFacets[name] = [value];
       }
     });
-  }else {
+  } else {
     throw Error("not in an array");
   }
-
-
-  
 
   return itemsJsFacets;
 }
