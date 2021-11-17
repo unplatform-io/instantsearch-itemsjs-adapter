@@ -9,7 +9,6 @@ This library is an adapter that connects the search engine [Itemsjs](https://git
 - [Usage](#usage)
 - [Demo]( #demo)
 - [Features](#features)
-- [Compatibility](https://github.com/meilisearch/instant-meilisearch#-compatibility-with-meilisearch-and-instantsearch)
 - [Tests](#tests)
 
 ## Installation
