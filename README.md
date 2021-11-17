@@ -19,17 +19,17 @@ npm run eslint
 
 ## Features
 ### Supported Instantsearch components
-| Component | Supported |
-| --- | :---: |
-| Autocomplete |  |
-| Breadcrumb |  |
+| Component | Supported | Explanation |
+| --- | :---: | --- |
+| Autocomplete |  | Connector needed |
+| Breadcrumb | ❌ | HierarchicalMenu is needed |
 | ClearRefinements | ✔️ |
-| Configure | ❌ |
+| Configure | ✔️ |
 | ConfigureRelatedItems | ❌ |
 | CurrentRefinements | ✔️ |
-| DynamicWidgets |  |
-| HierarchicalMenu | ❌ |
-| Highlight | ❌ |
+| DynamicWidgets | ❌ |
+| HierarchicalMenu | ❌ | Is not supported by itemsjs |
+| Highlight | ❌ | Is not supported by itemsjs |
 | Hits | ✔️ |
 | HitsPerPage| ✔️ |
 | Index |  |
@@ -40,18 +40,18 @@ npm run eslint
 | NumericMenu |  |
 | Pagination | ✔️ |
 | Panel | ✔️ |
-| PoweredBy | ❌ |
+| PoweredBy | ✔️ |
 | QueryRuleContext |  |
 | QueryRuleCustomData |  |
 | RangeInput | ✔️ |
-| RangeSlider |  |
-| RatingMenu | ❌ |
+| RangeSlider |  | Connector needed |
+| RatingMenu |  | after expanding adapter it probably works |
 | RefinementList | ✔️ |
-| RelevantSort |  |
+| RelevantSort | ❌ | No response |
 | ScrollTo | ✔️ |
 | SearchBox | ✔️ |
 | SearchState |  |
-| Snippet |  |
+| Snippet | ❌ | Separator doesn't work |
 | SortBy | ✔️ |
 | StateResults |  |
 | Stats | ✔️ |
