@@ -21,9 +21,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     facets: adaptFacets(response.data.aggregations),
     /**
      * Statistics for numerical facets.
-     *
      * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
-     *
      */
     facets_stats: {
       price: {
@@ -31,6 +29,24 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
         max: 1000,
         avg: 500,
         sum: 3505,
+      },
+      reviews: {
+        min: 1,
+        max: 60,
+        avg: 30,
+        sum: 200,
+      },
+      rating: {
+        min: 1,
+        max: 5,
+        avg: 3,
+        sum: 50,
+      },
+      deliveryTime: {
+        min: 1,
+        max: 6,
+        avg: 3,
+        sum: 50,
       },
     },
   };
