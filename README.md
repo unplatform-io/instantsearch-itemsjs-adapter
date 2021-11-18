@@ -69,7 +69,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| [ClearRefinements](#-clearrefinements) | ✔️ |
+| [ClearRefinements](#clearrefinements) | ✔️ |
 | Configure | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
@@ -89,7 +89,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | PoweredBy | ✔️ |
 | QueryRuleContext |  |
 | QueryRuleCustomData |  |
-| [RangeInput](#-RangeInput) | ✔️ |
+| [RangeInput](#RangeInput) | ✔️ |
 | RangeSlider | ✔️ |  |
 | RatingMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
 | RefinementList | ✔️ |
@@ -98,13 +98,13 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | SearchBox | ✔️ |
 | SearchState | ✔️ |
 | Snippet |✔️ |  |
-| [SortBy](#-sortby) | ✔️ |
+| [SortBy](#sortby) | ✔️ |
 | StateResults | ✔️ |
 | Stats | ✔️ |
 | ToggleRefinement | ✔️ |
 | VoiceSearch | ✔️ |
 
-### ✔️ ClearRefinements
+### ClearRefinements
 [ClearRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
 
 The `ClearRefinements` widget allows a user to delete all applied filters.
@@ -116,19 +116,7 @@ The `ClearRefinements` widget allows a user to delete all applied filters.
 | transformItems | ⚠️ | there is no proof that this parameter works
 
 
-### ✔️ []
-[ Instantsearch]()
-
-The `` widget allows a user to ...
-
-
-### ✔️ []
-[ Instantsearch]()
-
-The `` widget allows a user to ...
-
-
-### ✔️ RangeInput
+### RangeInput
 [RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
 
 The `rangeInput` widget allows a user to select a numeric range using a minimum and/or maximum input.
@@ -147,7 +135,7 @@ aggregations: {
 ```
 
 
-### ✔️ SortBy
+### SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
 The `sortBy`  allows a user to change the way hits are sorted. 
