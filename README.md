@@ -133,6 +133,26 @@ The `CurrentRefinements` widget allows a user to see witch filters are apllied.
 | clearsQuery | ⚠️ | do not set this to true, the program will no longer work properly |
 | transformItems | ⚠️ | there is no proof that this parameter works |
 
+### ✔️ Hits
+[Hits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/hits/react/)
+
+The `Hits` widget allows a user to see the result of their search.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| hitComponent | ✔️ |
+
+### ✔️ HitsPerPage
+[HitsPerPage Instantsearch](https://www.algolia.com/doc/api-reference/widgets/hits-per-page/react/)
+
+The `HitsPerPage` widget allows a user to select how many hits wil appear on a page.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| items | ✔️ |
+| defaultRefinement | ✔️ |
+| transformItems | ⚠️ | there is no proof that this parameter works |
+
 
 ### ✔️ RangeInput
 [RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
