@@ -69,7 +69,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| [ClearRefinements](#-clearrefinements) | ✔️ |
+| [ClearRefinements](#--clearrefinements) | ✔️ |
 | Configure | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
@@ -105,7 +105,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | VoiceSearch | ✔️ |
 
 
-### ✔️ClearRefinements
+### ✔️ ClearRefinements
 [ClearRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
 
 The `ClearRefinements` widget allows a user to delete all applied filters.
