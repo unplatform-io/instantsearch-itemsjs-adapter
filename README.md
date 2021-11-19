@@ -69,7 +69,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| [ClearRefinements](#--clearrefinements) | ✔️ |
+| ClearRefinements | ✔️ |
 | Configure | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
@@ -114,10 +114,27 @@ The `ClearRefinements` widget allows a user to delete all applied filters.
 | --- | :---: | --- |
 | clearsQuery | ✔️ |
 | translations | ✔️ |
-| transformItems | ⚠️ | there is no proof that this parameter works
+| transformItems | ⚠️ | there is no proof that this parameter works |
+
+### ✔️ Configure
+[Configure Instantsearch](https://www.algolia.com/doc/api-reference/widgets/configure/react/)
+
+The `Configure` widget allows a user to set fixed search parameters.
+
+This widget can contain all [Search Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/), see this site for more information. ⚠️ Pay attention, not all parameters will work with this adapter.
+
+### ✔️ CurrentRefinements
+[CurrentRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/current-refinements/react/)
+
+The `CurrentRefinements` widget allows a user to see witch filters are apllied.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| clearsQuery | ⚠️ | do not set this to true, the program will no longer work properly |
+| transformItems | ⚠️ | there is no proof that this parameter works |
 
 
-### RangeInput
+### ✔️ RangeInput
 [RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
 
 The `rangeInput` widget allows a user to select a numeric range using a minimum and/or maximum input.
@@ -136,7 +153,7 @@ aggregations: {
 ```
 
 
-### SortBy
+### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
 The `sortBy`  allows a user to change the way hits are sorted. 
