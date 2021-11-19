@@ -153,6 +153,34 @@ The `HitsPerPage` widget allows a user to select how many hits wil appear on a p
 | defaultRefinement | ✔️ |
 | transformItems | ⚠️ | there is no proof that this parameter works |
 
+### ✔️ InfiniteHits
+[InfiniteHits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/)
+
+The `InfiniteHits` widget allows a user to see the result of their search.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| showPrevious | ⚠️ | can only be used if URL Sync is implemented |
+| hitComponent | ✔️ |
+| translations | ✔️ |
+| cache | ⚠️ | there is no proof that this parameter works |
+
+### ✔️ InstantSearch
+[InstantSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/)
+
+The `InstantSearch` widget allows a user to let all connected comonents (or widgets) inveract with the searchState.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| indexName | ✔️ |
+| searchClient | ✔️ |
+| searchState |  |
+| resultsState |  |
+| createURL |  |
+| onSearchStateChange |  |
+| onSearchParameters |  |
+| refresh |  |
+| stalledSearchDelay |  |
 
 ### ✔️ RangeInput
 [RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
