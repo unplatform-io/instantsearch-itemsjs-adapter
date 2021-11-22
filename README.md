@@ -69,7 +69,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| [ClearRefinements](#%EF%B8%8F-clear-refinements) | ✔️ |
+| ClearRefinements | ✔️ |
 | Configure | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
@@ -89,7 +89,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | PoweredBy | ✔️ |
 | QueryRuleContext |  |
 | QueryRuleCustomData |  |
-| [RangeInput](#%EF%B8%8F-range-input) | ✔️ |
+| [RangeInput](#RangeInput) | ✔️ |
 | RangeSlider | ✔️ |  |
 | RatingMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
 | RefinementList | ✔️ |
@@ -98,11 +98,11 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | SearchBox | ✔️ |
 | SearchState | ✔️ |
 | Snippet |✔️ |  |
-| [SortBy](#%EF%B8%8F-sortby) | ✔️ |
+| [SortBy](#sortby) | ✔️ |
 | StateResults | ✔️ |
 | Stats | ✔️ |
 | ToggleRefinement | ✔️ |
-| [VoiceSearch](#%EF%B8%8F-voicesearch) | ✔️ |
+| VoiceSearch | ✔️ |
 
 
 ### ✔️ ClearRefinements
@@ -174,20 +174,94 @@ The `InstantSearch` widget allows a user to let all connected comonents (or widg
 | --- | :---: | --- |
 | indexName | ✔️ |
 | searchClient | ✔️ |
-| searchState |  |
+| searchState | ✔️ |
 | resultsState |  |
-| createURL |  |
-| onSearchStateChange |  |
-| onSearchParameters |  |
-| refresh |  |
-| stalledSearchDelay |  |
+| createURL | ❌ |
+| onSearchStateChange | ✔️ |
+| onSearchParameters | ❌ |
+| refresh | ⚠️ | there is no proof that this parameter works |
+| stalledSearchDelay | ⚠️ | there is no proof that this parameter works |
+
+### ✔️ Menu
+[Menu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/menu/react/)
+
+The `Menu` widget allows a user to filter on a single value for an attribute.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| facetOrdering | ❌ | Is not supported by Itemsjs |
+| limit | ✔️ |
+| showMore | ✔️ |
+| showMoreLimit | ✔️ |
+| searchable | ❌ | Is not supported by Itemsjs, ⚠️Warning: when set true UI will change but throws error when used |
+| transformItems | ✔️ |
+| translations | ✔️ |
+
+### ✔️ MenuSelect
+[MenuSelect Instantsearch](https://www.algolia.com/doc/api-reference/widgets/menu-select/react/)
+
+The `MenuSelect` widget allows a user to filter on a single value for an attribute.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| facetOrdering | ❌ | Is not supported by Itemsjs |
+| limit | ✔️ |
+| transformItems | ✔️ |
+| translations | ✔️ |
+
+### ✔️ Pagination
+[Pagination Instantsearch](https://www.algolia.com/doc/api-reference/widgets/pagination/react/)
+
+The `Pagination` widget allows a user to change the current page.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| defaultRefinement | ✔️ |
+| showFirst | ✔️ |
+| showPrevious | ✔️ |
+| showNext | ✔️ |
+| showLast | ✔️ |
+| padding | ✔️ |
+| totalPages | ✔️ |
+| translations | ✔️ |
+
+### ✔️ Panel
+[Panel Instantsearch](https://www.algolia.com/doc/api-reference/widgets/panel/react/)
+
+The `Panel` widget allows a user to wrap other widgets in a consistent design.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| className | ✔️ |
+| header | ✔️ |
+| footer | ✔️ |
+
+### ✔️ PoweredBy
+[PoweredBy Instantsearch](https://www.algolia.com/doc/api-reference/widgets/powered-by/react/)
+
+The `PoweredBy` widget allows a user to display the Algolia logo redirecting to the website.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| translations | ✔️ |
 
 ### ✔️ RangeInput
 [RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
 
-The `rangeInput` widget allows a user to select a numeric range using a minimum and/or maximum input.
+The `rangeInput` widget allows a user to filter on a numeric field using a minimum and/or maximum input.
 
-The values inside the attribute must be numbers, not strings.
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| min | ✔️ |
+| max | ✔️ |
+| precision | ✔️ |
+| translations | ✔️ |
 
 With Instantsearch-Itemsjs-adapter you have to define the numericFilter field in `aggregation`. Otherwise, Itemsjs doesn't return the neceassry field for Instantsearch to use, the field in `aggregation` can be left empty.
 Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
@@ -199,7 +273,6 @@ aggregations: {
 
 <RangeInput attribute="price" />
 ```
-
 
 ### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
@@ -226,17 +299,7 @@ sortings:  {
 	]} 
 />
 ```
-### ✔️ VoiceSearch
-[VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
 
-The `VoiceSearch` widget allows a user to perform a voice-based query.
-
-| Parameter |  | Explanation |
-| --- | :---: | --- |
-| searchAsYouSpeak | ✔️ |  |
-| buttonTextComponent | ✔️ |
-| statusComponent | ✔️ |
-| translations | ✔️ |  |
 
 ## Tests
 
