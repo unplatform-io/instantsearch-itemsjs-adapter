@@ -8,8 +8,6 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
-  console.log("res", response.data.aggregations);
-
   return {
     hits: response.data.items.map(adaptHit),
     page: response.pagination.page - 1,
@@ -58,8 +56,7 @@ export function adaptFacetsStats(
 
   facetNames.forEach((name) => {
     if (typeof itemsJsFacetsStats[name].facet_stats !== "undefined") {
-      const { min, max, avg, sum } = itemsJsFacetsStats[name].facet_stats;
-      instantsearchFacetsStats[name] = { min, max, avg, sum };
+      instantsearchFacetsStats[name] = itemsJsFacetsStats[name].facet_stats;
     }
   });
 

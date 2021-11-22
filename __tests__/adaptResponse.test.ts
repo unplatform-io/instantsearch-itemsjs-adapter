@@ -153,6 +153,6 @@ describe("adaptFacetsStats tests", () => {
     };
 
     const facetStats = adaptFacetsStats(aggregation);
-    expect(facetStats).toMatchObject(result);
+    expect(facetStats).toStrictEqual(result);
   });
 });
