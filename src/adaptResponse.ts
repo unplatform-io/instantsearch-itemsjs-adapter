@@ -8,7 +8,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
-  console.log('res', response.data.aggregations)
+  console.log("res", response.data.aggregations);
 
   return {
     hits: response.data.items.map(adaptHit),
@@ -21,21 +21,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     query: "",
     params: "",
     facets: adaptFacets(response.data.aggregations),
-    facets_stats: {
-      rate: {
-        min: 1,
-        max: 5,
-        avg: 100,
-        sum: 200,
-      }
-    }
-    /**
-     * Statistics for numerical facets.
-     *
-     * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
-     *
-     */
-    // facets_stats: {}
+    facets_stats: adaptFacetsStats(response.data.aggregations),
   };
 }
 
@@ -64,38 +50,16 @@ export function adaptFacets(
   return instantsearchFacets;
 }
 
-const object = {
-  "category": {
-      "name": "category",
-      "title": "category",
-  },
-  "color": {
-      "name": "color",
-      "title": "color",
-  },
-  "rate": {
-      "name": "rate",
-      "title": "rate",
-  },
-  "price": {
-      "name": "price",
-      "title": "Price",
-      "facet_stats": {
-          "min": 7,
-          "max": 999,
-          "avg": 161.45,
-          "sum": 3229
-      }
-  }
-}
+export function adaptFacetsStats(itemsJsFacetsStats) {
+  const facetNames = Object.keys(itemsJsFacetsStats);
+  const instantsearchFacetsStats = {};
 
-export function adaptFacetsStats(object) {
-  return {
-    price: {
-      min: 0,
-      max: 0,
-      avg: 0,
-      sum: 0,
+  facetNames.forEach((name) => {
+    if (typeof itemsJsFacetsStats[name].facet_stats !== "undefined") {
+      const { min, max, avg, sum } = itemsJsFacetsStats[name].facet_stats;
+      instantsearchFacetsStats[name] = { min, max, avg, sum };
     }
-  }
+  });
+
+  return instantsearchFacetsStats;
 }
