@@ -69,7 +69,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| [ClearRefinements](#-clear-refinements) | ✔️ |
+| [ClearRefinements](#✔️-clear-refinements) | ✔️ |
 | Configure | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
 | CurrentRefinements | ✔️ |
@@ -89,7 +89,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | PoweredBy | ✔️ |
 | QueryRuleContext |  |
 | QueryRuleCustomData |  |
-| [RangeInput](#-range-input) | ✔️ |
+| [RangeInput](#✔️-range-input) | ✔️ |
 | RangeSlider | ✔️ |  |
 | RatingMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
 | RefinementList | ✔️ |
@@ -98,11 +98,11 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | SearchBox | ✔️ |
 | SearchState | ✔️ |
 | Snippet |✔️ |  |
-| [SortBy](#-sortby) | ✔️ |
+| [SortBy](#✔️-sortby) | ✔️ |
 | StateResults | ✔️ |
 | Stats | ✔️ |
 | ToggleRefinement | ✔️ |
-| [VoiceSearch](#-voicesearch) | ✔️ |
+| [VoiceSearch](#✔️-voicesearch) | ✔️ |
 
 
 ### ✔️ ClearRefinements
