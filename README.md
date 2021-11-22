@@ -98,7 +98,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | SearchBox | ✔️ |
 | SearchState | ✔️ |
 | Snippet |✔️ |  |
-| [SortBy](#sortby) | ✔️ |
+| [SortBy](#-sortby) | ✔️ |
 | StateResults | ✔️ |
 | Stats | ✔️ |
 | ToggleRefinement | ✔️ |
@@ -226,7 +226,17 @@ sortings:  {
 	]} 
 />
 ```
+### ✔️ VoiceSearch
+[VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
 
+The `VoiceSearch` widget allows a user to perform a voice-based query.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| searchAsYouSpeak | ✔️ |  |
+| buttonTextComponent | ✔️ |
+| statusComponent | ✔️ |
+| translations | ✔️ |  |
 
 ## Tests
 
