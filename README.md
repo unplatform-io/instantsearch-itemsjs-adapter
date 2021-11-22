@@ -65,44 +65,44 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 ## Features
 
 ### Supported Instantsearch components
-| Component |  | Explanation |
+| Component | | Explanation |
 | --- | :---: | --- |
 | Autocomplete | ❌ | Connector needed |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
-| ClearRefinements | ✔️ |
-| Configure | ✔️ |
+| [ClearRefinements](#%EF%B8%8F-clearrefinements) | ✔️ |
+| [Configure](#%EF%B8%8F-configure) | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
-| CurrentRefinements | ✔️ |
+| [CurrentRefinements](#%EF%B8%8F-currentrefinements) | ✔️ |
 | DynamicWidgets | ❌ | Cannot be imported from react-instanstsearch-dom (version 6.12.1) |
 | HierarchicalMenu | ❌ | Is not supported by Itemsjs |
 | Highlight | ❌ | Is not supported by Itemsjs |
-| Hits | ✔️ |
-| HitsPerPage| ✔️ |
+| [Hits](#%EF%B8%8F-hits) | ✔️ |
+| [HitsPerPage](#%EF%B8%8F-hitsperpage) | ✔️ |
 | Index | ❌ | Is not supported by Itemsjs |
-| InfiniteHits | ✔️ |
-| InstantSearch | ✔️ |
-| Menu | ✔️ |
-| MenuSelect | ✔️ |
-| NumericMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
-| Pagination | ✔️ |
-| Panel | ✔️ |
-| PoweredBy | ✔️ |
-| QueryRuleContext |  |
-| QueryRuleCustomData |  |
-| [RangeInput](#RangeInput) | ✔️ |
-| RangeSlider | ✔️ |  |
-| RatingMenu | ⚠️ | Works only with facet_stats (facet_stats WIP) |
-| RefinementList | ✔️ |
+| [InfiniteHits](#%EF%B8%8F-infinitehits) | ✔️ |
+| [InstantSearch](#%EF%B8%8F-instantsearch) | ✔️ |
+| [Menu](#%EF%B8%8F-menu) | ✔️ |
+| [MenuSelect](#%EF%B8%8F-menuselect) | ✔️ |
+| [NumericMenu](#%EF%B8%8F-numericmenu) | ✔️ | Works only with facet_stats (facet_stats WIP) |
+| [Pagination](#%EF%B8%8F-pagination) | ✔️ |
+| [Panel](#%EF%B8%8F-panel) | ✔️ |
+| [PoweredBy](#%EF%B8%8F-poweredby) | ✔️ |
+| QueryRuleContext | |
+| QueryRuleCustomData | |
+| [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
+| [RangeSlider](#%EF%B8%8F-rangeslider) | ✔️ | |
+| [RatingMenu](#%EF%B8%8F-ratingmenu) | ✔️ | Works only with facet_stats (facet_stats WIP) |
+| [RefinementList](#%EF%B8%8F-refinementlist) | ✔️ |
 | RelevantSort | ❌ | Is not supported by Itemsjs |
-| ScrollTo | ✔️ |
-| SearchBox | ✔️ |
-| SearchState | ✔️ |
-| Snippet |✔️ |  |
-| [SortBy](#sortby) | ✔️ |
-| StateResults | ✔️ |
-| Stats | ✔️ |
-| ToggleRefinement | ✔️ |
-| VoiceSearch | ✔️ |
+| [ScrollTo](#%EF%B8%8F-scrollto) | ✔️ |
+| [SearchBox](#%EF%B8%8F-searchbox)| ✔️ |
+| [SearchState](#%EF%B8%8F-searchstate) | ✔️ |
+| [Snippet](#%EF%B8%8F-snippet) |✔️ | |
+| [SortBy](#%EF%B8%8F-sortby) | ✔️ |
+| [StateResults](#%EF%B8%8F-stateresults) | ✔️ |
+| [Stats](#%EF%B8%8F-stats) | ✔️ |
+| [ToggleRefinement](#%EF%B8%8F-togglerefinement) | ✔️ |
+| [VoiceSearch](#%EF%B8%8F-voicesearch) | ✔️ |
 
 
 ### ✔️ ClearRefinements
@@ -300,6 +300,19 @@ sortings:  {
 />
 ```
 
+### ✔️ VoiceSearch
+[VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
+
+
+
+The `VoiceSearch` widget allows a user to perform a voice-based query.
+
+| Parameter | | Explanation |
+| --- | :---: | --- |
+| searchAsYouSpeak | ✔️ | |
+| buttonTextComponent | ✔️ |
+| statusComponent | ✔️ |
+| translations | ✔️ | |
 
 ## Tests
 
