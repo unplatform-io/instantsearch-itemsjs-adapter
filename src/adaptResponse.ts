@@ -50,7 +50,7 @@ export function adaptFacets(
   return instantsearchFacets;
 }
 
-export function adaptFacetsStats(itemsJsFacetsStats) {
+export function adaptFacetsStats(itemsJsFacetsStats: object): Record<string, { min: number; max: number; avg: number; sum: number;}> {
   const facetNames = Object.keys(itemsJsFacetsStats);
   const instantsearchFacetsStats = {};
 
@@ -63,3 +63,4 @@ export function adaptFacetsStats(itemsJsFacetsStats) {
 
   return instantsearchFacetsStats;
 }
+
