@@ -8,7 +8,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     response.pagination.total / response.pagination.per_page
   );
 
-  console.log('response', response.data.aggregations)
+  console.log('res', response.data.aggregations)
 
   return {
     hits: response.data.items.map(adaptHit),
@@ -62,4 +62,40 @@ export function adaptFacets(
   });
 
   return instantsearchFacets;
+}
+
+const object = {
+  "category": {
+      "name": "category",
+      "title": "category",
+  },
+  "color": {
+      "name": "color",
+      "title": "color",
+  },
+  "rate": {
+      "name": "rate",
+      "title": "rate",
+  },
+  "price": {
+      "name": "price",
+      "title": "Price",
+      "facet_stats": {
+          "min": 7,
+          "max": 999,
+          "avg": 161.45,
+          "sum": 3229
+      }
+  }
+}
+
+export function adaptFacetsStats(object) {
+  return {
+    price: {
+      min: 0,
+      max: 0,
+      avg: 0,
+      sum: 0,
+    }
+  }
 }
