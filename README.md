@@ -274,6 +274,88 @@ aggregations: {
 <RangeInput attribute="price" />
 ```
 
+### ✔️ RangeSlider
+[RangeSlider Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-slider/react/)
+
+The `RangeSlider` widget allows a user to filter on a numeric field using a minimum and/or maximum input.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| min | ✔️ |
+| max | ✔️ |
+
+### ✔️ RatingMenu
+[RatingMenu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/rating-menu/react/)
+
+The `RatingMenu` widget allows a user to filter on a numeric field by clicking on stars.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| min | ✔️ |
+| max | ✔️ |
+| translations | ✔️ |
+
+### ✔️ RefinementList
+[RefinementList Instantsearch](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/)
+
+The `RefinementList` widget allows a user to filter on a facet/field.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| defaultRefinement | ✔️ |
+| facetOrdering | ❌ | Is not supported by Itemsjs |
+| operator | ❌ | ✔️is possible: can be passed to itemsjs when indexing |
+| limit | ✔️ |
+| showMore | ✔️ |
+| showMoreLimit | ✔️ |
+| searchable | ❌ | Is not supported by Itemsjs, ⚠️Warning: when set true UI will change but throws error when used |
+| transformItems | ✔️ |
+| translations | ✔️ |
+
+✔️operator workaround: set `conjunction` to false=and or true=or
+```js
+aggregations: {
+    category: {
+      title: "category",
+      conjunction: false,
+    }
+}
+```
+
+### ✔️ ScrollTo
+[ScrollTo Instantsearch](https://www.algolia.com/doc/api-reference/widgets/scroll-to/react/)
+
+The `ScrollTo` widget allows a user to automatically scroll to an object when the searchState is adjusted.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| scrollOn | ✔️ |
+
+### ✔️ SearchBox
+[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
+
+The `SearchBox` widget allows a user to ...
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| defaultRefinement | ⚠️ | text appears in the search box but the dataset is not searched |
+| autoFocus |  |
+| searchAsYouType | ✔️ |
+| showLoadingIndicator |  |
+| submit |  |
+| reset |  |
+| loadingIndicator |  |
+| focusShortcuts |  |
+| onSubmit |  |
+| onReset |  |
+| on* |  |
+| translations | ✔️ |
+
 ### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
