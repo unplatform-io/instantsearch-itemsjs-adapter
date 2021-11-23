@@ -409,17 +409,28 @@ Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://w
 ### ✔️ StateResults
 [StateResults Instantsearch](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
 
-The `StateResults` widget allows a user to ...
+The `StateResults` widget allows a user to access the searchState and the searchResults of InstantSearch. For instance, this widget allows you to create results/no results or query/no query pages.
 
 ### ✔️ Stats
 [Stats Instantsearch](https://www.algolia.com/doc/api-reference/widgets/stats/react/)
 
-The `Stats` widget allows a user to ...
+The `Stats` widget allows a user to displays the total number of matching hits and the time it took to get them (time spent in Itemsjs)
+
+| Parameter | | Explanation |
+| --- | :---: | --- |
+| translations | ✔️ | |
 
 ### ✔️ ToggleRefinement
 [ToggleRefinement Instantsearch](https://www.algolia.com/doc/api-reference/widgets/toggle-refinement/react/)
 
-The `ToggleRefinement` widget allows a user to ...
+The `ToggleRefinement` widget allows a user to on/off filtering feature based on an attribute value
+
+| Parameter | | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ | |
+| label | ✔️ |
+| value | ✔️ |
+| defaultRefinement | ✔️ | |
 
 ### ✔️ VoiceSearch
 [VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
@@ -432,6 +443,7 @@ The `VoiceSearch` widget allows a user to perform a voice-based query.
 | buttonTextComponent | ✔️ |
 | statusComponent | ✔️ |
 | translations | ✔️ | |
+
 
 ## Tests
 
