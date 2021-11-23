@@ -114,7 +114,7 @@ The `ClearRefinements` widget allows a user to delete all applied filters.
 | --- | :---: | --- |
 | clearsQuery | ✔️ |
 | translations | ✔️ |
-| transformItems | ⚠️ | there is no proof that this parameter works |
+| transformItems | ✔️ |
 
 ### ✔️ Configure
 [Configure Instantsearch](https://www.algolia.com/doc/api-reference/widgets/configure/react/)
@@ -130,8 +130,8 @@ The `CurrentRefinements` widget allows a user to see witch filters are apllied.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
-| clearsQuery | ⚠️ | do not set this to true, the program will no longer work properly |
-| transformItems | ⚠️ | there is no proof that this parameter works |
+| clearsQuery | ❌ | Do not set this to true, the interface will no longer work properly. |
+| transformItems | ✔️ |
 
 ### ✔️ Hits
 [Hits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/hits/react/)
@@ -151,7 +151,7 @@ The `HitsPerPage` widget allows a user to select how many hits wil appear on a p
 | --- | :---: | --- |
 | items | ✔️ |
 | defaultRefinement | ✔️ |
-| transformItems | ⚠️ | there is no proof that this parameter works |
+| transformItems | ✔️ |
 
 ### ✔️ InfiniteHits
 [InfiniteHits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/)
@@ -160,10 +160,10 @@ The `InfiniteHits` widget allows a user to see the result of their search.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
-| showPrevious | ⚠️ | can only be used if URL Sync is implemented |
+| showPrevious | ⚠️ | Can only be used if URL Sync is implemented. |
 | hitComponent | ✔️ |
 | translations | ✔️ |
-| cache | ⚠️ | there is no proof that this parameter works |
+| cache | ✔️ |
 
 ### ✔️ InstantSearch
 [InstantSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/)
@@ -175,12 +175,12 @@ The `InstantSearch` widget allows a user to let all connected comonents (or widg
 | indexName | ✔️ |
 | searchClient | ✔️ |
 | searchState | ✔️ |
-| resultsState |  |
-| createURL | ❌ |
+| resultsState | ⚠️ | There is no proof that this parameter works. | 
+| createURL | ⚠️ | There is no proof that this parameter works. | 
 | onSearchStateChange | ✔️ |
 | onSearchParameters | ❌ |
-| refresh | ⚠️ | there is no proof that this parameter works |
-| stalledSearchDelay | ⚠️ | there is no proof that this parameter works |
+| refresh | ⚠️ | There is no proof that this parameter works. | 
+| stalledSearchDelay | ⚠️ | There is no proof that this parameter works. | 
 
 ### ✔️ Menu
 [Menu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/menu/react/)
@@ -348,11 +348,11 @@ The `SearchBox` widget allows a user to search text based.
 | searchAsYouType | ✔️ |
 | showLoadingIndicator |  |
 | submit |  |
-| reset |  |
+| reset | ✔️ |
 | loadingIndicator |  |
 | focusShortcuts |  |
-| onSubmit |  |
-| onReset |  |
+| onSubmit | ✔️ |
+| onReset | ✔️ |
 | on* |  |
 | translations | ✔️ |
 
