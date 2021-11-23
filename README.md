@@ -426,7 +426,7 @@ The `SearchBox` widget allows a user to search text based.
 The `SearchState` widget allows a user to update their search parameters. When updated automaticly searched.
 
 ### ✔️ Snippet
-[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
+[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
 
 The `Snippet` widget allows a user to displays snippeted attributes of the search results.
 
