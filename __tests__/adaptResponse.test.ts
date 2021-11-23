@@ -40,14 +40,18 @@ describe("adaptResponse tests", () => {
       },
     };
 
-    const instantsearchResponse: SearchResponse =
-      adaptResponse(itemsjsResponse);
+    const query = "gold";
+    const instantsearchResponse: SearchResponse = adaptResponse(
+      itemsjsResponse,
+      query
+    );
 
     expect(instantsearchResponse.page).toBe(1);
     expect(instantsearchResponse.nbPages).toBe(Math.ceil(5 / 3));
     expect(instantsearchResponse.hitsPerPage).toBe(3);
     expect(instantsearchResponse.processingTimeMS).toBe(30);
     expect(instantsearchResponse.nbHits).toBe(5);
+    expect(instantsearchResponse.query).toBe("gold");
   });
 });
 
