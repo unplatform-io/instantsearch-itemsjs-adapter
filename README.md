@@ -2,14 +2,15 @@
 # Instantsearch-itemsjs-adapter
 
 This library is an adapter that connects the search engine [Itemsjs](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
+<br/><br/>
 
 ## Table of Content
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Demo](#demo)
-- [Features](#features)
-- [Tests](#tests)
+🔧 [Installation](#installation)<br/>
+✏️ [Usage](#usage)<br/>
+👀 [Demo](#demo)<br/>
+📜 [Features](#features)<br/>
+🤝 [Contribute](#contribute)<br/><br/>
 
 ## Installation
 Use  `npm`  or  `yarn`  to install  `itemsjs-instantsearch-adapter`:
@@ -21,6 +22,7 @@ yarn add ..
 
 Instantsearch-itemsjs-adapter does not create any UI component by itself.  
 To be able to create a search interface, you'll need to  [install  `Instantsearch`](https://www.algolia.com/doc/guides/building-search-ui/installation/js/) as well.
+<br/><br/>
 
 ## Usage
 
@@ -57,17 +59,19 @@ createIndex(data, options);
 const searchClient = getSearchClient();
 ```
 `options` Options are from the Itemsjs API found here: [Itemsjs](https://github.com/itemsapi/itemsjs)
+<br/><br/>
 
 ## Demo
 
 To see an implementation of this adater go to [unplatform-io/clientside-instantsearch-demo](https://github.com/unplatform-io/clientside-instantsearch-demo).
+<br/><br/>
 
 ## Features
 
 ### Supported Instantsearch components
 | Component | | Explanation |
 | --- | :---: | --- |
-| Autocomplete | ❌ | Connector needed |
+| Autocomplete | ❌ | Is not supported by Itemsjs |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
 | [ClearRefinements](#%EF%B8%8F-clearrefinements) | ✔️ |
 | [Configure](#%EF%B8%8F-configure) | ✔️ |
@@ -83,7 +87,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [InstantSearch](#%EF%B8%8F-instantsearch) | ✔️ |
 | [Menu](#%EF%B8%8F-menu) | ✔️ |
 | [MenuSelect](#%EF%B8%8F-menuselect) | ✔️ |
-| [NumericMenu](#%EF%B8%8F-numericmenu) | ✔️ | Works only with facet_stats (facet_stats WIP) |
+| [NumericMenu](#%EF%B8%8F-numericmenu) | ✔️ |
 | [Pagination](#%EF%B8%8F-pagination) | ✔️ |
 | [Panel](#%EF%B8%8F-panel) | ✔️ |
 | [PoweredBy](#%EF%B8%8F-poweredby) | ✔️ |
@@ -91,7 +95,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | QueryRuleCustomData | |
 | [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
 | [RangeSlider](#%EF%B8%8F-rangeslider) | ✔️ | |
-| [RatingMenu](#%EF%B8%8F-ratingmenu) | ✔️ | Works only with facet_stats (facet_stats WIP) |
+| [RatingMenu](#%EF%B8%8F-ratingmenu) | ✔️ |
 | [RefinementList](#%EF%B8%8F-refinementlist) | ✔️ |
 | RelevantSort | ❌ | Is not supported by Itemsjs |
 | [ScrollTo](#%EF%B8%8F-scrollto) | ✔️ |
@@ -104,6 +108,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [ToggleRefinement](#%EF%B8%8F-togglerefinement) | ✔️ |
 | [VoiceSearch](#%EF%B8%8F-voicesearch) | ✔️ |
 
+<br/><br/>
 
 ### ✔️ ClearRefinements
 [ClearRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
@@ -213,6 +218,39 @@ The `MenuSelect` widget allows a user to filter on a single value for an attribu
 | transformItems | ✔️ |
 | translations | ✔️ |
 
+### ✔️ NumericMenu
+[NumericMenu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/numeric-menu/react/)
+
+The `NumericMenu` widget allows a user to filter on a numeric field through the given ranges.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| items | ✔️ |
+| defaultRefinement | ✔️ |
+| transformItems | ✔️ |
+| translations | ✔️ |
+
+To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
+
+```js
+aggregations: {
+    price: { 
+    	show_facet_stats: true,
+    }, 
+},
+
+<NumericMenu 
+	attribute="price"
+	items={[
+              { label: "Less than 10", end: 10 },
+              { label: "10 till 25", start: 10, end: 25 },
+              { label: "25 till 50", start: 25, end: 50 },
+              { label: "More than 50", start: 50 },
+        ]} 
+/>
+```
+
 ### ✔️ Pagination
 [Pagination Instantsearch](https://www.algolia.com/doc/api-reference/widgets/pagination/react/)
 
@@ -266,9 +304,11 @@ The `rangeInput` widget allows a user to filter on a numeric field using a minim
 With Instantsearch-Itemsjs-adapter you have to define the numericFilter field in `aggregation`. Otherwise, Itemsjs doesn't return the neceassry field for Instantsearch to use, the field in `aggregation` can be left empty.
 Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
 
+To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
+
 ```js
 aggregations: {
-    price: { }, 
+    price: { show_facet_stats: true, }, 
 },
 
 <RangeInput attribute="price" />
@@ -286,6 +326,18 @@ The `RangeSlider` widget allows a user to filter on a numeric field using a mini
 | min | ✔️ |
 | max | ✔️ |
 
+To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
+
+```js
+aggregations: {
+    price: { 
+    	show_facet_stats: true,
+    }, 
+},
+
+<RangeSlider attribute="price" />
+```
+
 ### ✔️ RatingMenu
 [RatingMenu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/rating-menu/react/)
 
@@ -298,6 +350,18 @@ The `RatingMenu` widget allows a user to filter on a numeric field by clicking o
 | min | ✔️ |
 | max | ✔️ |
 | translations | ✔️ |
+
+To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
+
+```js
+aggregations: {
+    price: { 
+    	show_facet_stats: true,
+    }, 
+},
+
+<RatingMenu attribute="price" />
+```
 
 ### ✔️ RefinementList
 [RefinementList Instantsearch](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/)
@@ -442,14 +506,17 @@ The `VoiceSearch` widget allows a user to perform a voice-based query.
 | searchAsYouSpeak | ✔️ | |
 | buttonTextComponent | ✔️ |
 | statusComponent | ✔️ |
-| translations | ✔️ | |
+| translations | ✔️ |
+
+<br/><br/>
 
 
-## Tests
+## Contribute
+Help to this project is appreciated. If you want to help please use Jest and ESlint mentioned below, before creating a pull request.
 
 ### [Jest](https://jestjs.io/)
 
-To run Jest tests
+To check functionalities run Jest tests, and if you make a new functionality also write some tests for this code.
 
 ```bash
 
@@ -459,10 +526,12 @@ npm run test
 
 ### [ESlint](https://eslint.org/)
 
-To run ESlint
+To keep the code clean run ESlint and resolve the errors when you're done programming.
 
 ```bash
-
 npm run eslint
-
+```
+To automaticly resolve the errors run:
+```bash
+npm run eslint:fix
 ```
