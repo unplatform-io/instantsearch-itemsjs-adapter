@@ -3,7 +3,7 @@
 import { Hit, SearchResponse } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
 
-export function adaptResponse(response: ItemsJsResponse): SearchResponse {
+export function adaptResponse(response: ItemsJsResponse, itemsjsRequestQuery): SearchResponse {
   const totalNumberOfPages = Math.ceil(
     response.pagination.total / response.pagination.per_page
   );
@@ -16,7 +16,7 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     nbHits: response.pagination.total,
     processingTimeMS: response.timings.total,
     exhaustiveNbHits: true,
-    query: "",
+    query: itemsjsRequestQuery, 
     params: "",
     facets: adaptFacets(response.data.aggregations),
     facets_stats: adaptFacetsStats(response.data.aggregations),
@@ -55,7 +55,7 @@ export function adaptFacetsStats(
   const instantsearchFacetsStats = {};
 
   facetNames.forEach((name) => {
-    if (itemsJsFacetsStats[name]?.facet_stats) {
+    if (itemsJsFacetsStats[name].facet_stats) {
       instantsearchFacetsStats[name] = itemsJsFacetsStats[name].facet_stats;
     }
   });

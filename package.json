@@ -31,9 +31,7 @@
   "scripts": {
     "test": "jest",
     "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "build": "npx tsc",
-    "clean": "if exist dist ( rd /S /Q dist)",
-    "updateLink": "npm run clean && tsc && npm rm instantsearch-itemsjs-adapter -g && npm link"
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "",
