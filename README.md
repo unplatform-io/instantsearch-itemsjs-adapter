@@ -339,7 +339,7 @@ The `ScrollTo` widget allows a user to automatically scroll to an object when th
 ### ✔️ SearchBox
 [SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
 
-The `SearchBox` widget allows a user to ...
+The `SearchBox` widget allows a user to search text based.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
@@ -355,6 +355,16 @@ The `SearchBox` widget allows a user to ...
 | onReset |  |
 | on* |  |
 | translations | ✔️ |
+
+### ✔️ SearchState
+[SearchState Instantsearch](https://www.algolia.com/doc/api-reference/widgets/ui-state/react/)
+
+The `SearchBox` widget allows a user to update their search parameters.
+
+### ✔️ Snippet
+[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
+
+The `Snippet` widget allows a user to displays snippeted attributes of the search results.
 
 ### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
@@ -382,10 +392,23 @@ sortings:  {
 />
 ```
 
+### ✔️ StateResults
+[StateResults Instantsearch](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
+
+The `StateResults` widget allows a user to ...
+
+### ✔️ Stats
+[Stats Instantsearch](https://www.algolia.com/doc/api-reference/widgets/stats/react/)
+
+The `Stats` widget allows a user to ...
+
+### ✔️ ToggleRefinement
+[ToggleRefinement Instantsearch](https://www.algolia.com/doc/api-reference/widgets/toggle-refinement/react/)
+
+The `ToggleRefinement` widget allows a user to ...
+
 ### ✔️ VoiceSearch
 [VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
-
-
 
 The `VoiceSearch` widget allows a user to perform a voice-based query.
 
