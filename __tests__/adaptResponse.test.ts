@@ -1,5 +1,10 @@
 import { SearchResponse } from "@algolia/client-search";
-import { adaptFacets, adaptHit, adaptResponse } from "../src/adaptResponse";
+import {
+  adaptFacets,
+  adaptHit,
+  adaptResponse,
+  adaptFacetsStats,
+} from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
@@ -35,14 +40,18 @@ describe("adaptResponse tests", () => {
       },
     };
 
-    const instantsearchResponse: SearchResponse =
-      adaptResponse(itemsjsResponse);
+    const query = "gold";
+    const instantsearchResponse: SearchResponse = adaptResponse(
+      itemsjsResponse,
+      query
+    );
 
     expect(instantsearchResponse.page).toBe(1);
     expect(instantsearchResponse.nbPages).toBe(Math.ceil(5 / 3));
     expect(instantsearchResponse.hitsPerPage).toBe(3);
     expect(instantsearchResponse.processingTimeMS).toBe(30);
     expect(instantsearchResponse.nbHits).toBe(5);
+    expect(instantsearchResponse.query).toBe("gold");
   });
 });
 
@@ -100,5 +109,54 @@ describe("adaptFacets tests", () => {
 
     const adaptResult = adaptFacets(itemsJsFacets);
     expect(adaptResult).toMatchObject(instantsearchFacets);
+  });
+});
+
+describe("adaptFacetsStats tests", () => {
+  it("adaptFacetsStats should only take the facet_stats from the aggregation object", () => {
+    const aggregation = {
+      category: {
+        name: "category",
+        title: "category",
+      },
+      price: {
+        name: "price",
+        title: "Price",
+        facet_stats: {
+          min: 7,
+          max: 999,
+          avg: 161.45,
+          sum: 3229,
+        },
+      },
+      rate: {
+        name: "price",
+        title: "Price",
+        facet_stats: {
+          min: 1,
+          max: 5,
+          avg: 3,
+          sum: 26,
+        },
+      },
+    };
+
+    const result = {
+      price: {
+        min: 7,
+        max: 999,
+        avg: 161.45,
+        sum: 3229,
+      },
+      rate: {
+        min: 1,
+        max: 5,
+        avg: 3,
+        sum: 26,
+      },
+    };
+
+    const facetStats = adaptFacetsStats(aggregation);
+    expect(facetStats).toStrictEqual(result);
   });
 });

@@ -3,7 +3,10 @@
 import { Hit, SearchResponse } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
 
-export function adaptResponse(response: ItemsJsResponse): SearchResponse {
+export function adaptResponse(
+  response: ItemsJsResponse,
+  itemsjsRequestQuery
+): SearchResponse {
   const totalNumberOfPages = Math.ceil(
     response.pagination.total / response.pagination.per_page
   );
@@ -16,39 +19,10 @@ export function adaptResponse(response: ItemsJsResponse): SearchResponse {
     nbHits: response.pagination.total,
     processingTimeMS: response.timings.total,
     exhaustiveNbHits: true,
-    query: "",
+    query: itemsjsRequestQuery,
     params: "",
     facets: adaptFacets(response.data.aggregations),
-    /**
-     * Statistics for numerical facets.
-     * Itemsjs doens't return information that can be used to find the statistics: min, max, avg, and sum value needed for numerical facets.
-     */
-    facets_stats: {
-      price: {
-        min: 1,
-        max: 1000,
-        avg: 500,
-        sum: 3505,
-      },
-      reviews: {
-        min: 1,
-        max: 60,
-        avg: 30,
-        sum: 200,
-      },
-      rating: {
-        min: 1,
-        max: 5,
-        avg: 3,
-        sum: 50,
-      },
-      deliveryTime: {
-        min: 1,
-        max: 6,
-        avg: 3,
-        sum: 50,
-      },
-    },
+    facets_stats: adaptFacetsStats(response.data.aggregations),
   };
 }
 
@@ -75,4 +49,19 @@ export function adaptFacets(
   });
 
   return instantsearchFacets;
+}
+
+export function adaptFacetsStats(
+  itemsJsFacetsStats: object
+): Record<string, { min: number; max: number; avg: number; sum: number }> {
+  const facetNames = Object.keys(itemsJsFacetsStats);
+  const instantsearchFacetsStats = {};
+
+  facetNames.forEach((name) => {
+    if (itemsJsFacetsStats[name].facet_stats) {
+      instantsearchFacetsStats[name] = itemsJsFacetsStats[name].facet_stats;
+    }
+  });
+
+  return instantsearchFacetsStats;
 }

@@ -31,9 +31,10 @@ export function performSearch(
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
     const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
+    const itemsjsRequestQuery = itemsjsRequest.query;
     const itemsjsResponse = index.search(itemsjsRequest);
     const InstantSearchResponse = Promise.resolve({
-      results: [adaptResponse(itemsjsResponse)],
+      results: [adaptResponse(itemsjsResponse, itemsjsRequestQuery)],
     });
 
     return InstantSearchResponse;
