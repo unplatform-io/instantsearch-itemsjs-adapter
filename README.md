@@ -7,7 +7,7 @@ This library is an adapter that connects the search engine [Itemsjs](https://git
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Demo]( #demo)
+- [Demo](#demo)
 - [Features](#features)
 - [Tests](#tests)
 
@@ -359,20 +359,31 @@ The `SearchBox` widget allows a user to search text based.
 ### ✔️ SearchState
 [SearchState Instantsearch](https://www.algolia.com/doc/api-reference/widgets/ui-state/react/)
 
-The `SearchBox` widget allows a user to update their search parameters.
+The `SearchState` widget allows a user to update their search parameters. When updated automaticly searched.
 
 ### ✔️ Snippet
 [SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
 
 The `Snippet` widget allows a user to displays snippeted attributes of the search results.
 
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attribute | ✔️ |
+| hit | ✔️ |
+| tagName | ❌ | Is not supported by Itemsjs |
+| nonHighlightedTagName | ✔️ |
+| separator | ✔️ |
+
 ### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
 The `sortBy`  allows a user to change the way hits are sorted. 
 
-The usage of the `sortBy` widget differs from the one found in Aloglia's documentation.
-Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| items | ✔️ |
+| defaultRefinement | ✔️ |
+| transformItems | ✔️ |
 
 With Instantsearch-Itemsjs-adapter you have to define the same key from your configuration `sorting` for the sortBy value.
 Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
@@ -391,6 +402,9 @@ sortings:  {
 	]} 
 />
 ```
+
+The usage of the `sortBy` widget differs from the one found in Aloglia's documentation.
+Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
 
 ### ✔️ StateResults
 [StateResults Instantsearch](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
