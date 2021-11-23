@@ -55,7 +55,7 @@ export function adaptFacetsStats(
   const instantsearchFacetsStats = {};
 
   facetNames.forEach((name) => {
-    if (typeof itemsJsFacetsStats[name].facet_stats !== "undefined") {
+    if (itemsJsFacetsStats[name]?.facet_stats) {
       instantsearchFacetsStats[name] = itemsJsFacetsStats[name].facet_stats;
     }
   });
