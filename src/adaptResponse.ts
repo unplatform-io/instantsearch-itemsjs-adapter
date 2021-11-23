@@ -3,7 +3,10 @@
 import { Hit, SearchResponse } from "@algolia/client-search";
 import { ItemsJsResponse } from "./itemsjsInterface";
 
-export function adaptResponse(response: ItemsJsResponse, itemsjsRequestQuery): SearchResponse {
+export function adaptResponse(
+  response: ItemsJsResponse,
+  itemsjsRequestQuery
+): SearchResponse {
   const totalNumberOfPages = Math.ceil(
     response.pagination.total / response.pagination.per_page
   );
@@ -16,7 +19,7 @@ export function adaptResponse(response: ItemsJsResponse, itemsjsRequestQuery): S
     nbHits: response.pagination.total,
     processingTimeMS: response.timings.total,
     exhaustiveNbHits: true,
-    query: itemsjsRequestQuery, 
+    query: itemsjsRequestQuery,
     params: "",
     facets: adaptFacets(response.data.aggregations),
     facets_stats: adaptFacetsStats(response.data.aggregations),
