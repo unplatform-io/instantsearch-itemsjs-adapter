@@ -5,88 +5,70 @@ import { ItemsJsResponse } from "./itemsjsInterface";
 
 export function adaptResponse(
   response: ItemsJsResponse[],
-  isNumeric: object,
+  isNumeric: object
 ): SearchResponse[] {
-  
-  console.log('isNumeric', isNumeric)
-
-  var first = 0;
-  const responses = response.map(res => {
+  const responses = response.map((res, index) => {
     const totalNumberOfPages = Math.ceil(
       res.pagination.total / res.pagination.per_page
     );
-    
-    if(first == 0) {
-      first++;
-      return {
-        hits: res.data.items.map(adaptHit),
-        page: res.pagination.page - 1,
-        nbPages: totalNumberOfPages,
-        hitsPerPage: res.pagination.per_page,
-        nbHits: res.pagination.total,
-        processingTimeMS: res.timings.total,
-        exhaustiveNbHits: true,
-        exhaustiveFacetsCount: true,
-        query: "",
-        params: "",
-        facets: adaptFacets(res.data.aggregations),
-        facets_stats: adaptFacetsStats(res.data.aggregations),
-      };
-    } else if(first == 1){
-      first++;
-      return {
-          hits: res.data.items.map(adaptHit),
-          page: res.pagination.page - 1,
-          nbPages: totalNumberOfPages,
-          hitsPerPage: res.pagination.per_page,
-          nbHits: res.pagination.total,
-          processingTimeMS: res.timings.total,
-          exhaustiveNbHits: true,
-          exhaustiveFacetsCount: true,
-          query: "",
-          params: "",
-          facets: {category: {
-            "electronics": 6,
-            "women's clothing": 6,
-            "jewelery": 4,
-            "men's clothing": 4
-        }},
-      };
+
+    const response = {
+      hits: res.data.items.map(adaptHit),
+      page: res.pagination.page - 1,
+      nbPages: totalNumberOfPages,
+      hitsPerPage: res.pagination.per_page,
+      nbHits: res.pagination.total,
+      processingTimeMS: res.timings.total,
+      exhaustiveNbHits: true,
+      exhaustiveFacetsCount: true,
+      query: "",
+      params: "",
+    };
+
+    if (index == 0) {
+      (response["facets"] = adaptFacets(res.data.aggregations)),
+        (response["facets_stats"] = adaptFacetsStats(res.data.aggregations));
     } else {
-        return {
-          hits: res.data.items.map(adaptHit),
-          page: res.pagination.page - 1,
-          nbPages: totalNumberOfPages,
-          hitsPerPage: res.pagination.per_page,
-          nbHits: res.pagination.total,
-          processingTimeMS: res.timings.total,
-          exhaustiveNbHits: true,
-          exhaustiveFacetsCount: true,
-          query: "",
-          params: "",
-          facets: adaptFacets(res.data.aggregations),
-          facets_stats: adaptFacetsStats(res.data.aggregations),
-      };
+      const facet = isNumeric[index - 1];
+
+      const key = Object.keys(facet)[0];
+      const value = Object.values(facet)[0];
+
+      response["facets"] = adaptSingleFacet(res.data.aggregations, key);
+
+      if (value) {
+        response["facets_stats"] = adaptSingleFacetStats(
+          res.data.aggregations,
+          key
+        );
+      }
     }
 
-    // return {
-    //   hits: res.data.items.map(adaptHit),
-    //   page: res.pagination.page - 1,
-    //   nbPages: totalNumberOfPages,
-    //   hitsPerPage: res.pagination.per_page,
-    //   nbHits: res.pagination.total,
-    //   processingTimeMS: res.timings.total,
-    //   exhaustiveNbHits: true,
-    //   exhaustiveFacetsCount: true,
-    //   query: "",
-    //   params: "",
-    //   facets: adaptFacets(res.data.aggregations),
-    //   facets_stats: adaptFacetsStats(res.data.aggregations),
-    // };
+    return response;
+  });
 
-  })
-  
   return responses;
+}
+
+export function adaptSingleFacet(itemsJsFacets, name) {
+  const instantsearchFacets = {};
+  instantsearchFacets[name] = {};
+
+  itemsJsFacets[name].buckets.forEach(({ key, doc_count }) => {
+    instantsearchFacets[name][key] = doc_count;
+  });
+
+  return instantsearchFacets;
+}
+
+export function adaptSingleFacetStats(itemsJsFacets, name) {
+  const instantsearchFacetsStats = {};
+
+  if (itemsJsFacets[name].facet_stats) {
+    instantsearchFacetsStats[name] = itemsJsFacets[name].facet_stats;
+  }
+
+  return instantsearchFacetsStats;
 }
 
 export function adaptHit(item): Hit<object> {

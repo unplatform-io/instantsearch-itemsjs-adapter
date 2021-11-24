@@ -2,44 +2,46 @@
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { ItemsJsRequest, ReturnAdaptRequest } from "./itemsjsInterface";
 
-export function adaptRequest(request: MultipleQueriesQuery[]): ReturnAdaptRequest {
-  var facetorder =[];
-  var first = true
-  const responses = request.map(req => {
+export function adaptRequest(
+  request: MultipleQueriesQuery[]
+): ReturnAdaptRequest {
+  const facetorder = [];
+  let first = true;
+  const responses = request.map((req) => {
     const numericFilters = <string[]>req.params.numericFilters;
     const facets = <string[]>req.params.facets;
     const facetFilters = req.params.facetFilters;
     const sort = req.indexName; // IndexName will be assigned the SortBy value if selected.
 
-    if(first) {
+    if (first) {
       first = false;
     } else {
       facetorder.push(req.params.facets);
     }
 
-    var response: ItemsJsRequest = {
+    const response: ItemsJsRequest = {
       query: req.params.query,
       per_page: req.params.hitsPerPage,
       page: adaptPage(req.params.page),
       indexName: req.indexName,
       sort: sort,
     };
-  
+
     if (facets) {
       response.aggregations = facets;
     }
-  
+
     if (numericFilters && numericFilters.length > 0) {
       const filters = adaptNumericFilters(numericFilters);
       response.filter = (item) => filters.every((filter) => filter(item));
     }
-  
+
     if (facetFilters && facetFilters.length > 0) {
       response.filters = adaptFilters(req.params.facetFilters);
     }
 
     return response;
-  })
+  });
 
   return { responses: responses, facetorder: facetorder };
 }
