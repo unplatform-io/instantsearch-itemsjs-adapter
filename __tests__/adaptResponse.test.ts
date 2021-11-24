@@ -4,45 +4,46 @@ import {
   adaptHit,
   adaptResponse,
   adaptFacetsStats,
+  adaptSingleFacetStats,
 } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsjsResponse: ItemsJsResponse[] = [{
-      pagination: {
-        per_page: 3,
-        total: 5,
-        page: 2,
-      },
-      timings: {
-        facets: 10,
-        search: 10,
-        sorting: 10,
-        total: 30,
-      },
-      data: {
-        items: [{ objectID: "" }, { objectID: "" }],
-        aggregations: {
-          category: {
-            buckets: [
-              {
-                key: "testKey 1",
-                doc_count: 5,
-                selected: false,
-              },
-            ],
-            name: null,
-            posistion: null,
-            title: null,
+    const itemsjsResponse: ItemsJsResponse[] = [
+      {
+        pagination: {
+          per_page: 3,
+          total: 5,
+          page: 2,
+        },
+        timings: {
+          facets: 10,
+          search: 10,
+          sorting: 10,
+          total: 30,
+        },
+        data: {
+          items: [{ objectID: "" }, { objectID: "" }],
+          aggregations: {
+            category: {
+              buckets: [
+                {
+                  key: "testKey 1",
+                  doc_count: 5,
+                  selected: false,
+                },
+              ],
+              name: null,
+              posistion: null,
+              title: null,
+            },
           },
         },
       },
-    }];
+    ];
 
-    const isNumeric = [{
-      
-    }]
+    const isNumeric = [{}];
 
     const instantsearchResponse: SearchResponse[] = adaptResponse(
       itemsjsResponse,
@@ -161,5 +162,42 @@ describe("adaptFacetsStats tests", () => {
 
     const facetStats = adaptFacetsStats(aggregation);
     expect(facetStats).toStrictEqual(result);
+  });
+});
+
+describe("adaptSingleFacetStats tests", () => {
+  it("", () => {
+    const itemsJsFacets = {
+      category: {
+        name: "category",
+        title: "category",
+      },
+      price: {
+        name: "price",
+        title: "Price",
+        facet_stats: {
+          min: 7,
+          max: 999,
+          avg: 161.45,
+          sum: 3229,
+        },
+      },
+      rate: {
+        name: "rate",
+        title: "Rate",
+        facet_stats: {
+          min: 1,
+          max: 5,
+          avg: 3,
+          sum: 26,
+        },
+      },
+    };
+
+    const name = "price";
+    const expected = { price: { min: 7, max: 999, avg: 161.45, sum: 3229 } };
+
+    const result = adaptSingleFacetStats(itemsJsFacets, name);
+    expect(result).toStrictEqual(expected);
   });
 });
