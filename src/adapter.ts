@@ -9,9 +9,11 @@ import {
   ItemsJsRequest,
   ItemsJsOptions,
   SearchClient,
+  ReturnAdaptRequest,
 } from "./itemsjsInterface";
 
 let index;
+let option: ItemsJsOptions;
 
 export function getSearchClient(): SearchClient {
   return {
@@ -23,6 +25,7 @@ export function getSearchClient(): SearchClient {
 }
 
 export function createIndex(data: object, options: ItemsJsOptions): void {
+  option = options
   index = itemsjs(data, options);
 }
 
@@ -30,11 +33,20 @@ export function performSearch(
   request: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
-    const itemsjsRequestQuery = itemsjsRequest.query;
-    const itemsjsResponse = index.search(itemsjsRequest);
+    const itemsjsRequest: ReturnAdaptRequest = adaptRequest(request);
+
+    const isNumeric = {};
+    
+    itemsjsRequest.facetorder.forEach(f => {
+      isNumeric[f] = option.aggregations[f].show_facet_stats == true
+    })
+    
+    const itemsjsResponse = itemsjsRequest.responses.map(req => {
+      return index.search(req)
+    })
+
     const InstantSearchResponse = Promise.resolve({
-      results: [adaptResponse(itemsjsResponse, itemsjsRequestQuery)],
+      results: adaptResponse(itemsjsResponse, isNumeric),
     });
 
     return InstantSearchResponse;

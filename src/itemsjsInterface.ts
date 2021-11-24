@@ -22,7 +22,7 @@ export interface ItemsJsOptions {
 }
 
 export interface ItemsJsRequest {
-  query: string;
+  query?: string;
   per_page: number;
   page: number;
   indexName: string;
@@ -30,6 +30,11 @@ export interface ItemsJsRequest {
   aggregations?: string[];
   filter?: object;
   sort?: string;
+}
+
+export interface ReturnAdaptRequest {
+  responses: ItemsJsRequest[];
+  facetorder: string[];
 }
 
 export interface ItemsJsResponse {

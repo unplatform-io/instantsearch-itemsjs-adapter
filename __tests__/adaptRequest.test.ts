@@ -31,14 +31,14 @@ describe("adaptRequest tests", () => {
       },
     ];
 
-    const itemsjsRequest: ItemsJsRequest = adaptRequest(instantsearchRequest);
+    const itemsjsRequest: ItemsJsRequest[] = adaptRequest(instantsearchRequest);
 
-    expect(itemsjsRequest.query).toBe("a");
-    expect(itemsjsRequest.page).toBe(3);
-    expect(itemsjsRequest.per_page).toBe(5);
-    expect(itemsjsRequest.aggregations).toMatchObject(["price", "in_stock"]);
-    expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
-    expect(itemsjsRequest.indexName).toBe("products");
+    expect(itemsjsRequest[0].query).toBe("a");
+    expect(itemsjsRequest[0].page).toBe(3);
+    expect(itemsjsRequest[0].per_page).toBe(5);
+    expect(itemsjsRequest[0].aggregations).toMatchObject(["price", "in_stock"]);
+    expect(itemsjsRequest[0].filter).toBeDefined(); // Returns native javascript .filter() function
+    expect(itemsjsRequest[0].indexName).toBe("products");
     expect(itemsjsRequest.sort).toBe("products");
   });
 });

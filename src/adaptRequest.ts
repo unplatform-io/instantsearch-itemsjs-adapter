@@ -1,35 +1,47 @@
 //Instantsearch request to itemsjs request
 import { MultipleQueriesQuery } from "@algolia/client-search";
-import { ItemsJsRequest } from "./itemsjsInterface";
+import { ItemsJsRequest, ReturnAdaptRequest } from "./itemsjsInterface";
 
-export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
-  const numericFilters = <string[]>request[0].params.numericFilters;
-  const facets = <string[]>request[0].params.facets;
-  const facetFilters = request[0].params.facetFilters;
-  const sort = request[0].indexName; // IndexName will be assigned the SortBy value if selected.
+export function adaptRequest(request: MultipleQueriesQuery[]): ReturnAdaptRequest {
+  var facetorder =[];
+  var first = true
+  const responses = request.map(req => {
+    const numericFilters = <string[]>req.params.numericFilters;
+    const facets = <string[]>req.params.facets;
+    const facetFilters = req.params.facetFilters;
+    const sort = req.indexName; // IndexName will be assigned the SortBy value if selected.
 
-  const response: ItemsJsRequest = {
-    query: request[0].params.query,
-    per_page: request[0].params.hitsPerPage,
-    page: adaptPage(request[0].params.page),
-    indexName: request[0].indexName,
-    sort: sort,
-  };
+    if(first) {
+      first = false;
+    } else {
+      facetorder.push(req.params.facets);
+    }
 
-  if (facets) {
-    response.aggregations = facets;
-  }
+    var response: ItemsJsRequest = {
+      query: req.params.query,
+      per_page: req.params.hitsPerPage,
+      page: adaptPage(req.params.page),
+      indexName: req.indexName,
+      sort: sort,
+    };
+  
+    if (facets) {
+      response.aggregations = facets;
+    }
+  
+    if (numericFilters && numericFilters.length > 0) {
+      const filters = adaptNumericFilters(numericFilters);
+      response.filter = (item) => filters.every((filter) => filter(item));
+    }
+  
+    if (facetFilters && facetFilters.length > 0) {
+      response.filters = adaptFilters(req.params.facetFilters);
+    }
 
-  if (numericFilters && numericFilters.length > 0) {
-    const filters = adaptNumericFilters(numericFilters);
-    response.filter = (item) => filters.every((filter) => filter(item));
-  }
+    return response;
+  })
 
-  if (facetFilters && facetFilters.length > 0) {
-    response.filters = adaptFilters(request[0].params.facetFilters);
-  }
-
-  return response;
+  return { responses: responses, facetorder: facetorder };
 }
 
 export function adaptPage(page: number): number {

@@ -1,0 +1,24 @@
+{
+    "requests":[
+       {
+          "indexName":"instant_search",
+          "params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&query=&attributesToSnippet=%5B%22description%3A10%22%5D&snippetEllipsisText=%E2%80%A6&removeWordsIfNoResults=allOptional&maxValuesPerFacet=10&hitsPerPage=16&page=0&facets=%5B%22brand%22%2C%22price%22%2C%22free_shipping%22%2C%22rating%22%2C%22hierarchicalCategories.lvl0%22%2C%22hierarchicalCategories.lvl1%22%5D&tagFilters=&facetFilters=%5B%5B%22brand%3ADeLonghi%22%5D%2C%5B%22free_shipping%3Atrue%22%5D%2C%5B%22hierarchicalCategories.lvl0%3AAppliances%22%5D%5D&numericFilters=%5B%22price%3E%3D990%22%5D"
+       },
+       {
+          "indexName":"instant_search",
+          "params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&query=&attributesToSnippet=%5B%22description%3A10%22%5D&snippetEllipsisText=%E2%80%A6&removeWordsIfNoResults=allOptional&maxValuesPerFacet=10&hitsPerPage=1&page=0&attributesToRetrieve=%5B%5D&attributesToHighlight=%5B%5D&tagFilters=&analytics=false&clickAnalytics=false&facets=brand&numericFilters=%5B%22price%3E%3D990%22%5D&facetFilters=%5B%5B%22free_shipping%3Atrue%22%5D%2C%5B%22hierarchicalCategories.lvl0%3AAppliances%22%5D%5D"
+       },
+       {
+          "indexName":"instant_search",
+          "params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&query=&attributesToSnippet=%5B%22description%3A10%22%5D&snippetEllipsisText=%E2%80%A6&removeWordsIfNoResults=allOptional&maxValuesPerFacet=10&hitsPerPage=1&page=0&attributesToRetrieve=%5B%5D&attributesToHighlight=%5B%5D&tagFilters=&analytics=false&clickAnalytics=false&facets=free_shipping&numericFilters=%5B%22price%3E%3D990%22%5D&facetFilters=%5B%5B%22brand%3ADeLonghi%22%5D%2C%5B%22hierarchicalCategories.lvl0%3AAppliances%22%5D%5D"
+       },
+       {
+          "indexName":"instant_search",
+          "params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&query=&attributesToSnippet=%5B%22description%3A10%22%5D&snippetEllipsisText=%E2%80%A6&removeWordsIfNoResults=allOptional&maxValuesPerFacet=10&hitsPerPage=1&page=0&attributesToRetrieve=%5B%5D&attributesToHighlight=%5B%5D&tagFilters=&analytics=false&clickAnalytics=false&facets=price&facetFilters=%5B%5B%22brand%3ADeLonghi%22%5D%2C%5B%22free_shipping%3Atrue%22%5D%2C%5B%22hierarchicalCategories.lvl0%3AAppliances%22%5D%5D"
+       },
+       {
+          "indexName":"instant_search",
+          "params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&query=&attributesToSnippet=%5B%22description%3A10%22%5D&snippetEllipsisText=%E2%80%A6&removeWordsIfNoResults=allOptional&maxValuesPerFacet=10&hitsPerPage=1&page=0&attributesToRetrieve=%5B%5D&attributesToHighlight=%5B%5D&tagFilters=&analytics=false&clickAnalytics=false&facets=%5B%22hierarchicalCategories.lvl0%22%5D&numericFilters=%5B%22price%3E%3D990%22%5D&facetFilters=%5B%5B%22brand%3ADeLonghi%22%5D%2C%5B%22free_shipping%3Atrue%22%5D%5D"
+       }
+    ]
+ }
