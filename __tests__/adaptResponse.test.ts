@@ -9,7 +9,7 @@ import { ItemsJsResponse } from "../src/itemsjsInterface";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsjsResponse: ItemsJsResponse = {
+    const itemsjsResponse: ItemsJsResponse[] = [{
       pagination: {
         per_page: 3,
         total: 5,
@@ -38,20 +38,23 @@ describe("adaptResponse tests", () => {
           },
         },
       },
-    };
+    }];
 
-    const query = "gold";
-    const instantsearchResponse: SearchResponse = adaptResponse(
+    const isNumeric = [{
+      
+    }]
+
+    const instantsearchResponse: SearchResponse[] = adaptResponse(
       itemsjsResponse,
-      query
+      isNumeric
     );
 
-    expect(instantsearchResponse.page).toBe(1);
-    expect(instantsearchResponse.nbPages).toBe(Math.ceil(5 / 3));
-    expect(instantsearchResponse.hitsPerPage).toBe(3);
-    expect(instantsearchResponse.processingTimeMS).toBe(30);
-    expect(instantsearchResponse.nbHits).toBe(5);
-    expect(instantsearchResponse.query).toBe("gold");
+    expect(instantsearchResponse[0].page).toBe(1);
+    expect(instantsearchResponse[0].nbPages).toBe(Math.ceil(5 / 3));
+    expect(instantsearchResponse[0].hitsPerPage).toBe(3);
+    expect(instantsearchResponse[0].processingTimeMS).toBe(30);
+    expect(instantsearchResponse[0].nbHits).toBe(5);
+    expect(instantsearchResponse[0].query).toBe("");
   });
 });
 
