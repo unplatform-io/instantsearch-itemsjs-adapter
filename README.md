@@ -41,6 +41,9 @@ const  options = {
 			size:  10,
 			conjunction:  false,
 		},
+		price: {
+			show_facat_stats: true
+		},
 	},
 	sortings: {
 		price_asc: {
@@ -91,8 +94,8 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [Pagination](#%EF%B8%8F-pagination) | ✔️ |
 | [Panel](#%EF%B8%8F-panel) | ✔️ |
 | [PoweredBy](#%EF%B8%8F-poweredby) | ✔️ |
-| QueryRuleContext | |
-| QueryRuleCustomData | |
+| QueryRuleContext | ❌ | Is not supported by Itemsjs |
+| QueryRuleCustomData | ❌ | Is not supported by Itemsjs |
 | [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
 | [RangeSlider](#%EF%B8%8F-rangeslider) | ✔️ | |
 | [RatingMenu](#%EF%B8%8F-ratingmenu) | ✔️ |
