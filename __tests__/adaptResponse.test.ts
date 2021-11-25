@@ -1,4 +1,3 @@
-import { SearchResponse } from "@algolia/client-search";
 import {
   adaptFacets,
   adaptHit,
@@ -6,52 +5,16 @@ import {
   adaptFacetsStats,
 } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
+import outputs from "./adaptResponseOutput.json";
+import inputs from "./adaptResponseInput.json";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsjsResponse: ItemsJsResponse = {
-      pagination: {
-        per_page: 3,
-        total: 5,
-        page: 2,
-      },
-      timings: {
-        facets: 10,
-        search: 10,
-        sorting: 10,
-        total: 30,
-      },
-      data: {
-        items: [{ objectID: "" }, { objectID: "" }],
-        aggregations: {
-          category: {
-            buckets: [
-              {
-                key: "testKey 1",
-                doc_count: 5,
-                selected: false,
-              },
-            ],
-            name: null,
-            posistion: null,
-            title: null,
-          },
-        },
-      },
-    };
+    const itemsjsResponse: ItemsJsResponse = inputs[0];
 
-    const query = "gold";
-    const instantsearchResponse: SearchResponse = adaptResponse(
-      itemsjsResponse,
-      query
-    );
+    const instantsearchResponse = adaptResponse(itemsjsResponse);
 
-    expect(instantsearchResponse.page).toBe(1);
-    expect(instantsearchResponse.nbPages).toBe(Math.ceil(5 / 3));
-    expect(instantsearchResponse.hitsPerPage).toBe(3);
-    expect(instantsearchResponse.processingTimeMS).toBe(30);
-    expect(instantsearchResponse.nbHits).toBe(5);
-    expect(instantsearchResponse.query).toBe("gold");
+    expect(instantsearchResponse).toStrictEqual(outputs[0]);
   });
 });
 

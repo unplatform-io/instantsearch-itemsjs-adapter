@@ -10,7 +10,5 @@
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently */
     "resolveJsonModule": true, /* Allow to import .json extensions*/
   },
-  "include": [
-    "src"
-, "babel.config.js"  ]
+  "include": ["src"]
 }
