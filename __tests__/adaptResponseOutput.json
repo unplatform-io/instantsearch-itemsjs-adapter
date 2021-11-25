@@ -102,7 +102,7 @@
 	"nbPages": 2,
 	"page": 0,
 	"params": "",
-	"processingTimeMS": 0,
+	"processingTimeMS": 2,
 	"query": ""
 }, {
 	"exhaustiveFacetsCount": true,
@@ -152,7 +152,7 @@
 	"nbPages": 2,
 	"page": 0,
 	"params": "",
-	"processingTimeMS": 0,
+	"processingTimeMS": 5,
 	"query": ""
 }, {
 	"exhaustiveFacetsCount": true,
@@ -202,6 +202,6 @@
 	"nbPages": 2,
 	"page": 0,
 	"params": "",
-	"processingTimeMS": 0,
+	"processingTimeMS": 6,
 	"query": ""
 }]

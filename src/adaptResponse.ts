@@ -7,6 +7,7 @@ export function adaptResponse(
   response: ItemsJsResponse[],
   isNumeric: object
 ): SearchResponse[] {
+  let processingTimeMS = 0;
   const responses = response.map((res, index) => {
     const totalNumberOfPages = Math.ceil(
       res.pagination.total / res.pagination.per_page
@@ -18,7 +19,8 @@ export function adaptResponse(
       nbPages: totalNumberOfPages,
       hitsPerPage: res.pagination.per_page,
       nbHits: res.pagination.total,
-      processingTimeMS: res.timings.total,
+      processingTimeMS: (processingTimeMS =
+        processingTimeMS + res.timings.total),
       exhaustiveNbHits: true,
       exhaustiveFacetsCount: true,
       query: "",
