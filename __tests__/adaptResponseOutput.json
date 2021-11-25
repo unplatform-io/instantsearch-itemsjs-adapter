@@ -1,5 +1,4 @@
 [{
-	"exhaustiveFacetsCount": true,
 	"exhaustiveNbHits": true,
 	"facets": {
 		"category": {

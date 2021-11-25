@@ -22,10 +22,16 @@ const options: ItemsJsOptions = {
       size: 10,
       conjunction: false,
     },
+    price: {
+      title: "price",
+      size: 10,
+      conjunction: false,
+      show_facet_stats: true,
+    },
   },
 };
 
-const request: MultipleQueriesQuery[] = [
+const requests: MultipleQueriesQuery[] = [
   {
     indexName: "instant_search",
     params: {
@@ -39,6 +45,19 @@ const request: MultipleQueriesQuery[] = [
       tagFilters: "",
     },
   },
+  {
+    indexName: "instant_search",
+    params: {
+      highlightPreTag: "<ais-highlight-0000000000>",
+      highlightPostTag: "</ais-highlight-0000000000>",
+      query: "",
+      maxValuesPerFacet: 10,
+      page: 0,
+      hitsPerPage: per_page,
+      facets: ["price"],
+      tagFilters: "",
+    },
+  },
 ];
 
 describe("performSearch", () => {
@@ -46,7 +65,7 @@ describe("performSearch", () => {
     createIndex(products, options);
 
     const response: Readonly<MultipleQueriesResponse<object>> =
-      await performSearch(request);
+      await performSearch(requests);
 
     expect(response.results[0].hits.length).toBe(per_page || products.length);
     expect(response.results[0].page).toBe(page - 1);
@@ -57,5 +76,41 @@ describe("performSearch", () => {
     expect(response.results[0].exhaustiveNbHits).toBe(true);
     expect(response.results[0].query).toBe(query);
     expect(response.results[0].params).toBe("");
+    expect(response.results[0].facets).toStrictEqual({
+      category: {
+        electronics: 6,
+        "women's clothing": 6,
+        jewelery: 4,
+        "men's clothing": 4,
+      },
+    });
+    expect(response.results[0].facets_stats).toStrictEqual({});
+
+    expect(response.results[1].hits.length).toBe(per_page || products.length);
+    expect(response.results[1].page).toBe(page - 1);
+    expect(response.results[1].nbPages).toBe(totalNumberOfPages);
+    expect(response.results[1].hitsPerPage).toBe(per_page);
+    expect(response.results[1].nbHits).toBe(products.length);
+    expect(response.results[1].processingTimeMS).toBeGreaterThanOrEqual(0);
+    expect(response.results[1].exhaustiveNbHits).toBe(true);
+    expect(response.results[1].query).toBe(query);
+    expect(response.results[1].params).toBe("");
+    expect(response.results[1].facets).toStrictEqual({
+      price: {
+        "109": 2,
+        "114": 1,
+        "168": 1,
+        "10.99": 1,
+        "109.95": 1,
+        "12.99": 1,
+        "15.99": 1,
+        "22.3": 1,
+        "29.95": 1,
+        "39.99": 1,
+      },
+    });
+    expect(response.results[1].facets_stats).toStrictEqual({
+      price: { min: 7, max: 999, avg: 161.45, sum: 3229 },
+    });
   });
 });

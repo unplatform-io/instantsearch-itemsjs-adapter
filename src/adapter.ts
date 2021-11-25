@@ -5,14 +5,9 @@ import {
   MultipleQueriesResponse,
   MultipleQueriesQuery,
 } from "@algolia/client-search";
-import {
-  ItemsJsOptions,
-  SearchClient,
-  ReturnAdaptRequest,
-} from "./itemsjsInterface";
+import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 
 let index;
-let option: ItemsJsOptions;
 
 export function getSearchClient(): SearchClient {
   return {
@@ -24,33 +19,35 @@ export function getSearchClient(): SearchClient {
 }
 
 export function createIndex(data: object, options: ItemsJsOptions): void {
-  option = options;
   index = itemsjs(data, options);
 }
 
 export function performSearch(
-  request: MultipleQueriesQuery[]
+  requests: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest: ReturnAdaptRequest = adaptRequest(request);
+    const responses = requests.map((request) => {
+      const adaptedRequest = adaptRequest(request);
+      const itemsJsRes = index.search(adaptedRequest);
 
-    const isNumeric = [];
-    itemsjsRequest.facetorder.forEach((facetName) => {
-      const facetObject = {};
-      facetObject[facetName] =
-        option.aggregations[facetName].show_facet_stats == true;
-      isNumeric.push(facetObject);
+      // Are there any aggregations?
+      if (itemsJsRes.data.aggregations) {
+        // Only copy the requested aggregations
+        const filteredAggregations = {};
+        Object.keys(itemsJsRes.data.aggregations).forEach((aggregationName) => {
+          if (request.params.facets.includes(aggregationName)) {
+            filteredAggregations[aggregationName] =
+              itemsJsRes.data.aggregations[aggregationName];
+          }
+        });
+
+        itemsJsRes.data.aggregations = filteredAggregations;
+      }
+
+      return adaptResponse(itemsJsRes);
     });
 
-    const itemsjsResponse = itemsjsRequest.responses.map((req) => {
-      return index.search(req);
-    });
-
-    const InstantSearchResponse = Promise.resolve({
-      results: adaptResponse(itemsjsResponse, isNumeric),
-    });
-
-    return InstantSearchResponse;
+    return Promise.resolve({ results: responses });
   }
   return null;
 }

@@ -32,11 +32,6 @@ export interface ItemsJsRequest {
   sort?: string;
 }
 
-export interface ReturnAdaptRequest {
-  responses: ItemsJsRequest[];
-  facetorder: string[];
-}
-
 export interface ItemsJsResponse {
   pagination: {
     per_page: number;

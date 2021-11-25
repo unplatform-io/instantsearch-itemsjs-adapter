@@ -6,7 +6,6 @@ import {
   adaptNumericFilters,
   parseRange,
 } from "../src/adaptRequest";
-import { ReturnAdaptRequest } from "../src/itemsjsInterface";
 
 describe("adaptPage tests", () => {
   it("adaptpage(x) should return x+1", () => {
@@ -18,32 +17,26 @@ describe("adaptPage tests", () => {
 
 describe("adaptRequest tests", () => {
   it("adaptRequest should convert request to ItemsJs request", () => {
-    const instantsearchRequest: MultipleQueriesQuery[] = [
-      {
-        indexName: "products",
-        params: {
-          query: "a",
-          page: 2,
-          hitsPerPage: 5,
-          facets: ["price", "in_stock"],
-          numericFilters: ["price>=10", "price<=100"],
-        },
+    const instantsearchRequest: MultipleQueriesQuery = {
+      indexName: "products",
+      params: {
+        query: "a",
+        page: 2,
+        hitsPerPage: 5,
+        facets: ["price", "in_stock"],
+        numericFilters: ["price>=10", "price<=100"],
       },
-    ];
+    };
 
-    const itemsjsRequest: ReturnAdaptRequest =
-      adaptRequest(instantsearchRequest);
+    const itemsjsRequest = adaptRequest(instantsearchRequest);
 
-    expect(itemsjsRequest.responses[0].query).toBe("a");
-    expect(itemsjsRequest.responses[0].page).toBe(3);
-    expect(itemsjsRequest.responses[0].per_page).toBe(5);
-    expect(itemsjsRequest.responses[0].aggregations).toMatchObject([
-      "price",
-      "in_stock",
-    ]);
-    expect(itemsjsRequest.responses[0].filter).toBeDefined(); // Returns native javascript .filter() function
-    expect(itemsjsRequest.responses[0].indexName).toBe("products");
-    expect(itemsjsRequest.responses[0].sort).toBe("products");
+    expect(itemsjsRequest.query).toBe("a");
+    expect(itemsjsRequest.page).toBe(3);
+    expect(itemsjsRequest.per_page).toBe(5);
+    expect(itemsjsRequest.aggregations).toMatchObject(["price", "in_stock"]);
+    expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
+    expect(itemsjsRequest.indexName).toBe("products");
+    expect(itemsjsRequest.sort).toBe("products");
   });
 });
 

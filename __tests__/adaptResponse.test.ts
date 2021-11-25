@@ -1,31 +1,20 @@
-import { SearchResponse } from "@algolia/client-search";
 import {
   adaptFacets,
   adaptHit,
   adaptResponse,
   adaptFacetsStats,
-  adaptSingleFacetStats,
-  adaptSingleFacet,
 } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
-import output from "./adaptResponseOutput.json";
-import input from "./adaptResponseInput.json";
+import outputs from "./adaptResponseOutput.json";
+import inputs from "./adaptResponseInput.json";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsjsResponse: ItemsJsResponse[] = input;
+    const itemsjsResponse: ItemsJsResponse = inputs[0];
 
-    const isNumeric = [{ category: false }, { price: true }, { rating: true }];
+    const instantsearchResponse = adaptResponse(itemsjsResponse);
 
-    const instantsearchResponse: SearchResponse[] = adaptResponse(
-      itemsjsResponse,
-      isNumeric
-    );
-
-    expect(instantsearchResponse[0]).toStrictEqual(output[0]);
-    expect(instantsearchResponse[1]).toStrictEqual(output[1]);
-    expect(instantsearchResponse[2]).toStrictEqual(output[2]);
-    expect(instantsearchResponse[3]).toStrictEqual(output[3]);
+    expect(instantsearchResponse).toStrictEqual(outputs[0]);
   });
 });
 
@@ -132,82 +121,5 @@ describe("adaptFacetsStats tests", () => {
 
     const facetStats = adaptFacetsStats(aggregation);
     expect(facetStats).toStrictEqual(result);
-  });
-});
-
-describe("adaptSingleFacetStats tests", () => {
-  it("should only return price stats", () => {
-    const itemsJsFacets = {
-      category: {
-        name: "category",
-        title: "category",
-      },
-      price: {
-        name: "price",
-        title: "Price",
-        facet_stats: {
-          min: 7,
-          max: 999,
-          avg: 161.45,
-          sum: 3229,
-        },
-      },
-      rate: {
-        name: "rate",
-        title: "Rate",
-        facet_stats: {
-          min: 1,
-          max: 5,
-          avg: 3,
-          sum: 26,
-        },
-      },
-    };
-
-    const name = "price";
-    const expected = { price: { min: 7, max: 999, avg: 161.45, sum: 3229 } };
-
-    const result = adaptSingleFacetStats(itemsJsFacets, name);
-    expect(result).toStrictEqual(expected);
-  });
-});
-
-describe("adaptSingleFacet tests", () => {
-  it("should only return category facet with doc_count", () => {
-    const itemsJsFacets = {
-      category: {
-        buckets: [
-          { key: "electronics", doc_count: 3, selected: false },
-          { key: "women's clothing", doc_count: 2, selected: false },
-          { key: "jewelery", doc_count: 5, selected: true },
-          { key: "men's clothing", doc_count: 7, selected: false },
-        ],
-        name: "category",
-        position: 1,
-        title: "category",
-      },
-      color: {
-        buckets: [
-          { key: "red", doc_count: 3, selected: false },
-          { key: "blue", doc_count: 2, selected: false },
-          { key: "green", doc_count: 5, selected: true },
-        ],
-        name: "color",
-        position: 2,
-        title: "color",
-      },
-    };
-
-    const instantsearchFacet = {
-      category: {
-        electronics: 3,
-        "women's clothing": 2,
-        jewelery: 5,
-        "men's clothing": 7,
-      },
-    };
-
-    const adaptResult = adaptSingleFacet(itemsJsFacets, "category");
-    expect(adaptResult).toStrictEqual(instantsearchFacet);
   });
 });
