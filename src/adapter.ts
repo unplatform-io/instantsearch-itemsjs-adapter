@@ -35,12 +35,11 @@ export function performSearch(
     const itemsjsRequest: ReturnAdaptRequest = adaptRequest(request);
 
     const isNumeric = [];
-
-    itemsjsRequest.facetorder.forEach((f) => {
-      const object = {};
-      object[f] = option.aggregations[f].show_facet_stats == true;
-
-      isNumeric.push(object);
+    itemsjsRequest.facetorder.forEach((facetName) => {
+      const facetObject = {};
+      facetObject[facetName] =
+        option.aggregations[facetName].show_facet_stats == true;
+      isNumeric.push(facetObject);
     });
 
     const itemsjsResponse = itemsjsRequest.responses.map((req) => {
@@ -53,6 +52,5 @@ export function performSearch(
 
     return InstantSearchResponse;
   }
-
   return null;
 }

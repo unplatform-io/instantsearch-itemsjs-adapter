@@ -5,6 +5,7 @@ import {
   adaptResponse,
   adaptFacetsStats,
   adaptSingleFacetStats,
+  adaptSingleFacet,
 } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
 
@@ -166,7 +167,7 @@ describe("adaptFacetsStats tests", () => {
 });
 
 describe("adaptSingleFacetStats tests", () => {
-  it("", () => {
+  it("should only return price stats", () => {
     const itemsJsFacets = {
       category: {
         name: "category",
@@ -199,5 +200,45 @@ describe("adaptSingleFacetStats tests", () => {
 
     const result = adaptSingleFacetStats(itemsJsFacets, name);
     expect(result).toStrictEqual(expected);
+  });
+});
+
+describe("adaptSingleFacet tests", () => {
+  it("should only return category facet with doc_count", () => {
+    const itemsJsFacets = {
+      category: {
+        buckets: [
+          { key: "electronics", doc_count: 3, selected: false },
+          { key: "women's clothing", doc_count: 2, selected: false },
+          { key: "jewelery", doc_count: 5, selected: true },
+          { key: "men's clothing", doc_count: 7, selected: false },
+        ],
+        name: "category",
+        position: 1,
+        title: "category",
+      },
+      color: {
+        buckets: [
+          { key: "red", doc_count: 3, selected: false },
+          { key: "blue", doc_count: 2, selected: false },
+          { key: "green", doc_count: 5, selected: true },
+        ],
+        name: "color",
+        position: 2,
+        title: "color",
+      },
+    };
+
+    const instantsearchFacet = {
+      category: {
+        electronics: 3,
+        "women's clothing": 2,
+        jewelery: 5,
+        "men's clothing": 7,
+      },
+    };
+
+    const adaptResult = adaptSingleFacet(itemsJsFacets, "category");
+    expect(adaptResult).toStrictEqual(instantsearchFacet);
   });
 });

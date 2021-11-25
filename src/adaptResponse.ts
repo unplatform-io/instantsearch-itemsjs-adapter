@@ -30,7 +30,6 @@ export function adaptResponse(
         (response["facets_stats"] = adaptFacetsStats(res.data.aggregations));
     } else {
       const facet = isNumeric[index - 1];
-
       const key = Object.keys(facet)[0];
       const value = Object.values(facet)[0];
 
