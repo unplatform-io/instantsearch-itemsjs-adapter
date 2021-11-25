@@ -1,0 +1,438 @@
+[{
+    "pagination": {
+        "per_page": 2,
+        "page": 1,
+        "total": 3
+    },
+    "timings": {
+        "total": 0,
+        "facets": 0,
+        "search": 0,
+        "sorting": 0
+    },
+    "data": {
+        "items": [{
+            "id": 1,
+            "title": "bag",
+            "price": 10.99,
+            "category": "women's clothing",
+            "rating": 1,
+            "objectID": "1"
+        }, {
+            "id": 2,
+            "title": "sunglasses",
+            "price": 5.99,
+            "category": "men's clothing",
+            "rating": 2,
+            "objectID": "2"
+        }, {
+            "id": 3,
+            "title": "jacket",
+            "price": 56.99,
+            "category": "men's clothing",
+            "rating": 3,
+            "objectID": "3"
+        }],
+        "aggregations": {
+            "category": {
+                "name": "category",
+                "title": "category",
+                "position": 1,
+                "buckets": [{
+                        "key": "women's clothing",
+                        "doc_count": 1,
+                        "selected": true
+                    },
+                    {
+                        "key": "men's clothing",
+                        "doc_count": 2,
+                        "selected": false
+                    }
+                ]
+            },
+            "price": {
+                "name": "price",
+                "title": "Price",
+                "position": 3,
+                "buckets": [{
+                        "key": "5.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "10.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "56.99",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 5.99,
+                    "max": 56.99,
+                    "avg": 24.65666666666667,
+                    "sum": 73.97
+                }
+            },
+            "rating": {
+                "name": "rating",
+                "title": "Rating",
+                "position": 6,
+                "buckets": [{
+                        "key": "1",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "2",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "3",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 1,
+                    "max": 3,
+                    "avg": 6,
+                    "sum": 2
+                }
+            }
+        }
+    }
+},
+{
+    "pagination": {
+        "per_page": 2,
+        "page": 1,
+        "total": 3
+    },
+    "timings": {
+        "total": 2,
+        "facets": 0,
+        "search": 0,
+        "sorting": 0
+    },
+    "data": {
+        "items": [{
+            "id": 1,
+            "title": "bag",
+            "price": 10.99,
+            "category": "women's clothing",
+            "rating": 1,
+            "objectID": "1"
+        }, {
+            "id": 2,
+            "title": "sunglasses",
+            "price": 5.99,
+            "category": "men's clothing",
+            "rating": 2,
+            "objectID": "2"
+        }, {
+            "id": 3,
+            "title": "jacket",
+            "price": 56.99,
+            "category": "men's clothing",
+            "rating": 3,
+            "objectID": "3"
+        }],
+        "aggregations": {
+            "category": {
+                "name": "category",
+                "title": "category",
+                "position": 1,
+                "buckets": [{
+                        "key": "women's clothing",
+                        "doc_count": 1,
+                        "selected": true
+                    },
+                    {
+                        "key": "men's clothing",
+                        "doc_count": 2,
+                        "selected": false
+                    }
+                ]
+            },
+            "price": {
+                "name": "price",
+                "title": "Price",
+                "position": 3,
+                "buckets": [{
+                        "key": "5.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "10.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "56.99",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 5.99,
+                    "max": 56.99,
+                    "avg": 24.65666666666667,
+                    "sum": 73.97
+                }
+            },
+            "rating": {
+                "name": "rating",
+                "title": "Rating",
+                "position": 6,
+                "buckets": [{
+                        "key": "1",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "2",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "3",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 1,
+                    "max": 3,
+                    "avg": 6,
+                    "sum": 2
+                }
+            }
+        }
+    }
+},
+{
+    "pagination": {
+        "per_page": 2,
+        "page": 1,
+        "total": 3
+    },
+    "timings": {
+        "total": 3,
+        "facets": 0,
+        "search": 0,
+        "sorting": 0
+    },
+    "data": {
+        "items": [{
+            "id": 1,
+            "title": "bag",
+            "price": 10.99,
+            "category": "women's clothing",
+            "rating": 1,
+            "objectID": "1"
+        }, {
+            "id": 2,
+            "title": "sunglasses",
+            "price": 5.99,
+            "category": "men's clothing",
+            "rating": 2,
+            "objectID": "2"
+        }, {
+            "id": 3,
+            "title": "jacket",
+            "price": 56.99,
+            "category": "men's clothing",
+            "rating": 3,
+            "objectID": "3"
+        }],
+        "aggregations": {
+            "category": {
+                "name": "category",
+                "title": "category",
+                "position": 1,
+                "buckets": [{
+                        "key": "women's clothing",
+                        "doc_count": 1,
+                        "selected": true
+                    },
+                    {
+                        "key": "men's clothing",
+                        "doc_count": 2,
+                        "selected": false
+                    }
+                ]
+            },
+            "price": {
+                "name": "price",
+                "title": "Price",
+                "position": 3,
+                "buckets": [{
+                        "key": "5.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "10.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "56.99",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 5.99,
+                    "max": 56.99,
+                    "avg": 24.65666666666667,
+                    "sum": 73.97
+                }
+            },
+            "rating": {
+                "name": "rating",
+                "title": "Rating",
+                "position": 6,
+                "buckets": [{
+                        "key": "1",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "2",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "3",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 1,
+                    "max": 3,
+                    "avg": 6,
+                    "sum": 2
+                }
+            }
+        }
+    }
+},
+{
+    "pagination": {
+        "per_page": 2,
+        "page": 1,
+        "total": 3
+    },
+    "timings": {
+        "total": 1,
+        "facets": 0,
+        "search": 0,
+        "sorting": 0
+    },
+    "data": {
+        "items": [{
+            "id": 1,
+            "title": "bag",
+            "price": 10.99,
+            "category": "women's clothing",
+            "rating": 1,
+            "objectID": "1"
+        }, {
+            "id": 2,
+            "title": "sunglasses",
+            "price": 5.99,
+            "category": "men's clothing",
+            "rating": 2,
+            "objectID": "2"
+        }, {
+            "id": 3,
+            "title": "jacket",
+            "price": 56.99,
+            "category": "men's clothing",
+            "rating": 3,
+            "objectID": "3"
+        }],
+        "aggregations": {
+            "category": {
+                "name": "category",
+                "title": "category",
+                "position": 1,
+                "buckets": [{
+                        "key": "women's clothing",
+                        "doc_count": 1,
+                        "selected": true
+                    },
+                    {
+                        "key": "men's clothing",
+                        "doc_count": 2,
+                        "selected": false
+                    }
+                ]
+            },
+            "price": {
+                "name": "price",
+                "title": "Price",
+                "position": 3,
+                "buckets": [{
+                        "key": "5.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "10.99",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "56.99",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 5.99,
+                    "max": 56.99,
+                    "avg": 24.65666666666667,
+                    "sum": 73.97
+                }
+            },
+            "rating": {
+                "name": "rating",
+                "title": "Rating",
+                "position": 6,
+                "buckets": [{
+                        "key": "1",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "2",
+                        "doc_count": 1,
+                        "selected": false
+                    },
+                    {
+                        "key": "3",
+                        "doc_count": 1,
+                        "selected": false
+                    }
+                ],
+                "facet_stats": {
+                    "min": 1,
+                    "max": 3,
+                    "avg": 6,
+                    "sum": 2
+                }
+            }
+        }
+    }
+}
+
+]

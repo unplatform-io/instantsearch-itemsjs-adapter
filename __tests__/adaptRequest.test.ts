@@ -6,7 +6,6 @@ import {
   adaptNumericFilters,
   parseRange,
 } from "../src/adaptRequest";
-import { ItemsJsRequest } from "../src/itemsjsInterface";
 
 describe("adaptPage tests", () => {
   it("adaptpage(x) should return x+1", () => {
@@ -18,20 +17,18 @@ describe("adaptPage tests", () => {
 
 describe("adaptRequest tests", () => {
   it("adaptRequest should convert request to ItemsJs request", () => {
-    const instantsearchRequest: MultipleQueriesQuery[] = [
-      {
-        indexName: "products",
-        params: {
-          query: "a",
-          page: 2,
-          hitsPerPage: 5,
-          facets: ["price", "in_stock"],
-          numericFilters: ["price>=10", "price<=100"],
-        },
+    const instantsearchRequest: MultipleQueriesQuery = {
+      indexName: "products",
+      params: {
+        query: "a",
+        page: 2,
+        hitsPerPage: 5,
+        facets: ["price", "in_stock"],
+        numericFilters: ["price>=10", "price<=100"],
       },
-    ];
+    };
 
-    const itemsjsRequest: ItemsJsRequest = adaptRequest(instantsearchRequest);
+    const itemsjsRequest = adaptRequest(instantsearchRequest);
 
     expect(itemsjsRequest.query).toBe("a");
     expect(itemsjsRequest.page).toBe(3);

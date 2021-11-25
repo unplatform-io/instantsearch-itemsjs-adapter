@@ -2,17 +2,17 @@
 import { MultipleQueriesQuery } from "@algolia/client-search";
 import { ItemsJsRequest } from "./itemsjsInterface";
 
-export function adaptRequest(request: MultipleQueriesQuery[]): ItemsJsRequest {
-  const numericFilters = <string[]>request[0].params.numericFilters;
-  const facets = <string[]>request[0].params.facets;
-  const facetFilters = request[0].params.facetFilters;
-  const sort = request[0].indexName; // IndexName will be assigned the SortBy value if selected.
+export function adaptRequest(request: MultipleQueriesQuery): ItemsJsRequest {
+  const numericFilters = <string[]>request.params.numericFilters;
+  const facets = <string[]>request.params.facets;
+  const facetFilters = request.params.facetFilters;
+  const sort = request.indexName; // IndexName will be assigned the SortBy value if selected.
 
   const response: ItemsJsRequest = {
-    query: request[0].params.query,
-    per_page: request[0].params.hitsPerPage,
-    page: adaptPage(request[0].params.page),
-    indexName: request[0].indexName,
+    query: request.params.query,
+    per_page: request.params.hitsPerPage,
+    page: adaptPage(request.params.page),
+    indexName: request.indexName,
     sort: sort,
   };
 

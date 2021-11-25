@@ -5,11 +5,7 @@ import {
   MultipleQueriesResponse,
   MultipleQueriesQuery,
 } from "@algolia/client-search";
-import {
-  ItemsJsRequest,
-  ItemsJsOptions,
-  SearchClient,
-} from "./itemsjsInterface";
+import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 
 let index;
 
@@ -27,18 +23,31 @@ export function createIndex(data: object, options: ItemsJsOptions): void {
 }
 
 export function performSearch(
-  request: MultipleQueriesQuery[]
+  requests: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
-    const itemsjsRequest: ItemsJsRequest = adaptRequest(request);
-    const itemsjsRequestQuery = itemsjsRequest.query;
-    const itemsjsResponse = index.search(itemsjsRequest);
-    const InstantSearchResponse = Promise.resolve({
-      results: [adaptResponse(itemsjsResponse, itemsjsRequestQuery)],
+    const responses = requests.map((request) => {
+      const adaptedRequest = adaptRequest(request);
+      const itemsJsRes = index.search(adaptedRequest);
+
+      // Are there any aggregations?
+      if (itemsJsRes.data.aggregations) {
+        // Only copy the requested aggregations
+        const filteredAggregations = {};
+        Object.keys(itemsJsRes.data.aggregations).forEach((aggregationName) => {
+          if (request.params.facets.includes(aggregationName)) {
+            filteredAggregations[aggregationName] =
+              itemsJsRes.data.aggregations[aggregationName];
+          }
+        });
+
+        itemsJsRes.data.aggregations = filteredAggregations;
+      }
+
+      return adaptResponse(itemsJsRes);
     });
 
-    return InstantSearchResponse;
+    return Promise.resolve({ results: responses });
   }
-
   return null;
 }

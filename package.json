@@ -1,6 +1,6 @@
 {
   "name": "instantsearch-itemsjs-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -38,6 +38,7 @@
   "author": "",
   "license": "ISC",
   "volta": {
-    "node": "14.18.1"
+    "node": "14.18.1",
+    "npm": "7.24.2"
   }
 }

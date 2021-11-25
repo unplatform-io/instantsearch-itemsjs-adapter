@@ -22,7 +22,7 @@ export interface ItemsJsOptions {
 }
 
 export interface ItemsJsRequest {
-  query: string;
+  query?: string;
   per_page: number;
   page: number;
   indexName: string;
@@ -46,19 +46,6 @@ export interface ItemsJsResponse {
   };
   data: {
     items: Array<Hit<object>>;
-    aggregations: {
-      category: {
-        buckets: [
-          {
-            key: string;
-            doc_count: number;
-            selected: boolean;
-          }
-        ];
-        name: string;
-        posistion: number;
-        title: string;
-      };
-    };
+    aggregations: object;
   };
 }
