@@ -51,19 +51,6 @@ export interface ItemsJsResponse {
   };
   data: {
     items: Array<Hit<object>>;
-    aggregations: {
-      category: {
-        buckets: [
-          {
-            key: string;
-            doc_count: number;
-            selected: boolean;
-          }
-        ];
-        name: string;
-        posistion: number;
-        title: string;
-      };
-    };
+    aggregations: object;
   };
 }

@@ -1,0 +1,207 @@
+[{
+	"exhaustiveFacetsCount": true,
+	"exhaustiveNbHits": true,
+	"facets": {
+		"category": {
+			"men's clothing": 2,
+			"women's clothing": 1
+		},
+		"price": {
+			"10.99": 1,
+			"5.99": 1,
+			"56.99": 1
+		},
+		"rating": {
+			"1": 1,
+			"2": 1,
+			"3": 1
+		}
+	},
+	"facets_stats": {
+		"price": {
+			"avg": 24.65666666666667,
+			"max": 56.99,
+			"min": 5.99,
+			"sum": 73.97
+		},
+		"rating": {
+			"avg": 6,
+			"max": 3,
+			"min": 1,
+			"sum": 2
+		}
+	},
+	"hits": [{
+		"_highlightResult": {},
+		"category": "women's clothing",
+		"id": 1,
+		"objectID": "1",
+		"price": 10.99,
+		"rating": 1,
+		"title": "bag"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 2,
+		"objectID": "2",
+		"price": 5.99,
+		"rating": 2,
+		"title": "sunglasses"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 3,
+		"objectID": "3",
+		"price": 56.99,
+		"rating": 3,
+		"title": "jacket"
+	}],
+	"hitsPerPage": 2,
+	"nbHits": 3,
+	"nbPages": 2,
+	"page": 0,
+	"params": "",
+	"processingTimeMS": 0,
+	"query": ""
+}, {
+	"exhaustiveFacetsCount": true,
+	"exhaustiveNbHits": true,
+	"facets": {
+		"category": {
+			"men's clothing": 2,
+			"women's clothing": 1
+		}
+	},
+	"hits": [{
+		"_highlightResult": {},
+		"category": "women's clothing",
+		"id": 1,
+		"objectID": "1",
+		"price": 10.99,
+		"rating": 1,
+		"title": "bag"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 2,
+		"objectID": "2",
+		"price": 5.99,
+		"rating": 2,
+		"title": "sunglasses"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 3,
+		"objectID": "3",
+		"price": 56.99,
+		"rating": 3,
+		"title": "jacket"
+	}],
+	"hitsPerPage": 2,
+	"nbHits": 3,
+	"nbPages": 2,
+	"page": 0,
+	"params": "",
+	"processingTimeMS": 0,
+	"query": ""
+}, {
+	"exhaustiveFacetsCount": true,
+	"exhaustiveNbHits": true,
+	"facets": {
+		"price": {
+			"10.99": 1,
+			"5.99": 1,
+			"56.99": 1
+		}
+	},
+	"facets_stats": {
+		"price": {
+			"avg": 24.65666666666667,
+			"max": 56.99,
+			"min": 5.99,
+			"sum": 73.97
+		}
+	},
+	"hits": [{
+		"_highlightResult": {},
+		"category": "women's clothing",
+		"id": 1,
+		"objectID": "1",
+		"price": 10.99,
+		"rating": 1,
+		"title": "bag"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 2,
+		"objectID": "2",
+		"price": 5.99,
+		"rating": 2,
+		"title": "sunglasses"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 3,
+		"objectID": "3",
+		"price": 56.99,
+		"rating": 3,
+		"title": "jacket"
+	}],
+	"hitsPerPage": 2,
+	"nbHits": 3,
+	"nbPages": 2,
+	"page": 0,
+	"params": "",
+	"processingTimeMS": 0,
+	"query": ""
+}, {
+	"exhaustiveFacetsCount": true,
+	"exhaustiveNbHits": true,
+	"facets": {
+		"rating": {
+			"1": 1,
+			"2": 1,
+			"3": 1
+		}
+	},
+	"facets_stats": {
+		"rating": {
+			"avg": 6,
+			"max": 3,
+			"min": 1,
+			"sum": 2
+		}
+	},
+	"hits": [{
+		"_highlightResult": {},
+		"category": "women's clothing",
+		"id": 1,
+		"objectID": "1",
+		"price": 10.99,
+		"rating": 1,
+		"title": "bag"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 2,
+		"objectID": "2",
+		"price": 5.99,
+		"rating": 2,
+		"title": "sunglasses"
+	}, {
+		"_highlightResult": {},
+		"category": "men's clothing",
+		"id": 3,
+		"objectID": "3",
+		"price": 56.99,
+		"rating": 3,
+		"title": "jacket"
+	}],
+	"hitsPerPage": 2,
+	"nbHits": 3,
+	"nbPages": 2,
+	"page": 0,
+	"params": "",
+	"processingTimeMS": 0,
+	"query": ""
+}]

@@ -8,55 +8,24 @@ import {
   adaptSingleFacet,
 } from "../src/adaptResponse";
 import { ItemsJsResponse } from "../src/itemsjsInterface";
+import output from "./adaptResponseOutput.json";
+import input from "./adaptResponseInput.json";
 
 describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
-    const itemsjsResponse: ItemsJsResponse[] = [
-      {
-        pagination: {
-          per_page: 3,
-          total: 5,
-          page: 2,
-        },
-        timings: {
-          facets: 10,
-          search: 10,
-          sorting: 10,
-          total: 30,
-        },
-        data: {
-          items: [{ objectID: "" }, { objectID: "" }],
-          aggregations: {
-            category: {
-              buckets: [
-                {
-                  key: "testKey 1",
-                  doc_count: 5,
-                  selected: false,
-                },
-              ],
-              name: null,
-              posistion: null,
-              title: null,
-            },
-          },
-        },
-      },
-    ];
+    const itemsjsResponse: ItemsJsResponse[] = input;
 
-    const isNumeric = [{}];
+    const isNumeric = [{ category: false }, { price: true }, { rating: true }];
 
     const instantsearchResponse: SearchResponse[] = adaptResponse(
       itemsjsResponse,
       isNumeric
     );
 
-    expect(instantsearchResponse[0].page).toBe(1);
-    expect(instantsearchResponse[0].nbPages).toBe(Math.ceil(5 / 3));
-    expect(instantsearchResponse[0].hitsPerPage).toBe(3);
-    expect(instantsearchResponse[0].processingTimeMS).toBe(30);
-    expect(instantsearchResponse[0].nbHits).toBe(5);
-    expect(instantsearchResponse[0].query).toBe("");
+    expect(instantsearchResponse[0]).toStrictEqual(output[0]);
+    expect(instantsearchResponse[1]).toStrictEqual(output[1]);
+    expect(instantsearchResponse[2]).toStrictEqual(output[2]);
+    expect(instantsearchResponse[3]).toStrictEqual(output[3]);
   });
 });
 
