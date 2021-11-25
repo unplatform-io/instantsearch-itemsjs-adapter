@@ -1,7 +1,7 @@
 
-# Instantsearch-itemsjs-adapter
+# Instantsearch-ItemsJS-adapter
 
-This library is an adapter that connects the search engine [Itemsjs](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
+This library is an adapter that connects the search engine [ItemsJS](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
 <br/><br/>
 
 ## Table of Content
@@ -20,7 +20,7 @@ npm install ...
 yarn add ..
 ```
 
-Instantsearch-itemsjs-adapter does not create any UI component by itself.  
+Instantsearch-ItemsJS-adapter does not create any UI component by itself.  
 To be able to create a search interface, you'll need to  [install  `Instantsearch`](https://www.algolia.com/doc/guides/building-search-ui/installation/js/) as well.
 <br/><br/>
 
@@ -61,7 +61,7 @@ createIndex(data, options);
 
 const searchClient = getSearchClient();
 ```
-`options` Options are from the Itemsjs API found here: [Itemsjs](https://github.com/itemsapi/itemsjs)
+`options` Options are from the ItemsJS API found here: [ItemsJS](https://github.com/itemsapi/itemsjs)
 <br/><br/>
 
 ## Demo
@@ -74,18 +74,18 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 ### Supported Instantsearch components
 | Component | | Explanation |
 | --- | :---: | --- |
-| Autocomplete | ❌ | Is not supported by Itemsjs |
+| Autocomplete | ❌ | Is not supported by ItemsJS |
 | Breadcrumb | ❌ | HierarchicalMenu is needed |
 | [ClearRefinements](#%EF%B8%8F-clearrefinements) | ✔️ |
 | [Configure](#%EF%B8%8F-configure) | ✔️ |
-| ConfigureRelatedItems | ❌ | Is not supported by Itemsjs |
+| ConfigureRelatedItems | ❌ | Is not supported by ItemsJS |
 | [CurrentRefinements](#%EF%B8%8F-currentrefinements) | ✔️ |
 | DynamicWidgets | ❌ | Cannot be imported from react-instanstsearch-dom (version 6.12.1) |
-| HierarchicalMenu | ❌ | Is not supported by Itemsjs |
-| Highlight | ❌ | Is not supported by Itemsjs |
+| HierarchicalMenu | ❌ | Is not supported by ItemsJS |
+| Highlight | ❌ | Is not supported by ItemsJS |
 | [Hits](#%EF%B8%8F-hits) | ✔️ |
 | [HitsPerPage](#%EF%B8%8F-hitsperpage) | ✔️ |
-| Index | ❌ | Is not supported by Itemsjs |
+| Index | ❌ | Is not supported by ItemsJS |
 | [InfiniteHits](#%EF%B8%8F-infinitehits) | ✔️ |
 | [InstantSearch](#%EF%B8%8F-instantsearch) | ✔️ |
 | [Menu](#%EF%B8%8F-menu) | ✔️ |
@@ -94,13 +94,13 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [Pagination](#%EF%B8%8F-pagination) | ✔️ |
 | [Panel](#%EF%B8%8F-panel) | ✔️ |
 | [PoweredBy](#%EF%B8%8F-poweredby) | ✔️ |
-| QueryRuleContext | ❌ | Is not supported by Itemsjs |
-| QueryRuleCustomData | ❌ | Is not supported by Itemsjs |
+| QueryRuleContext | ❌ | Is not supported by ItemsJS |
+| QueryRuleCustomData | ❌ | Is not supported by ItemsJS |
 | [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
 | [RangeSlider](#%EF%B8%8F-rangeslider) | ✔️ | |
 | [RatingMenu](#%EF%B8%8F-ratingmenu) | ✔️ |
 | [RefinementList](#%EF%B8%8F-refinementlist) | ✔️ |
-| RelevantSort | ❌ | Is not supported by Itemsjs |
+| RelevantSort | ❌ | Is not supported by ItemsJS |
 | [ScrollTo](#%EF%B8%8F-scrollto) | ✔️ |
 | [SearchBox](#%EF%B8%8F-searchbox)| ✔️ |
 | [SearchState](#%EF%B8%8F-searchstate) | ✔️ |
@@ -176,7 +176,7 @@ The `InfiniteHits` widget allows a user to see the result of their search.
 ### ✔️ InstantSearch
 [InstantSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/)
 
-The `InstantSearch` widget allows a user to let all connected comonents (or widgets) inveract with the searchState.
+The `InstantSearch` widget allows a user to let all connected comonents (or widgets) interact with the searchState.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
@@ -199,11 +199,11 @@ The `Menu` widget allows a user to filter on a single value for an attribute.
 | --- | :---: | --- |
 | attribute | ✔️ |
 | defaultRefinement | ✔️ |
-| facetOrdering | ❌ | Is not supported by Itemsjs |
+| facetOrdering | ❌ | Is not supported by ItemsJS |
 | limit | ✔️ |
 | showMore | ✔️ |
 | showMoreLimit | ✔️ |
-| searchable | ❌ | Is not supported by Itemsjs, ⚠️Warning: when set true UI will change but throws error when used |
+| searchable | ❌ | Is not supported by ItemsJS, ⚠️Warning: when set true UI will change but throws error when used |
 | transformItems | ✔️ |
 | translations | ✔️ |
 
@@ -216,7 +216,7 @@ The `MenuSelect` widget allows a user to filter on a single value for an attribu
 | --- | :---: | --- |
 | attribute | ✔️ |
 | defaultRefinement | ✔️ |
-| facetOrdering | ❌ | Is not supported by Itemsjs |
+| facetOrdering | ❌ | Is not supported by ItemsJS |
 | limit | ✔️ |
 | transformItems | ✔️ |
 | translations | ✔️ |
@@ -304,9 +304,6 @@ The `rangeInput` widget allows a user to filter on a numeric field using a minim
 | precision | ✔️ |
 | translations | ✔️ |
 
-With Instantsearch-Itemsjs-adapter you have to define the numericFilter field in `aggregation`. Otherwise, Itemsjs doesn't return the neceassry field for Instantsearch to use, the field in `aggregation` can be left empty.
-Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
-
 To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
 
 ```js
@@ -375,12 +372,12 @@ The `RefinementList` widget allows a user to filter on a facet/field.
 | --- | :---: | --- |
 | attribute | ✔️ |
 | defaultRefinement | ✔️ |
-| facetOrdering | ❌ | Is not supported by Itemsjs |
-| operator | ❌ | ✔️is possible: can be passed to itemsjs when indexing |
+| facetOrdering | ❌ | Is not supported by ItemsJS |
+| operator | ❌ | ✔️is possible: can be passed to ItemsJS when indexing |
 | limit | ✔️ |
 | showMore | ✔️ |
 | showMoreLimit | ✔️ |
-| searchable | ❌ | Is not supported by Itemsjs, ⚠️Warning: when set true UI will change but throws error when used |
+| searchable | ❌ | Is not supported by ItemsJS, ⚠️Warning: when set true UI will change but throws error when used |
 | transformItems | ✔️ |
 | translations | ✔️ |
 
@@ -411,16 +408,16 @@ The `SearchBox` widget allows a user to search text based.
 | Parameter |  | Explanation |
 | --- | :---: | --- |
 | defaultRefinement | ⚠️ | text appears in the search box but the dataset is not searched |
-| autoFocus |  |
+| autoFocus | ⚠️ | There is no proof that this parameter works. |
 | searchAsYouType | ✔️ |
-| showLoadingIndicator |  |
-| submit |  |
+| showLoadingIndicator | ⚠️ | There is no proof that this parameter works. |
+| submit | ⚠️ | There is no proof that this parameter works. |
 | reset | ✔️ |
-| loadingIndicator |  |
-| focusShortcuts |  |
+| loadingIndicator | ⚠️ | There is no proof that this parameter works. |
+| focusShortcuts | ⚠️ | There is no proof that this parameter works. |
 | onSubmit | ✔️ |
 | onReset | ✔️ |
-| on* |  |
+| on* | ⚠️ | There is no proof that this parameter works. |
 | translations | ✔️ |
 
 ### ✔️ SearchState
@@ -437,14 +434,14 @@ The `Snippet` widget allows a user to displays snippeted attributes of the searc
 | --- | :---: | --- |
 | attribute | ✔️ |
 | hit | ✔️ |
-| tagName | ❌ | Is not supported by Itemsjs |
+| tagName | ❌ | Is not supported by ItemsJS |
 | nonHighlightedTagName | ✔️ |
 | separator | ✔️ |
 
 ### ✔️ SortBy
 [Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
-The `sortBy`  allows a user to change the way hits are sorted. 
+The `sortBy` widget allows a user to change the way hits are sorted. 
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
@@ -452,8 +449,8 @@ The `sortBy`  allows a user to change the way hits are sorted.
 | defaultRefinement | ✔️ |
 | transformItems | ✔️ |
 
-With Instantsearch-Itemsjs-adapter you have to define the same key from your configuration `sorting` for the sortBy value.
-Itemsjs documentation for the configuration and searching can be found here [Itemsjs configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
+With Instantsearch-ItemsJS-adapter you have to define the same key from your configuration `sorting` for the sortBy value.
+ItemsJS documentation for the configuration and searching can be found here [ItemsJS configuration](https://github.com/itemsapi/itemsjs/blob/master/docs/configuration.md)
 
 ```js
 sortings:  { 
@@ -471,7 +468,7 @@ sortings:  {
 ```
 
 The usage of the `sortBy` widget differs from the one found in Aloglia's documentation.
-Instantsearch-itemsjs-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
+Instantsearch-ItemsJS-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
 
 ### ✔️ StateResults
 [StateResults Instantsearch](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
@@ -481,7 +478,7 @@ The `StateResults` widget allows a user to access the searchState and the search
 ### ✔️ Stats
 [Stats Instantsearch](https://www.algolia.com/doc/api-reference/widgets/stats/react/)
 
-The `Stats` widget allows a user to displays the total number of matching hits and the time it took to get them (time spent in Itemsjs)
+The `Stats` widget allows a user to displays the total number of matching hits and the time it took to get them (time spent in ItemsJS)
 
 | Parameter | | Explanation |
 | --- | :---: | --- |
