@@ -42,7 +42,7 @@ const  options = {
 			conjunction:  false,
 		},
 		price: {
-			show_facat_stats: true
+			show_facet_stats: true
 		},
 	},
 	sortings: {
@@ -93,7 +93,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [NumericMenu](#%EF%B8%8F-numericmenu) | ✔️ |
 | [Pagination](#%EF%B8%8F-pagination) | ✔️ |
 | [Panel](#%EF%B8%8F-panel) | ✔️ |
-| [PoweredBy](#%EF%B8%8F-poweredby) | ✔️ |
+| PoweredBy | ✔️ |
 | QueryRuleContext | ❌ | Is not supported by ItemsJS |
 | QueryRuleCustomData | ❌ | Is not supported by ItemsJS |
 | [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
@@ -114,7 +114,7 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 <br/><br/>
 
 ### ✔️ ClearRefinements
-[ClearRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
+[ClearRefinements](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
 
 The `ClearRefinements` widget allows a user to delete all applied filters.
 
@@ -125,14 +125,14 @@ The `ClearRefinements` widget allows a user to delete all applied filters.
 | transformItems | ✔️ |
 
 ### ✔️ Configure
-[Configure Instantsearch](https://www.algolia.com/doc/api-reference/widgets/configure/react/)
+[Configure](https://www.algolia.com/doc/api-reference/widgets/configure/react/)
 
 The `Configure` widget allows a user to set fixed search parameters.
 
 This widget can contain all [Search Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/), see this site for more information. ⚠️ Pay attention, not all parameters will work with this adapter.
 
 ### ✔️ CurrentRefinements
-[CurrentRefinements Instantsearch](https://www.algolia.com/doc/api-reference/widgets/current-refinements/react/)
+[CurrentRefinements](https://www.algolia.com/doc/api-reference/widgets/current-refinements/react/)
 
 The `CurrentRefinements` widget allows a user to see witch filters are apllied.
 
@@ -142,7 +142,7 @@ The `CurrentRefinements` widget allows a user to see witch filters are apllied.
 | transformItems | ✔️ |
 
 ### ✔️ Hits
-[Hits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/hits/react/)
+[Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react/)
 
 The `Hits` widget allows a user to see the result of their search.
 
@@ -151,7 +151,7 @@ The `Hits` widget allows a user to see the result of their search.
 | hitComponent | ✔️ |
 
 ### ✔️ HitsPerPage
-[HitsPerPage Instantsearch](https://www.algolia.com/doc/api-reference/widgets/hits-per-page/react/)
+[HitsPerPage](https://www.algolia.com/doc/api-reference/widgets/hits-per-page/react/)
 
 The `HitsPerPage` widget allows a user to select how many hits wil appear on a page.
 
@@ -162,7 +162,7 @@ The `HitsPerPage` widget allows a user to select how many hits wil appear on a p
 | transformItems | ✔️ |
 
 ### ✔️ InfiniteHits
-[InfiniteHits Instantsearch](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/)
+[InfiniteHits](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/)
 
 The `InfiniteHits` widget allows a user to see the result of their search.
 
@@ -174,9 +174,9 @@ The `InfiniteHits` widget allows a user to see the result of their search.
 | cache | ✔️ |
 
 ### ✔️ InstantSearch
-[InstantSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/)
+[InstantSearch](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/)
 
-The `InstantSearch` widget allows a user to let all connected comonents (or widgets) interact with the searchState.
+The `InstantSearch` widget allows a user to let all connected components (or widgets) interact with the searchState.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
@@ -191,7 +191,7 @@ The `InstantSearch` widget allows a user to let all connected comonents (or widg
 | stalledSearchDelay | ⚠️ | There is no proof that this parameter works. | 
 
 ### ✔️ Menu
-[Menu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/menu/react/)
+[Menu](https://www.algolia.com/doc/api-reference/widgets/menu/react/)
 
 The `Menu` widget allows a user to filter on a single value for an attribute.
 
@@ -208,7 +208,7 @@ The `Menu` widget allows a user to filter on a single value for an attribute.
 | translations | ✔️ |
 
 ### ✔️ MenuSelect
-[MenuSelect Instantsearch](https://www.algolia.com/doc/api-reference/widgets/menu-select/react/)
+[MenuSelect](https://www.algolia.com/doc/api-reference/widgets/menu-select/react/)
 
 The `MenuSelect` widget allows a user to filter on a single value for an attribute.
 
@@ -222,7 +222,7 @@ The `MenuSelect` widget allows a user to filter on a single value for an attribu
 | translations | ✔️ |
 
 ### ✔️ NumericMenu
-[NumericMenu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/numeric-menu/react/)
+[NumericMenu](https://www.algolia.com/doc/api-reference/widgets/numeric-menu/react/)
 
 The `NumericMenu` widget allows a user to filter on a numeric field through the given ranges.
 
@@ -234,28 +234,10 @@ The `NumericMenu` widget allows a user to filter on a numeric field through the 
 | transformItems | ✔️ |
 | translations | ✔️ |
 
-To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
-
-```js
-aggregations: {
-    price: { 
-    	show_facet_stats: true,
-    }, 
-},
-
-<NumericMenu 
-	attribute="price"
-	items={[
-              { label: "Less than 10", end: 10 },
-              { label: "10 till 25", start: 10, end: 25 },
-              { label: "25 till 50", start: 25, end: 50 },
-              { label: "More than 50", start: 50 },
-        ]} 
-/>
-```
+⚠️ ItemsJS `show_facet_stats` needs to be true, for more information see [Facet Stats](#facet-stats).
 
 ### ✔️ Pagination
-[Pagination Instantsearch](https://www.algolia.com/doc/api-reference/widgets/pagination/react/)
+[Pagination](https://www.algolia.com/doc/api-reference/widgets/pagination/react/)
 
 The `Pagination` widget allows a user to change the current page.
 
@@ -271,7 +253,7 @@ The `Pagination` widget allows a user to change the current page.
 | translations | ✔️ |
 
 ### ✔️ Panel
-[Panel Instantsearch](https://www.algolia.com/doc/api-reference/widgets/panel/react/)
+[Panel](https://www.algolia.com/doc/api-reference/widgets/panel/react/)
 
 The `Panel` widget allows a user to wrap other widgets in a consistent design.
 
@@ -281,17 +263,8 @@ The `Panel` widget allows a user to wrap other widgets in a consistent design.
 | header | ✔️ |
 | footer | ✔️ |
 
-### ✔️ PoweredBy
-[PoweredBy Instantsearch](https://www.algolia.com/doc/api-reference/widgets/powered-by/react/)
-
-The `PoweredBy` widget allows a user to display the Algolia logo redirecting to the website.
-
-| Parameter |  | Explanation |
-| --- | :---: | --- |
-| translations | ✔️ |
-
 ### ✔️ RangeInput
-[RangeInput Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
+[RangeInput](https://www.algolia.com/doc/api-reference/widgets/range-input/js/)
 
 The `rangeInput` widget allows a user to filter on a numeric field using a minimum and/or maximum input.
 
@@ -304,18 +277,10 @@ The `rangeInput` widget allows a user to filter on a numeric field using a minim
 | precision | ✔️ |
 | translations | ✔️ |
 
-To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
-
-```js
-aggregations: {
-    price: { show_facet_stats: true, }, 
-},
-
-<RangeInput attribute="price" />
-```
+⚠️ ItemsJS `show_facet_stats` needs to be true, for more information see [Facet Stats](#facet-stats).
 
 ### ✔️ RangeSlider
-[RangeSlider Instantsearch](https://www.algolia.com/doc/api-reference/widgets/range-slider/react/)
+[RangeSlider](https://www.algolia.com/doc/api-reference/widgets/range-slider/react/)
 
 The `RangeSlider` widget allows a user to filter on a numeric field using a minimum and/or maximum input.
 
@@ -326,20 +291,10 @@ The `RangeSlider` widget allows a user to filter on a numeric field using a mini
 | min | ✔️ |
 | max | ✔️ |
 
-To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
-
-```js
-aggregations: {
-    price: { 
-    	show_facet_stats: true,
-    }, 
-},
-
-<RangeSlider attribute="price" />
-```
+⚠️ ItemsJS `show_facet_stats` needs to be true, for more information see [Facet Stats](#facet-stats).
 
 ### ✔️ RatingMenu
-[RatingMenu Instantsearch](https://www.algolia.com/doc/api-reference/widgets/rating-menu/react/)
+[RatingMenu](https://www.algolia.com/doc/api-reference/widgets/rating-menu/react/)
 
 The `RatingMenu` widget allows a user to filter on a numeric field by clicking on stars.
 
@@ -351,20 +306,10 @@ The `RatingMenu` widget allows a user to filter on a numeric field by clicking o
 | max | ✔️ |
 | translations | ✔️ |
 
-To avoid errors, `show_facet_stats: true` should be passed to ItemsJS, as shown below.
-
-```js
-aggregations: {
-    price: { 
-    	show_facet_stats: true,
-    }, 
-},
-
-<RatingMenu attribute="price" />
-```
+⚠️ ItemsJS `show_facet_stats` needs to be true, for more information see [Facet Stats](#facet-stats).
 
 ### ✔️ RefinementList
-[RefinementList Instantsearch](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/)
+[RefinementList](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/)
 
 The `RefinementList` widget allows a user to filter on a facet/field.
 
@@ -373,7 +318,7 @@ The `RefinementList` widget allows a user to filter on a facet/field.
 | attribute | ✔️ |
 | defaultRefinement | ✔️ |
 | facetOrdering | ❌ | Is not supported by ItemsJS |
-| operator | ❌ | ✔️is possible: can be passed to ItemsJS when indexing |
+| operator | ❌ | ✔️Buildtime workaround available, see below |
 | limit | ✔️ |
 | showMore | ✔️ |
 | showMoreLimit | ✔️ |
@@ -381,7 +326,10 @@ The `RefinementList` widget allows a user to filter on a facet/field.
 | transformItems | ✔️ |
 | translations | ✔️ |
 
-✔️operator workaround: set `conjunction` to false=and or true=or
+✔️Operator workaround: <br />
+ Can be passed to ItemsJS buildtime (not available at runtime).<br />
+ Set `conjunction` to true (OR operator) or false (AND operator). <br />
+ 
 ```js
 aggregations: {
     category: {
@@ -392,7 +340,7 @@ aggregations: {
 ```
 
 ### ✔️ ScrollTo
-[ScrollTo Instantsearch](https://www.algolia.com/doc/api-reference/widgets/scroll-to/react/)
+[ScrollTo](https://www.algolia.com/doc/api-reference/widgets/scroll-to/react/)
 
 The `ScrollTo` widget allows a user to automatically scroll to an object when the searchState is adjusted.
 
@@ -401,7 +349,7 @@ The `ScrollTo` widget allows a user to automatically scroll to an object when th
 | scrollOn | ✔️ |
 
 ### ✔️ SearchBox
-[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
+[SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
 
 The `SearchBox` widget allows a user to search text based.
 
@@ -421,12 +369,12 @@ The `SearchBox` widget allows a user to search text based.
 | translations | ✔️ |
 
 ### ✔️ SearchState
-[SearchState Instantsearch](https://www.algolia.com/doc/api-reference/widgets/ui-state/react/)
+[SearchState](https://www.algolia.com/doc/api-reference/widgets/ui-state/react/)
 
 The `SearchState` widget allows a user to update their search parameters. When updated automaticly searched.
 
 ### ✔️ Snippet
-[SearchBox Instantsearch](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
+[SearchBox](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
 
 The `Snippet` widget allows a user to displays snippeted attributes of the search results.
 
@@ -439,7 +387,7 @@ The `Snippet` widget allows a user to displays snippeted attributes of the searc
 | separator | ✔️ |
 
 ### ✔️ SortBy
-[Sortby Instantsearch](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
+[Sortby](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
 
 The `sortBy` widget allows a user to change the way hits are sorted. 
 
@@ -471,12 +419,12 @@ The usage of the `sortBy` widget differs from the one found in Aloglia's documen
 Instantsearch-ItemsJS-adapter does not make use of a [replica indices](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/#replicating-an-index) 
 
 ### ✔️ StateResults
-[StateResults Instantsearch](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
+[StateResults](https://www.algolia.com/doc/api-reference/widgets/state-results/react/)
 
 The `StateResults` widget allows a user to access the searchState and the searchResults of InstantSearch. For instance, this widget allows you to create results/no results or query/no query pages.
 
 ### ✔️ Stats
-[Stats Instantsearch](https://www.algolia.com/doc/api-reference/widgets/stats/react/)
+[Stats](https://www.algolia.com/doc/api-reference/widgets/stats/react/)
 
 The `Stats` widget allows a user to displays the total number of matching hits and the time it took to get them (time spent in ItemsJS)
 
@@ -485,7 +433,7 @@ The `Stats` widget allows a user to displays the total number of matching hits a
 | translations | ✔️ | |
 
 ### ✔️ ToggleRefinement
-[ToggleRefinement Instantsearch](https://www.algolia.com/doc/api-reference/widgets/toggle-refinement/react/)
+[ToggleRefinement](https://www.algolia.com/doc/api-reference/widgets/toggle-refinement/react/)
 
 The `ToggleRefinement` widget allows a user to on/off filtering feature based on an attribute value
 
@@ -497,7 +445,7 @@ The `ToggleRefinement` widget allows a user to on/off filtering feature based on
 | defaultRefinement | ✔️ | |
 
 ### ✔️ VoiceSearch
-[VoiceSearch Instantsearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
+[VoiceSearch](https://www.algolia.com/doc/api-reference/widgets/voice-search/react/)
 
 The `VoiceSearch` widget allows a user to perform a voice-based query.
 
@@ -508,6 +456,27 @@ The `VoiceSearch` widget allows a user to perform a voice-based query.
 | statusComponent | ✔️ |
 | translations | ✔️ |
 
+### Facet Stats
+For all nummeric fields `show_facet_stats: true` is required to calculate Instantsearch `facet_stats` and to avoid errors, it should be passed to ItemsJS, as shown below.
+
+```js
+aggregations: {
+    price: { show_facet_stats: true, }, 
+},
+
+<NumericMenu 
+	attribute="price"
+	items={[
+              { label: "Less than 10", end: 10 },
+              { label: "10 till 25", start: 10, end: 25 },
+              { label: "25 till 50", start: 25, end: 50 },
+              { label: "More than 50", start: 50 },
+        ]} 
+/>
+<RangeInput attribute="price" />
+<RangeSlider attribute="price" />
+<RatingMenu attribute="price" />
+```
 <br/><br/>
 
 
