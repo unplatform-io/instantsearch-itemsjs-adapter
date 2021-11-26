@@ -134,7 +134,7 @@ This widget can contain all [Search Parameters](https://www.algolia.com/doc/api-
 ### ✔️ CurrentRefinements
 [CurrentRefinements](https://www.algolia.com/doc/api-reference/widgets/current-refinements/react/)
 
-The `CurrentRefinements` widget allows a user to see witch filters are apllied.
+The `CurrentRefinements` widget allows a user to see wich filters are apllied.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
@@ -348,24 +348,25 @@ The `ScrollTo` widget allows a user to automatically scroll to an object when th
 | --- | :---: | --- |
 | scrollOn | ✔️ |
 
-### ✔️ SearchBox
+### ✔️ 
+
 [SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
 
 The `SearchBox` widget allows a user to search text based.
 
 | Parameter |  | Explanation |
 | --- | :---: | --- |
-| defaultRefinement | ⚠️ | text appears in the search box but the dataset is not searched |
-| autoFocus | ⚠️ | There is no proof that this parameter works. |
+| defaultRefinement | ⚠️ | Text appears in the search box but the dataset is not searched. |
+| autoFocus | ✔️ |
 | searchAsYouType | ✔️ |
-| showLoadingIndicator | ⚠️ | There is no proof that this parameter works. |
-| submit | ⚠️ | There is no proof that this parameter works. |
+| showLoadingIndicator | ✔️ | There is no proof that this parameter works. |
+| submit | ✔️ | There is no proof that this parameter works. |
 | reset | ✔️ |
-| loadingIndicator | ⚠️ | There is no proof that this parameter works. |
-| focusShortcuts | ⚠️ | There is no proof that this parameter works. |
+| loadingIndicator | ✔️ | There is no proof that this parameter works. |
+| focusShortcuts | ✔️ |
 | onSubmit | ✔️ |
 | onReset | ✔️ |
-| on* | ⚠️ | There is no proof that this parameter works. |
+| on* | ✔️ |
 | translations | ✔️ |
 
 ### ✔️ SearchState
@@ -374,7 +375,7 @@ The `SearchBox` widget allows a user to search text based.
 The `SearchState` widget allows a user to update their search parameters. When updated automaticly searched.
 
 ### ✔️ Snippet
-[SearchBox](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
+[Snippet](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
 
 The `Snippet` widget allows a user to displays snippeted attributes of the search results.
 
