@@ -38,34 +38,33 @@ export function adaptPage(page: number): number {
 }
 
 export function adaptFilters(instantsearchFacets) {
-  const itemsJsFacets = {};
-  if (Array.isArray(instantsearchFacets[0])) {
-    instantsearchFacets.forEach((facetList) => {
-      facetList.forEach((facet) => {
-        const facetRegex = new RegExp(/(.+)(:)(.+)/);
-        const [, name, , value] = facet.match(facetRegex);
-        if (itemsJsFacets[name]) {
-          itemsJsFacets[name].push(value);
-        } else {
-          itemsJsFacets[name] = [value];
-        }
-      });
-    });
-  } else if (Array.isArray(instantsearchFacets)) {
-    instantsearchFacets.forEach((facet) => {
-      const facetRegex = new RegExp(/(.+)(:)(.+)/);
-      const [, name, , value] = facet.match(facetRegex);
-      if (itemsJsFacets[name]) {
-        itemsJsFacets[name].push(value);
-      } else {
-        itemsJsFacets[name] = [value];
+  var itemsJsFacets = {};
+  if(Array.isArray(instantsearchFacets)){
+    instantsearchFacets.forEach((facets) => {
+      if(Array.isArray(facets)){
+        facets.forEach((facet) => {
+          itemsJsFacets = filterRegex(itemsJsFacets, facet);
+        })
+      }else{
+        itemsJsFacets = filterRegex(itemsJsFacets, facets)
       }
-    });
-  } else {
-    throw Error("not in an array");
+    })
+  }else {
+    throw Error("request.params.facetFilters does not contain an array");
   }
-
+  
   return itemsJsFacets;
+}
+
+function filterRegex(itemsJsFacets, facet){
+  const facetRegex = new RegExp(/(.+)(:)(.+)/);
+  const [, name, , value] = facet.match(facetRegex);
+  if (itemsJsFacets[name]) {
+    itemsJsFacets[name].push(value);
+  } else {
+    itemsJsFacets[name] = [value];
+  }
+  return itemsJsFacets;    
 }
 
 export function parseRange(range) {

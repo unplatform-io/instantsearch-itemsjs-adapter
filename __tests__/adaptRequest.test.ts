@@ -165,4 +165,19 @@ describe("adaptFacets tests", () => {
     const adaptedResult = adaptFilters(instantsearchFacets);
     expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
+
+  it("adaptFacets should convert single and nested arrays to Itemsjs format", () => {
+    const instantsearchFacets = [
+      ["category:electronics", "category:men's clothing"], 
+      "color:Blue", "color:Red"
+    ];
+
+    const itemsJsFacets = {
+      category: ["electronics", "men's clothing"],
+      color: ["Blue", "Red"],
+    };
+
+    const adaptedResult = adaptFilters(instantsearchFacets);
+    expect(adaptedResult).toMatchObject(itemsJsFacets);
+  });
 });
