@@ -12,7 +12,7 @@ describe("adaptResponse tests", () => {
   it("adaptResponse should convert response to Instantsearch response", () => {
     const itemsjsResponse: ItemsJsResponse = inputs[0];
 
-    const instantsearchResponse = adaptResponse(itemsjsResponse);
+    const instantsearchResponse = adaptResponse(itemsjsResponse, "q", 5);
 
     expect(instantsearchResponse).toStrictEqual(outputs[0]);
   });
