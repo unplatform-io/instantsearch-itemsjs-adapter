@@ -38,25 +38,25 @@ export function adaptPage(page: number): number {
 }
 
 export function adaptFilters(instantsearchFacets) {
-  var itemsJsFacets = {};
-  if(Array.isArray(instantsearchFacets)){
+  let itemsJsFacets = {};
+  if (Array.isArray(instantsearchFacets)) {
     instantsearchFacets.forEach((facets) => {
-      if(Array.isArray(facets)){
+      if (Array.isArray(facets)) {
         facets.forEach((facet) => {
           itemsJsFacets = filterRegex(itemsJsFacets, facet);
-        })
-      }else{
-        itemsJsFacets = filterRegex(itemsJsFacets, facets)
+        });
+      } else {
+        itemsJsFacets = filterRegex(itemsJsFacets, facets);
       }
-    })
-  }else {
+    });
+  } else {
     throw Error("request.params.facetFilters does not contain an array");
   }
-  
+
   return itemsJsFacets;
 }
 
-function filterRegex(itemsJsFacets, facet){
+function filterRegex(itemsJsFacets, facet) {
   const facetRegex = new RegExp(/(.+)(:)(.+)/);
   const [, name, , value] = facet.match(facetRegex);
   if (itemsJsFacets[name]) {
@@ -64,7 +64,7 @@ function filterRegex(itemsJsFacets, facet){
   } else {
     itemsJsFacets[name] = [value];
   }
-  return itemsJsFacets;    
+  return itemsJsFacets;
 }
 
 export function parseRange(range) {

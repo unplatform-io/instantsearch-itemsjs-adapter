@@ -168,8 +168,9 @@ describe("adaptFacets tests", () => {
 
   it("adaptFacets should convert single and nested arrays to Itemsjs format", () => {
     const instantsearchFacets = [
-      ["category:electronics", "category:men's clothing"], 
-      "color:Blue", "color:Red"
+      ["category:electronics", "category:men's clothing"],
+      "color:Blue",
+      "color:Red",
     ];
 
     const itemsJsFacets = {
