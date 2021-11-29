@@ -1,7 +1,10 @@
+<img align="right" style="height:350px;" src="./instantserach-red.svg" >
 
 # Instantsearch-ItemsJS-adapter
 
 This library is an adapter that connects the search engine [ItemsJS](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
+
+
 
 ## Table of Content
 
