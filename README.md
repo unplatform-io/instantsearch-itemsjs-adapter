@@ -1,4 +1,4 @@
-<img align="right" style="height:350px;" src="./instantserach-red.svg" >
+<img align="right" style="height:350px;" src="./logo-orange.svg" >
 
 # Instantsearch-ItemsJS-adapter
 
