@@ -74,13 +74,13 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | Component | | Explanation |
 | --- | :---: | --- |
 | Autocomplete | ❌ | Is not supported by ItemsJS |
-| Breadcrumb | ❌ | HierarchicalMenu is needed |
+| [Breadcrumb](#%EF%B8%8F-breadcrumb) | ✔️ |
 | [ClearRefinements](#%EF%B8%8F-clearrefinements) | ✔️ |
 | [Configure](#%EF%B8%8F-configure) | ✔️ |
 | ConfigureRelatedItems | ❌ | Is not supported by ItemsJS |
 | [CurrentRefinements](#%EF%B8%8F-currentrefinements) | ✔️ |
 | DynamicWidgets | ❌ | Cannot be imported from react-instanstsearch-dom (version 6.12.1) |
-| HierarchicalMenu | ❌ | Is not supported by ItemsJS |
+| [HierarchicalMenu](#%EF%B8%8F-hierarchicalmenu) | ✔️ |
 | Highlight | ❌ | Is not supported by ItemsJS |
 | [Hits](#%EF%B8%8F-hits) | ✔️ |
 | [HitsPerPage](#%EF%B8%8F-hitsperpage) | ✔️ |
@@ -102,12 +102,25 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [ScrollTo](#%EF%B8%8F-scrollto) | ✔️ |
 | [SearchBox](#%EF%B8%8F-searchbox)| ✔️ |
 | [SearchState](#%EF%B8%8F-searchstate) | ✔️ |
-| [Snippet](#%EF%B8%8F-snippet) |✔️ | |
+| Snippet | ❌ | Is not supported by ItemsJS |
 | [SortBy](#%EF%B8%8F-sortby) | ✔️ |
 | [StateResults](#%EF%B8%8F-stateresults) | ✔️ |
 | [Stats](#%EF%B8%8F-stats) | ✔️ |
 | [ToggleRefinement](#%EF%B8%8F-togglerefinement) | ✔️ |
 | [VoiceSearch](#%EF%B8%8F-voicesearch) | ✔️ |
+
+### ✔️ Breadcrumb
+[Breadcrumb](https://www.algolia.com/doc/api-reference/widgets/breadcrumb/react/)
+
+The `Breadcrumb` widget allows a user to see where the current page is in relation to the facet’s hierarchy.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attributes | ✔️ |
+| separator | ✔️ |
+| rootURL | ✔️ |
+| transformItems | ✔️ |
+| translations | ✔️ |
 
 ### ✔️ ClearRefinements
 [ClearRefinements](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
@@ -136,6 +149,25 @@ The `CurrentRefinements` widget allows a user to see wich filters are apllied.
 | --- | :---: | --- |
 | clearsQuery | ❌ | Do not set this to true, the interface will no longer work properly. |
 | transformItems | ✔️ |
+
+### ✔️ HierarchicalMenu
+[HierarchicalMenu](https://www.algolia.com/doc/api-reference/widgets/hierarchical-menu/react/)
+
+The `HierarchicalMenu` widget allows a user to filter on a single value for an attribute.
+
+| Parameter |  | Explanation |
+| --- | :---: | --- |
+| attributes | ✔️ |
+| defaultRefinement | ✔️ |
+| facetOrdering | ❌ | Is not supported by ItemsJS |
+| limit | ✔️ |
+| showMore | ✔️ |
+| showMoreLimit | ✔️ |
+| separator | ❌ |
+| rootPath | ✔️ |
+| showParentLevel | ✔️ |
+| transformItems | ✔️ |
+| translations | ✔️ |
 
 ### ✔️ Hits
 [Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react/)
@@ -344,8 +376,7 @@ The `ScrollTo` widget allows a user to automatically scroll to an object when th
 | --- | :---: | --- |
 | scrollOn | ✔️ |
 
-### ✔️ 
-
+### ✔️ SearchBox
 [SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)
 
 The `SearchBox` widget allows a user to search text based.
@@ -369,19 +400,6 @@ The `SearchBox` widget allows a user to search text based.
 [SearchState](https://www.algolia.com/doc/api-reference/widgets/ui-state/react/)
 
 The `SearchState` widget allows a user to update their search parameters. When updated automaticly searched.
-
-### ✔️ Snippet
-[Snippet](https://www.algolia.com/doc/api-reference/widgets/snippet/react/)
-
-The `Snippet` widget allows a user to displays snippeted attributes of the search results.
-
-| Parameter |  | Explanation |
-| --- | :---: | --- |
-| attribute | ✔️ |
-| hit | ✔️ |
-| tagName | ❌ | Is not supported by ItemsJS |
-| nonHighlightedTagName | ✔️ |
-| separator | ✔️ |
 
 ### ✔️ SortBy
 [Sortby](https://www.algolia.com/doc/api-reference/widgets/sort-by/js/)
