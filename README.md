@@ -2,7 +2,6 @@
 # Instantsearch-ItemsJS-adapter
 
 This library is an adapter that connects the search engine [ItemsJS](https://github.com/itemsapi/itemsjs) with the opensource tool [Instantsearch](https://github.com/algolia/instantsearch.js/) (powered by [Algolia](https://www.algolia.com/)) that lets you quickly build a search interface in your front-end application.
-<br/><br/>
 
 ## Table of Content
 
@@ -10,7 +9,7 @@ This library is an adapter that connects the search engine [ItemsJS](https://git
 ✏️ [Usage](#usage)<br/>
 👀 [Demo](#demo)<br/>
 📜 [Features](#features)<br/>
-🤝 [Contribute](#contribute)<br/><br/>
+🤝 [Contribute](#contribute)<br/>
 
 ## Installation
 Use  `npm`  or  `yarn`  to install  `itemsjs-instantsearch-adapter`:
@@ -22,7 +21,6 @@ yarn add ..
 
 Instantsearch-ItemsJS-adapter does not create any UI component by itself.  
 To be able to create a search interface, you'll need to  [install  `Instantsearch`](https://www.algolia.com/doc/guides/building-search-ui/installation/js/) as well.
-<br/><br/>
 
 ## Usage
 
@@ -62,12 +60,10 @@ createIndex(data, options);
 const searchClient = getSearchClient();
 ```
 `options` Options are from the ItemsJS API found here: [ItemsJS](https://github.com/itemsapi/itemsjs)
-<br/><br/>
 
 ## Demo
 
 To see an implementation of this adater go to [unplatform-io/clientside-instantsearch-demo](https://github.com/unplatform-io/clientside-instantsearch-demo).
-<br/><br/>
 
 ## Features
 
@@ -110,8 +106,6 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [Stats](#%EF%B8%8F-stats) | ✔️ |
 | [ToggleRefinement](#%EF%B8%8F-togglerefinement) | ✔️ |
 | [VoiceSearch](#%EF%B8%8F-voicesearch) | ✔️ |
-
-<br/><br/>
 
 ### ✔️ ClearRefinements
 [ClearRefinements](https://www.algolia.com/doc/api-reference/widgets/clear-refinements/react/)
@@ -478,8 +472,6 @@ aggregations: {
 <RangeSlider attribute="price" />
 <RatingMenu attribute="price" />
 ```
-<br/><br/>
-
 
 ## Contribute
 Help to this project is appreciated. If you want to help please use Jest and ESlint mentioned below, before creating a pull request.
