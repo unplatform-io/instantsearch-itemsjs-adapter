@@ -89,7 +89,6 @@ To see an implementation of this adater go to [unplatform-io/clientside-instants
 | [NumericMenu](#%EF%B8%8F-numericmenu) | ✔️ |
 | [Pagination](#%EF%B8%8F-pagination) | ✔️ |
 | [Panel](#%EF%B8%8F-panel) | ✔️ |
-| PoweredBy | ✔️ |
 | QueryRuleContext | ❌ | Is not supported by ItemsJS |
 | QueryRuleCustomData | ❌ | Is not supported by ItemsJS |
 | [RangeInput](#%EF%B8%8F-rangeinput) | ✔️ |
@@ -123,7 +122,7 @@ The `ClearRefinements` widget allows a user to delete all applied filters.
 
 The `Configure` widget allows a user to set fixed search parameters.
 
-This widget can contain all [Search Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/), see this site for more information. ⚠️ Pay attention, not all parameters will work with this adapter.
+This widget can contain all [Search Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/), see this site for more information. ⚠️ The parameters are not tested, some may not work.
 
 ### ✔️ CurrentRefinements
 [CurrentRefinements](https://www.algolia.com/doc/api-reference/widgets/current-refinements/react/)
@@ -177,12 +176,12 @@ The `InstantSearch` widget allows a user to let all connected components (or wid
 | indexName | ✔️ |
 | searchClient | ✔️ |
 | searchState | ✔️ |
-| resultsState | ⚠️ | There is no proof that this parameter works. | 
-| createURL | ⚠️ | There is no proof that this parameter works. | 
+| resultsState | ✔️ | 
+| createURL | ✔️ | 
 | onSearchStateChange | ✔️ |
-| onSearchParameters | ❌ |
+| onSearchParameters | ✔️ |
 | refresh | ⚠️ | There is no proof that this parameter works. | 
-| stalledSearchDelay | ⚠️ | There is no proof that this parameter works. | 
+| stalledSearchDelay | ✔️ | 
 
 ### ✔️ Menu
 [Menu](https://www.algolia.com/doc/api-reference/widgets/menu/react/)
