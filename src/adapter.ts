@@ -26,9 +26,12 @@ export function performSearch(
   requests: MultipleQueriesQuery[]
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
+    let processingTimeMS = 0;
     const responses = requests.map((request) => {
       const adaptedRequest = adaptRequest(request);
       const itemsJsRes = index.search(adaptedRequest);
+
+      processingTimeMS = processingTimeMS + itemsJsRes.timings.total;
 
       // Are there any aggregations?
       if (itemsJsRes.data.aggregations) {
@@ -44,7 +47,7 @@ export function performSearch(
         itemsJsRes.data.aggregations = filteredAggregations;
       }
 
-      return adaptResponse(itemsJsRes);
+      return adaptResponse(itemsJsRes, request.params.query, processingTimeMS);
     });
 
     return Promise.resolve({ results: responses });
