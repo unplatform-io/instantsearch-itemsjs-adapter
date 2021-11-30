@@ -13,19 +13,11 @@ const totalNumberOfPages: number = Math.ceil(products.length / per_page);
 
 const options: ItemsJsOptions = {
   searchableFields: ["title"],
-  per_page: per_page,
-  query: query,
-  page: page,
+  query: "",
   aggregations: {
-    category: {
-      title: "category",
-      size: 10,
-      conjunction: false,
-    },
+    "category.lvl0": {},
+    "category.lvl1": {},
     price: {
-      title: "price",
-      size: 10,
-      conjunction: false,
       show_facet_stats: true,
     },
   },
@@ -41,7 +33,7 @@ const requests: MultipleQueriesQuery[] = [
       maxValuesPerFacet: 10,
       page: 0,
       hitsPerPage: per_page,
-      facets: ["category"],
+      facets: ["category.lvl0"],
       tagFilters: "",
     },
   },
@@ -77,11 +69,11 @@ describe("performSearch", () => {
     expect(response.results[0].query).toBe(query);
     expect(response.results[0].params).toBe("");
     expect(response.results[0].facets).toStrictEqual({
-      category: {
+      "category.lvl0": {
         electronics: 6,
-        "women's clothing": 6,
         jewelery: 4,
         "men's clothing": 4,
+        "women's clothing": 6,
       },
     });
     expect(response.results[0].facets_stats).toStrictEqual({});
