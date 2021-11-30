@@ -13,7 +13,7 @@ const totalNumberOfPages: number = Math.ceil(products.length / per_page);
 
 const options: ItemsJsOptions = {
   searchableFields: ["title"],
-  query: "",
+  query: query,
   aggregations: {
     "category.lvl0": {},
     "category.lvl1": {},
