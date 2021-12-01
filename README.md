@@ -31,7 +31,7 @@ To be able to create a search interface, you'll need to  [install  `Instantsearc
 ## Usage
 
 ```js
-import { createIndex, getSearchClient } from  "instantsearch-itemsjs-adapter/lib/adapter";
+import { createIndex, getSearchClient } from  "instantsearch-itemsjs-adapter";
 
 const data = [{ "id":1,"title": "Iphone 7", "category":"Apple","price":109.95 },
 {"id":1,"title": "Samsung notce 10","category":"Samsung","price":109.95 }]
