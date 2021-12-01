@@ -10,7 +10,7 @@ on:
     # Only following types are handled by the action, but one can default to all as well
     types: [opened, reopened, synchronize]
     branches: 
-      -main
+      - main
 
 jobs:
   update_release_draft:
