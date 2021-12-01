@@ -1,9 +1,9 @@
 name: publish
 
 on:
-  push:
-    branches:
-      - main
+  create:
+    tags:
+      - v*
 jobs:
   publish:
     runs-on: ubuntu-latest
