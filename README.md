@@ -5,7 +5,7 @@
 <h1 align="center">Instantsearch-ItemsJS-adapter</h1>
 
 <p align="center">
-  <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/blob/LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
+  <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
   <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions"><img src="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions/workflows/main.yml/badge.svg" alt="main"></a>
 </p>
 
