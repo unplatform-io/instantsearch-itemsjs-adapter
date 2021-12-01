@@ -1,9 +1,8 @@
 name: publish
 
 on:
-  create:
-    tags:
-      - v*
+  release:
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest
