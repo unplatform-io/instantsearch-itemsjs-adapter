@@ -1,11 +1,9 @@
-name: main
+name: publish
 
 on:
   push:
     branches:
       - main
-      - publish-workflow
-
 jobs:
   publish:
     runs-on: ubuntu-latest
