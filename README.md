@@ -5,8 +5,8 @@
 <h1 align="center">Instantsearch-ItemsJS-adapter</h1>
 
 <p align="center">
-  <a href=""><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
-  <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions"><img src="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions/workflows/main.yml/badge.svg" alt="Tests"></a>
+  <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/blob/LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
+  <a href="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions"><img src="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/actions/workflows/main.yml/badge.svg" alt="main"></a>
 </p>
 
 <p align="center">This library is an adapter that connects the search engine <a href="https://github.com/itemsapi/itemsjs" target"_blank">ItemsJS</a> with the opensource tool <a href="https://github.com/algolia/instantsearch.js/" target"_blank">Instantsearch</a> (powered by <a href="https://www.algolia.com/)" target"_blank">Algolia</a> that lets you quickly build a search interface in your front-end application.</p>
