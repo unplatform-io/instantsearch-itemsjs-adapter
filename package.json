@@ -1,7 +1,7 @@
 {
   "name": "instantsearch-itemsjs-adapter",
   "version": "1.0.0",
-  "description": "",
+  "description": "An adapter to use ItemsJs based client-side search with an Algolia Instantsearch front-end.",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -34,9 +34,9 @@
     "eslint:fix": "npm run eslint -- --fix",
     "build": "npx tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["itemsjs", "instantsearch", "site-search", "client-side", "typescript"],
+  "author": "Unplatform",
+  "license": "MIT",
   "volta": {
     "node": "14.18.1",
     "npm": "7.24.2"
