@@ -20,11 +20,9 @@
 🤝 [Contribute](#contribute)<br/>
 
 ## Installation
-Use  `npm`  or  `yarn`  to install  `itemsjs-instantsearch-adapter`:
+Use  `npm` to install `itemsjs-instantsearch-adapter`.
 ```
-npm install ...
-
-yarn add ..
+npm install instantsearch-itemsjs-adapter
 ```
 
 Instantsearch-ItemsJS-adapter does not create any UI component by itself.  
@@ -33,7 +31,7 @@ To be able to create a search interface, you'll need to  [install  `Instantsearc
 ## Usage
 
 ```js
-import { createIndex, getSearchClient } from  "...";
+import { createIndex, getSearchClient } from  "instantsearch-itemsjs-adapter";
 
 const data = [{ "id":1,"title": "Iphone 7", "category":"Apple","price":109.95 },
 {"id":1,"title": "Samsung notce 10","category":"Samsung","price":109.95 }]
