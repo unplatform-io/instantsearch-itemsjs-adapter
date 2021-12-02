@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo-orange.svg" alt="Instantsearch-ItemsJS-adapter" width="200" height="200" />
+  <img src="https://github.com/unplatform-io/instantsearch-itemsjs-adapter/blob/main/logo-orange.svg" alt="Instantsearch-ItemsJS-adapter" width="200" height="200" />
 </p>
 
 <h1 align="center">Instantsearch-ItemsJS-adapter</h1>
