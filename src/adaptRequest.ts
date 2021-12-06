@@ -56,7 +56,7 @@ export function adaptFilters(instantsearchFacets) {
   return itemsJsFacets;
 }
 
-function filterRegex(itemsJsFacets, facet) {
+export function filterRegex(itemsJsFacets, facet) {
   const facetRegex = new RegExp(/(.+)(:)(.+)/);
   const [, name, , value] = facet.match(facetRegex);
   if (itemsJsFacets[name]) {

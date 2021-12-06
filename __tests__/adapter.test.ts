@@ -1,5 +1,5 @@
 import products from "./products.json";
-import { performSearch, createIndex } from "../src/adapter";
+import { performSearch, createIndex, getSearchClient } from "../src/adapter";
 import {
   MultipleQueriesQuery,
   MultipleQueriesResponse,
@@ -51,6 +51,45 @@ const requests: MultipleQueriesQuery[] = [
     },
   },
 ];
+
+describe("getSearchClient", () => {
+  it("getSearchClient", () => {
+    const queries: MultipleQueriesQuery[] = [
+      {
+        indexName: "instant_search",
+        params: {
+          highlightPreTag: "<ais-highlight-0000000000>",
+          highlightPostTag: "</ais-highlight-0000000000>",
+          query: "",
+          maxValuesPerFacet: 10,
+          page: 0,
+          hitsPerPage: per_page,
+          facets: ["category.lvl0"],
+          tagFilters: "",
+        },
+      },
+      {
+        indexName: "instant_search",
+        params: {
+          highlightPreTag: "<ais-highlight-0000000000>",
+          highlightPostTag: "</ais-highlight-0000000000>",
+          query: "",
+          maxValuesPerFacet: 10,
+          page: 0,
+          hitsPerPage: per_page,
+          facets: ["price"],
+          tagFilters: "",
+        },
+      },
+    ];
+
+    expect(() => {
+      getSearchClient().searchForFacetValues();
+    }).toThrowError(new Error("Not implemented"));
+
+    expect(getSearchClient().search(queries)).toBeDefined();
+  });
+});
 
 describe("performSearch", () => {
   it("Performs a search", async () => {
