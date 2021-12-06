@@ -5,7 +5,28 @@ import {
   adaptRequest,
   adaptNumericFilters,
   parseRange,
+  filterRegex,
 } from "../src/adaptRequest";
+
+describe("filterRegex test", () => {
+  it("filter regex should add string to object", () => {
+    const itemsJsFacets = {};
+
+    const facet1 = "color:blue";
+    const filter1 = filterRegex(itemsJsFacets, facet1);
+    const result1 = {
+      color: ["blue"],
+    };
+    expect(filter1).toStrictEqual(result1);
+
+    const facet2 = "color:red";
+    const filter2 = filterRegex(itemsJsFacets, facet2);
+    const result2 = {
+      color: ["blue", "red"],
+    };
+    expect(filter2).toStrictEqual(result2);
+  });
+});
 
 describe("adaptPage tests", () => {
   it("adaptpage(x) should return x+1", () => {
@@ -16,7 +37,7 @@ describe("adaptPage tests", () => {
 });
 
 describe("adaptRequest tests", () => {
-  it("adaptRequest should convert request to ItemsJs request", () => {
+  it("adaptRequest should convert (max parameters) request to ItemsJs request", () => {
     const instantsearchRequest: MultipleQueriesQuery = {
       indexName: "products",
       params: {
@@ -24,6 +45,7 @@ describe("adaptRequest tests", () => {
         page: 2,
         hitsPerPage: 5,
         facets: ["price", "in_stock"],
+        facetFilters: ["category:electronics"],
         numericFilters: ["price>=10", "price<=100"],
       },
     };
@@ -35,6 +57,26 @@ describe("adaptRequest tests", () => {
     expect(itemsjsRequest.per_page).toBe(5);
     expect(itemsjsRequest.aggregations).toMatchObject(["price", "in_stock"]);
     expect(itemsjsRequest.filter).toBeDefined(); // Returns native javascript .filter() function
+    expect(itemsjsRequest.filters).toStrictEqual({ category: ["electronics"] });
+    expect(itemsjsRequest.indexName).toBe("products");
+    expect(itemsjsRequest.sort).toBe("products");
+  });
+
+  it("adaptRequest should convert (min parameters) request to ItemsJs request ", () => {
+    const instantsearchRequest: MultipleQueriesQuery = {
+      indexName: "products",
+      params: {
+        query: "a",
+        page: 2,
+        hitsPerPage: 5,
+      },
+    };
+
+    const itemsjsRequest = adaptRequest(instantsearchRequest);
+
+    expect(itemsjsRequest.query).toBe("a");
+    expect(itemsjsRequest.page).toBe(3);
+    expect(itemsjsRequest.per_page).toBe(5);
     expect(itemsjsRequest.indexName).toBe("products");
     expect(itemsjsRequest.sort).toBe("products");
   });
@@ -136,8 +178,8 @@ describe("regexInput tests group in three", () => {
   });
 });
 
-describe("adaptFacets tests", () => {
-  it("adaptFacets should convert nested arrays to Itemsjs format", () => {
+describe("adaptFilters tests", () => {
+  it("adaptFilters should convert nested arrays to Itemsjs format", () => {
     const instantsearchFacets = [
       ["category:electronics", "category:men's clothing"],
       ["color:blue"],
@@ -152,7 +194,7 @@ describe("adaptFacets tests", () => {
     expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
 
-  it("adaptFacets should convert a single array to Itemsjs format", () => {
+  it("adaptFilters should convert a single array to Itemsjs format", () => {
     const instantsearchFacets = [
       "category:electronics",
       "category:men's clothing",
@@ -166,7 +208,7 @@ describe("adaptFacets tests", () => {
     expect(adaptedResult).toMatchObject(itemsJsFacets);
   });
 
-  it("adaptFacets should convert single and nested arrays to Itemsjs format", () => {
+  it("adaptFilters should convert single and nested arrays to Itemsjs format", () => {
     const instantsearchFacets = [
       ["category:electronics", "category:men's clothing"],
       "color:Blue",
@@ -180,5 +222,15 @@ describe("adaptFacets tests", () => {
 
     const adaptedResult = adaptFilters(instantsearchFacets);
     expect(adaptedResult).toMatchObject(itemsJsFacets);
+  });
+
+  it("adaptFilters should throw an error when no array is given", () => {
+    const instantsearchFacets = "category:electronics";
+
+    expect(() => {
+      adaptFilters(instantsearchFacets);
+    }).toThrowError(
+      new Error("request.params.facetFilters does not contain an array")
+    );
   });
 });
