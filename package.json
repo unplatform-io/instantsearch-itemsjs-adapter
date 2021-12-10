@@ -1,6 +1,6 @@
 {
   "name": "instantsearch-itemsjs-adapter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An adapter to use ItemsJs based client-side search with an Algolia Instantsearch front-end.",
   "main": "./lib/adapter",
   "directories": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "@algolia/client-search": "^4.11.0",
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
-    "itemsjs": "^2.1.13"
+    "itemsjs": "^2.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
