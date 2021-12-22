@@ -83,20 +83,21 @@ describe("getSearchClient", () => {
       },
     ];
 
+    const index = createIndex(products, options);
     expect(() => {
-      getSearchClient().searchForFacetValues();
+      getSearchClient(index).searchForFacetValues();
     }).toThrowError(new Error("Not implemented"));
 
-    expect(getSearchClient().search(queries)).toBeDefined();
+    expect(getSearchClient(index).search(queries)).toBeDefined();
   });
 });
 
 describe("performSearch", () => {
   it("Performs a search", async () => {
-    createIndex(products, options);
+    const index = createIndex(products, options);
 
     const response: Readonly<MultipleQueriesResponse<object>> =
-      await performSearch(requests);
+      await performSearch(requests, index);
 
     expect(response.results[0].hits.length).toBe(per_page || products.length);
     expect(response.results[0].page).toBe(page - 1);

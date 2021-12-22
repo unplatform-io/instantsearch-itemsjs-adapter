@@ -7,23 +7,22 @@ import {
 } from "@algolia/client-search";
 import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 
-let index;
-
-export function getSearchClient(): SearchClient {
+export function getSearchClient(index: any): SearchClient {
   return {
-    search: (queries: MultipleQueriesQuery[]) => performSearch(queries),
+    search: (queries: MultipleQueriesQuery[]) => performSearch(queries, index),
     searchForFacetValues: () => {
       throw new Error("Not implemented");
     },
   };
 }
 
-export function createIndex(data: object, options: ItemsJsOptions): void {
-  index = itemsjs(data, options);
+export function createIndex(data: object, options: ItemsJsOptions): any {
+  return itemsjs(data, options);
 }
 
 export function performSearch(
-  requests: MultipleQueriesQuery[]
+  requests: MultipleQueriesQuery[],
+  index: any
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
     let processingTimeMS = 0;
@@ -52,5 +51,6 @@ export function performSearch(
 
     return Promise.resolve({ results: responses });
   }
+  
   return null;
 }
