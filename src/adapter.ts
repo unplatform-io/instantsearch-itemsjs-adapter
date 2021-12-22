@@ -51,6 +51,6 @@ export function performSearch(
 
     return Promise.resolve({ results: responses });
   }
-  
+
   return null;
 }
