@@ -7,7 +7,13 @@ import {
 } from "@algolia/client-search";
 import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 
-export function getSearchClient(index: any): SearchClient {
+let index;
+
+export function getSearchClient(newIndex?: any): SearchClient {
+  // This newIndex provides the possitblity to not use the latest created index.
+  // Added to make it backwords compatiable with v1.0.4
+  if (newIndex) index = newIndex;
+
   return {
     search: (queries: MultipleQueriesQuery[]) => performSearch(queries, index),
     searchForFacetValues: () => {
@@ -17,7 +23,8 @@ export function getSearchClient(index: any): SearchClient {
 }
 
 export function createIndex(data: object, options: ItemsJsOptions): any {
-  return itemsjs(data, options);
+  index = itemsjs(data, options);
+  return index;
 }
 
 export function performSearch(
