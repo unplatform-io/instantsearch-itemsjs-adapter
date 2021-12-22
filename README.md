@@ -61,9 +61,9 @@ const  options = {
 	},
 };
 
-createIndex(data, options);
+const index = createIndex(data, options);
 
-const searchClient = getSearchClient();
+const searchClient = getSearchClient(index);
 ```
 `options` Options are from the ItemsJS API found here: [ItemsJS](https://github.com/itemsapi/itemsjs)
 
