@@ -10,12 +10,9 @@ import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 let index;
 
 export function getSearchClient(newIndex?: any): SearchClient {
-  // This newIndex provides the possitblity to not use the latest created index.
-  // Added to make it backwords compatiable with v1.0.4
-  if (newIndex) index = newIndex;
-
   return {
-    search: (queries: MultipleQueriesQuery[]) => performSearch(queries, index),
+    search: (queries: MultipleQueriesQuery[]) =>
+      performSearch(queries, index || newIndex),
     searchForFacetValues: () => {
       throw new Error("Not implemented");
     },
