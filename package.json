@@ -1,6 +1,6 @@
 {
   "name": "instantsearch-itemsjs-adapter",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "An adapter to use ItemsJs based client-side search with an Algolia Instantsearch front-end.",
   "main": "./lib/adapter",
   "directories": {
