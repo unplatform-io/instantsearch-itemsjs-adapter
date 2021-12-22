@@ -9,21 +9,24 @@ import { ItemsJsOptions, SearchClient } from "./itemsjsInterface";
 
 let index;
 
-export function getSearchClient(): SearchClient {
+export function getSearchClient(newIndex?: any): SearchClient {
   return {
-    search: (queries: MultipleQueriesQuery[]) => performSearch(queries),
+    search: (queries: MultipleQueriesQuery[]) =>
+      performSearch(queries, index || newIndex),
     searchForFacetValues: () => {
       throw new Error("Not implemented");
     },
   };
 }
 
-export function createIndex(data: object, options: ItemsJsOptions): void {
+export function createIndex(data: object, options: ItemsJsOptions): any {
   index = itemsjs(data, options);
+  return index;
 }
 
 export function performSearch(
-  requests: MultipleQueriesQuery[]
+  requests: MultipleQueriesQuery[],
+  index: any
 ): Readonly<Promise<MultipleQueriesResponse<object>>> {
   if (index) {
     let processingTimeMS = 0;
@@ -52,5 +55,6 @@ export function performSearch(
 
     return Promise.resolve({ results: responses });
   }
+
   return null;
 }

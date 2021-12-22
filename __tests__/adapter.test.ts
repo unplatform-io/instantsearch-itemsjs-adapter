@@ -83,20 +83,26 @@ describe("getSearchClient", () => {
       },
     ];
 
+    const index = createIndex(products, options);
+
+    expect(() => {
+      getSearchClient(index).searchForFacetValues();
+    }).toThrowError(new Error("Not implemented"));
+    expect(getSearchClient(index).search(queries)).toBeDefined();
+
     expect(() => {
       getSearchClient().searchForFacetValues();
     }).toThrowError(new Error("Not implemented"));
-
     expect(getSearchClient().search(queries)).toBeDefined();
   });
 });
 
 describe("performSearch", () => {
   it("Performs a search", async () => {
-    createIndex(products, options);
+    const index = createIndex(products, options);
 
     const response: Readonly<MultipleQueriesResponse<object>> =
-      await performSearch(requests);
+      await performSearch(requests, index);
 
     expect(response.results[0].hits.length).toBe(per_page || products.length);
     expect(response.results[0].page).toBe(page - 1);
@@ -143,5 +149,14 @@ describe("performSearch", () => {
     expect(response.results[1].facets_stats).toStrictEqual({
       price: { min: 7, max: 999, avg: 161.45, sum: 3229 },
     });
+  });
+
+  it("Performs no search, when there is no index", async () => {
+    const index = null;
+
+    const response: Readonly<MultipleQueriesResponse<object>> =
+      await performSearch(requests, index);
+
+    expect(response).toBeNull();
   });
 });
