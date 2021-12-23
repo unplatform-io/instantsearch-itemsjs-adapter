@@ -36,7 +36,7 @@
     "test": "jest",
     "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "eslint:fix": "npm run eslint -- --fix",
-    "build": "tsup" 
+    "build": "tsup --dts"
   },
   "keywords": [
     "itemsjs",

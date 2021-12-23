@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,            /* Enable incremental compilation */
-    "target": "es5",                /* Specify ECMAScript target version: */
+    "target": "es2015",                /* Specify ECMAScript target version: */
     "module": "commonjs",           /* 'none', 'commonjs', 'amd', 'system', etc */
     "declaration": true,            /* Concatenate & emit output to single file.*/
     "outDir": "lib",                /* Redirect output to the directory. */
