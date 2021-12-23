@@ -12,7 +12,8 @@
   "dependencies": {
     "@algolia/client-search": "^4.11.0",
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
-    "itemsjs": "^2.1.14"
+    "itemsjs": "^2.1.14",
+    "tsup": "^5.11.7"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -35,7 +36,7 @@
     "test": "jest",
     "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "eslint:fix": "npm run eslint -- --fix",
-    "build": "npx tsc"
+    "build": "tsup" 
   },
   "keywords": [
     "itemsjs",
